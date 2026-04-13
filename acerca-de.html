@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acerca de Infectus — Historia, misión y equipo clínico especializado en infectología.">
+  <meta name="theme-color" content="#060a0e">
+  <title>Infectus | Acerca de Nosotros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-content { max-width: 1160px; margin: 0 auto; padding: 0 5vw clamp(4rem,8vw,7rem); }
+
+    /* Two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: start; margin-bottom: clamp(3rem,6vw,6rem); }
+    .col-text h2 { font-size: var(--t-xl); margin-bottom: 1.5rem; }
+    .col-text p { color: var(--c-muted); font-size: var(--t-sm); line-height: 1.8; margin-bottom: 1rem; }
+    .col-image {
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      box-shadow: 0 2px 0 rgba(255,255,255,0.08) inset;
+    }
+
+    /* Team */
+    .section-label { font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.14em; color: var(--c-faint); text-transform: uppercase; font-family: var(--font-sans); margin-bottom: 2rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .team-card {
+      padding: 1.75rem;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(40px) saturate(160%);
+      -webkit-backdrop-filter: blur(40px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      box-shadow: 0 2px 0 rgba(255,255,255,0.1) inset, 0 12px 40px rgba(0,0,0,0.35);
+      transition: transform 300ms var(--ease-out), border-color 300ms ease;
+    }
+    .team-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.16); }
+    .team-avatar { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); margin-bottom: 1rem; }
+    .team-name { font-weight: 500; font-size: var(--t-base); color: rgba(255,255,255,0.88); margin-bottom: 4px; font-family: var(--font-sans); }
+    .team-role { font-size: var(--t-xs); color: var(--c-muted); font-family: var(--font-sans); }
+
+    @media (max-width: 768px) { .two-col, .team-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="inner-page">
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-link" aria-label="Infectus">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="14" y="3" width="4" height="26" rx="2" fill="#00c2cc"/>
+        <rect x="5"  y="14" width="22" height="4" rx="2" fill="#00c2cc"/>
+      </svg>
+      <span class="logo-text">INFECTUS</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="acerca-de.html" class="active">Acerca de</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="inner-hero fade-in">
+    <div class="inner-hero-label">Nuestra Esencia</div>
+    <h1 class="inner-hero-title">Acerca de Nosotros.</h1>
+    <p class="inner-hero-subtitle">Nacimos con una premisa única: las decisiones en salud deben fundarse en evidencia innegable y en el más alto rigor científico.</p>
+  </div>
+
+  <div class="page-content">
+
+    <div class="two-col slide-up">
+      <div class="col-text">
+        <h2>Nuestra Historia</h2>
+        <p>En Infectus SC, nos fundamos con la convicción de que la infectología en Colombia necesitaba un estándar diferente — uno donde los datos, la investigación y el pensamiento crítico lideraran cada decisión clínica.</p>
+        <p>Fundada por especialistas en infectología con experiencia en los ecosistemas hospitalarios más complejos del país, vimos la necesidad de transformar procesos empíricos en protocolos de alta fiabilidad con métricas reales de impacto.</p>
+        <p>Hoy, lideramos la implementación de programas PROA en América Latina, integrando inteligencia analítica con rigor científico.</p>
+      </div>
+      <div class="col-image"></div>
+    </div>
+
+    <div class="two-col slide-up" style="direction:rtl;">
+      <div class="col-text" style="direction:ltr;">
+        <h2>Misión y Visión</h2>
+        <p><strong style="color:rgba(255,255,255,0.85);">Misión:</strong> Transformar la salud en Colombia y la región a través de enfoques integrales basados en evidencia, integrando el mayor rigor clínico con innovación analítica.</p>
+        <p><strong style="color:rgba(255,255,255,0.85);">Visión:</strong> Ser la institución de referencia en América Latina en investigación y control de infecciones, donde cada protocolo esté garantizado por las normativas más exigentes del mundo.</p>
+      </div>
+      <div class="col-image" style="direction:ltr;"></div>
+    </div>
+
+    <div class="slide-up">
+      <div class="section-label">Equipo Clínico</div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar"></div>
+          <div class="team-name">Dr. Leonardo Forero</div>
+          <div class="team-role">Director Médico — Infectólogo</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"></div>
+          <div class="team-name">Dra. María Antonieta</div>
+          <div class="team-role">Epidemióloga Jefe</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"></div>
+          <div class="team-name">Carlos Ramírez</div>
+          <div class="team-role">Operaciones PROA</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<section class="cta-section fade-in">
+  <div class="cta-inner">
+    <h2 class="cta-title">¿Trabajamos juntos?</h2>
+    <a class="btn-pill" href="contacto.html">Conversemos</a>
+  </div>
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="footer-logo">INFECTUS SC.</div>
+      <div class="footer-links"><a href="#">Privacidad</a><a href="#">HIPAA</a><a href="contacto.html">Contacto</a></div>
+      <div class="footer-copy">© 2026.</div>
+    </div>
+  </footer>
+</section>
+
+<script>
+  document.getElementById('menu-toggle').addEventListener('click', function() {
+    const nav = document.getElementById('main-nav');
+    const open = nav.classList.toggle('active');
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+</body>
+</html>
