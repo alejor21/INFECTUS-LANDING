@@ -1,0 +1,103 @@
+/* Nuestro equipo — editorial roster prepared for confirmed profiles. */
+.team-page { background: var(--surface-section); }
+
+.team-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(28rem, 36vw, 36rem);
+  padding-block: clamp(5rem, 9vw, 8rem);
+  background: linear-gradient(90deg, rgb(var(--infectus-surface-rgb) /.97) 0%, rgb(var(--infectus-surface-rgb) /.95) 46%, rgb(var(--infectus-surface-rgb) /.88) 68%, rgb(var(--infectus-surface-rgb) /.32) 100%), url('/images/team/team-conversation.webp') 62% center/cover;
+  box-shadow: 0 0 0 100vmax var(--infectus-surface);
+  clip-path: inset(0 -100vmax);
+}
+.team-hero__inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .7fr); gap: clamp(2rem, 5vw, 5rem); align-items: end; }
+.team-hero h1 { max-width: 12ch; margin-bottom: var(--space-5); color: var(--brand-primary); font-size: var(--display-lg); }
+.team-hero__lead { max-width: 42ch; color: var(--text-secondary); font-size: var(--body-lg); }
+.team-hero__aside { padding-left: clamp(1rem, 2vw, 1.75rem); border-left: 1px solid var(--border-strong); }
+.team-hero__aside p { max-width: 34ch; color: var(--text-secondary); font-size: var(--body-sm); }
+.team-hero__aside-label { margin-bottom: var(--space-3); color: var(--brand-accent); font-size: var(--label); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+
+.team-intro { display: grid; grid-template-columns: .34fr 1fr; gap: clamp(2rem, 5vw, 6rem); align-items: end; padding-block: var(--space-12); background: var(--surface-warm); box-shadow: 0 0 0 100vmax var(--surface-warm); clip-path: inset(0 -100vmax); }
+.team-intro__index span { color: var(--border-strong); font-size: var(--display-lg); line-height: 1; }
+.team-intro__copy h2 { margin-bottom: var(--space-5); color: var(--brand-primary); font-size: var(--heading-1); }
+.team-intro__copy p { max-width: 52ch; color: var(--text-secondary); font-size: var(--body-lg); }
+
+.team-roster-section { padding-block: var(--space-12); background: linear-gradient(180deg, var(--surface-ice), var(--surface-mist)); box-shadow: 0 0 0 100vmax var(--surface-ice); clip-path: inset(0 -100vmax); }
+.team-roster-section__note { max-width: 30ch; margin: 0; color: var(--text-muted); font-size: var(--body-sm); }
+.team-roster-host { min-height: 22rem; margin-top: var(--space-8); }
+
+.team-roster__filters { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.team-roster__filter { min-height: 44px; padding: .55rem 1rem; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); background: rgb(var(--white-rgb) /.75); color: var(--text-secondary); font-family: inherit; font-size: var(--body-sm); font-weight: 600; cursor: pointer; transition: background var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); }
+.team-roster__filter:hover { border-color: var(--brand-accent); color: var(--brand-primary); }
+.team-roster__filter[aria-pressed="true"] { border-color: transparent; background: var(--brand-primary); color: var(--text-inverse); }
+.team-roster__status { margin-bottom: var(--space-6); color: var(--text-muted); font-size: var(--caption); letter-spacing: .08em; text-transform: uppercase; }
+
+.team-roster__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); }
+.roster-slot { display: grid; grid-template-columns: minmax(7.5rem, .42fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.75rem); padding: var(--space-5); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); background: rgb(var(--white-rgb) /.72); contain: layout paint; }
+.roster-slot__portrait { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--radius-md); background: linear-gradient(150deg, var(--infectus-surface), rgb(var(--infectus-light-rgb) /.35)); }
+.roster-slot[data-area="vaccine"] .roster-slot__portrait { background: linear-gradient(150deg, var(--vaccine-surface), rgb(var(--infectus-light-rgb) /.3)); }
+.roster-slot[data-area="research"] .roster-slot__portrait { background: linear-gradient(150deg, var(--research-surface), rgb(var(--infectus-light-rgb) /.34)); }
+.roster-slot[data-area="lab"] .roster-slot__portrait { background: linear-gradient(150deg, var(--lab-surface), rgb(var(--infectus-light-rgb) /.28)); }
+.roster-slot__index { position: absolute; top: var(--space-3); left: var(--space-3); color: rgb(var(--infectus-primary-rgb) /.42); font-family: var(--font-display); font-size: var(--heading-3); line-height: 1; }
+.roster-slot__glyph { position: absolute; right: 14%; bottom: 16%; width: 42%; aspect-ratio: 1; border: 1px solid rgb(var(--infectus-primary-rgb) /.22); border-radius: 50%; }
+.roster-slot__body { display: flex; flex-direction: column; align-items: flex-start; }
+.roster-slot__area { margin-bottom: var(--space-2); color: var(--brand-accent); font-size: var(--label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.roster-slot__name { margin: 0 0 var(--space-2); color: var(--brand-primary); font-size: var(--heading-3); }
+.roster-slot__track { margin: 0 0 var(--space-4); color: var(--text-secondary); font-size: var(--body-sm); }
+.roster-slot__toggle { min-height: 44px; margin-top: auto; padding: 0; border: 0; background: transparent; color: var(--brand-accent); font-family: inherit; font-size: var(--body-sm); font-weight: 700; text-align: left; cursor: pointer; }
+.roster-slot__toggle:hover { color: var(--brand-primary); }
+.roster-slot__panel[hidden] { display: none; }
+.roster-slot__fields { display: grid; gap: var(--space-3); margin: var(--space-4) 0 0; padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); }
+.roster-slot__fields dt { color: var(--text-muted); font-size: var(--label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.roster-slot__fields dd { margin: var(--space-1) 0 0; color: var(--text-secondary); font-size: var(--body-sm); }
+
+.team-areas { padding-block: var(--space-12); background: var(--surface-warm); box-shadow: 0 0 0 100vmax var(--surface-warm); clip-path: inset(0 -100vmax); }
+.team-areas__list { border-top: 1px solid var(--border-strong); }
+.team-area { display: grid; grid-template-columns: minmax(4rem, .16fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; padding: var(--space-6) 0; border-bottom: 1px solid var(--border-subtle); }
+.team-area > span { color: var(--border-strong); font-family: var(--font-display); font-size: var(--heading-2); line-height: 1; }
+.team-area h3 { margin: 0 0 var(--space-2); color: var(--brand-primary); font-size: var(--heading-3); }
+.team-area p { margin: 0; max-width: 56ch; color: var(--text-secondary); font-size: var(--body-sm); }
+
+.team-cta { padding: var(--space-12) var(--gutter); background: var(--brand-primary); }
+.team-cta__inner { width: min(100%, var(--container-main)); margin-inline: auto; }
+.team-cta h2 { margin-bottom: var(--space-5); color: var(--text-inverse); font-size: var(--heading-1); }
+.team-cta p:not(.home-eyebrow) { max-width: 41rem; margin-bottom: var(--space-6); color: var(--infectus-surface); }
+.team-cta .home-eyebrow { color: var(--infectus-light); }
+.team-cta .button { background: var(--surface-card); color: var(--brand-primary); }
+
+@media (max-width: 1024px) {
+  .team-hero__inner { grid-template-columns: 1fr; gap: var(--space-6); }
+  .team-hero__aside { padding-top: var(--space-5); padding-left: 0; border-top: 1px solid var(--border-strong); border-left: 0; }
+  .team-intro { grid-template-columns: .3fr 1fr; }
+  .team-roster__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .team-hero { min-height: 0; padding-block: calc(var(--space-10) + 4rem) var(--space-10); background-position: 70% center; }
+  .team-hero h1 { font-size: var(--heading-1); }
+  .team-intro { grid-template-columns: 1fr; gap: var(--space-4); }
+  .roster-slot { grid-template-columns: 1fr; }
+  .roster-slot__portrait { aspect-ratio: 16 / 10; }
+  .team-area { grid-template-columns: 1fr; gap: var(--space-2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-roster__filter { transition: none; }
+}
+
+/* FASE 10.1 — soporte visual en intro y áreas. */
+.team-intro { grid-template-rows: auto auto; }
+.team-intro__index { grid-column: 1; grid-row: 1; }
+.team-intro__copy { grid-column: 2; grid-row: 1; }
+.team-intro__media { grid-column: 1 / -1; grid-row: 2; margin: var(--space-6) 0 0; overflow: hidden; border-radius: var(--radius-lg); }
+.team-intro__media img { display: block; width: 100%; height: 100%; aspect-ratio: 21 / 8; object-fit: cover; object-position: center 40%; }
+
+.team-areas__media { margin: var(--space-6) 0 var(--space-8); overflow: hidden; border-radius: var(--radius-lg); }
+.team-areas__media img { display: block; width: 100%; height: 100%; aspect-ratio: 21 / 7; object-fit: cover; object-position: center 45%; }
+
+@media (max-width: 1024px) {
+  .team-intro__index, .team-intro__copy, .team-intro__media { grid-column: 1; grid-row: auto; }
+}
+@media (max-width: 768px) {
+  .team-intro__media img, .team-areas__media img { aspect-ratio: 16 / 9; }
+}

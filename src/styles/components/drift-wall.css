@@ -1,0 +1,16 @@
+.about-drift { position:relative; overflow:hidden; padding-block:clamp(3rem,5vw,5rem); color:var(--white); background:var(--infectus-primary); }
+.about-drift__heading { display:flex; align-items:end; justify-content:space-between; gap:2rem; }
+.about-drift h2 { max-width:18ch; margin-bottom:0; font-size:var(--display-lg); color:var(--white); }
+.about-drift .home-eyebrow { color:var(--infectus-light); }
+.drift-wall { position:relative; height:clamp(23rem,40vw,35rem); margin-top:1.5rem; overflow:hidden; perspective:1200px; mask-image:linear-gradient(180deg,transparent,var(--white) 12% 85%,transparent); }
+.drift-wall__plane { position:absolute; top:50%; left:50%; display:grid; grid-template-columns:repeat(var(--drift-columns,4),minmax(0,1fr)); width:min(110%,96rem); height:100%; gap:18px; transform:translate(-50%,-50%) rotateX(8deg) rotateY(-8deg); transform-style:preserve-3d; }
+.drift-wall__col,.drift-wall__track { min-width:0; transform-style:preserve-3d; }
+.drift-wall__group { display:grid; gap:18px; padding-bottom:18px; }
+.drift-wall__tile { position:relative; height:190px; overflow:hidden; border-radius:18px; background:var(--infectus-primary); opacity:.76; transform:translateZ(0); transition:transform 500ms var(--ease-standard),opacity 500ms; }
+.drift-wall__tile::after { position:absolute; inset:0; background:rgb(var(--infectus-primary-rgb) / .18); content:''; pointer-events:none; }
+.drift-wall__tile img { display:block; width:100%; height:100%; object-fit:cover; }
+.drift-wall__tile:hover { opacity:1; transform:translateZ(28px); }
+.drift-wall__pause { flex-shrink:0; min-height:44px; padding:.7rem 1rem; border:1px solid rgb(var(--white-rgb) / .35); border-radius:10px; background:transparent; color:var(--white); cursor:pointer; }
+.drift-wall__pause[hidden] { display:none; }
+@media(max-width:768px) { .about-drift__heading { display:block; }.about-drift h2 { font-size:var(--heading-1); }.drift-wall__pause { margin-top:1.3rem; }.drift-wall__plane { width:120%; gap:12px; }.drift-wall__tile { height:150px; border-radius:12px; } }
+@media(prefers-reduced-motion:reduce) { .drift-wall__tile:hover { transform:none; }.drift-wall__plane { transform:translate(-50%,-50%); } }

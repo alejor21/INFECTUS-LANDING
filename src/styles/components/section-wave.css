@@ -1,0 +1,23 @@
+/* Reusable organic separators: each color variant hands the next field to its successor. */
+.section-wave-transition {
+  position: relative;
+  z-index: 2;
+  height: clamp(4.4rem, 7vw, 6.7rem);
+  margin-top: clamp(-3.45rem, -4.2vw, -2.7rem);
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.section-wave-transition svg { display:block; width:100%; height:100%; }
+.section-wave-transition path { fill:var(--wave-fill, var(--infectus-surface)); }
+.section-wave-transition--hero { --wave-fill:var(--infectus-surface); }
+.section-wave-transition--identity { --wave-fill:var(--infectus-surface); }
+.section-wave-transition--areas { --wave-fill:var(--infectus-primary); }
+.section-wave-transition--science { --wave-fill:var(--infectus-surface); }
+.section-wave-transition--services { --wave-fill:var(--infectus-surface); }
+.section-wave-transition--news { --wave-fill:var(--infectus-primary); }
+
+@media (max-width:768px) {
+  .section-wave-transition { height:3.5rem; margin-top:-1.8rem; }
+}

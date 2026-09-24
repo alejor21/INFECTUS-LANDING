@@ -1,0 +1,186 @@
+/* ============================================================
+   FASE D1 — Sistema de hero por capas
+   ------------------------------------------------------------
+   Un mismo esqueleto compositivo para las páginas internas:
+
+     BACKGROUND  .page-hero__bg     fotografía o fondo generado
+     VEIL        .page-hero__veil   degradado que garantiza contraste
+     STAGE       .page-hero__stage  copy + visual (contenido HTML)
+     FOREGROUND  .page-hero__fg     capa de vidrio por delante
+
+   Cada página define su propia composición mediante la variante
+   .page-hero--<pagina>: el esqueleto es común, la dirección de arte no.
+   Todo el movimiento es de compositor (transform / opacity).
+   ============================================================ */
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  min-height: max(36rem, 78svh);
+  padding-block: clamp(7.5rem, 11vw, 9.5rem) clamp(3.5rem, 6vw, 5.5rem);
+  overflow: hidden;
+  background: var(--hero-base, var(--infectus-surface));
+}
+
+.page-hero__bg,
+.page-hero__veil,
+.page-hero__fg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page-hero__bg {
+  z-index: -3;
+  background-position: var(--hero-bg-position, center);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page-hero__veil {
+  z-index: -2;
+  background: var(--hero-veil, none);
+}
+
+.page-hero__fg {
+  z-index: 3;
+  background-position: var(--hero-fg-position, right center);
+  background-size: var(--hero-fg-size, cover);
+  background-repeat: no-repeat;
+  opacity: var(--hero-fg-opacity, 1);
+  mix-blend-mode: var(--hero-fg-blend, normal);
+}
+
+.page-hero__stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: var(--hero-columns, minmax(0, 1.02fr) minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: var(--hero-align, center);
+  width: min(100% - (var(--gutter) * 2), var(--container-wide));
+  margin-inline: auto;
+}
+
+.page-hero__copy { position: relative; z-index: 2; min-width: 0; }
+
+.page-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 0 0 clamp(1.1rem, 2vw, 1.7rem);
+  color: var(--hero-eyebrow, var(--research-secondary));
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.page-hero__eyebrow::before {
+  width: clamp(1.4rem, 3vw, 2.6rem);
+  height: 1px;
+  background: currentColor;
+  content: "";
+  opacity: .75;
+}
+
+.page-hero h1 {
+  max-width: 16ch;
+  margin: 0 0 clamp(1.1rem, 2vw, 1.6rem);
+  color: var(--hero-title, var(--infectus-primary));
+  font-size: clamp(2.65rem, 5.1vw, 4.6rem);
+  line-height: 1.045;
+  letter-spacing: -.055em;
+}
+.page-hero h1 em { font-style: normal; color: var(--hero-accent, var(--infectus-secondary)); }
+
+.page-hero__lead {
+  max-width: 44ch;
+  margin: 0 0 clamp(1.5rem, 2.5vw, 2.1rem);
+  color: var(--hero-body, var(--research-primary));
+  font-size: clamp(1.02rem, 1.25vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.page-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; }
+.page-hero__actions .button { min-height: 3.1rem; padding-inline: 1.35rem; border-radius: .85rem; gap: .9rem; }
+.page-hero__actions .button svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* --- Zona visual: donde viven el sujeto y los objetos --------------------- */
+.page-hero__visual { position: relative; z-index: 1; min-width: 0; align-self: var(--hero-visual-align, center); }
+
+.page-hero__subject {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 26px 48px rgb(var(--infectus-primary-rgb) / .22));
+}
+
+.page-hero__object {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+}
+
+/* Deriva mínima y continua: solo transform, sin repintados. */
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero__object--drift { animation: hero-object-drift 14s ease-in-out infinite alternate; }
+}
+@keyframes hero-object-drift {
+  from { transform: translate3d(0, 0, 0) rotate(-1.4deg); }
+  to   { transform: translate3d(0, -1.6rem, 0) rotate(1.4deg); }
+}
+
+/* --- Métrica editorial opcional bajo el copy ----------------------------- */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  margin-top: clamp(2rem, 3.5vw, 3rem);
+  padding-top: clamp(1.25rem, 2vw, 1.75rem);
+  border-top: 1px solid var(--hero-rule, rgb(var(--infectus-primary-rgb) / .16));
+}
+.hero-meta__item { display: grid; gap: .3rem; }
+.hero-meta__item strong {
+  color: var(--hero-title, var(--infectus-primary));
+  font-family: var(--font-display);
+  font-size: clamp(.95rem, 1.15vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.hero-meta__item span {
+  color: var(--hero-meta, var(--research-secondary));
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* --- Reveal de entrada: hereda el observador global de .reveal ------------ */
+.page-hero .reveal { transition: opacity 620ms var(--ease-standard), transform 820ms cubic-bezier(.16, 1, .3, 1); }
+
+@media (max-width: 1024px) {
+  .page-hero { min-height: 0; }
+  .page-hero__stage { gap: clamp(2rem, 5vw, 3rem); }
+  .page-hero h1 { font-size: clamp(2.5rem, 5.6vw, 3.6rem); }
+}
+
+/* Recomposición móvil: el copy manda, el visual pasa debajo a ancho completo. */
+@media (max-width: 768px) {
+  .page-hero {
+    padding-block: clamp(6.5rem, 20vw, 8rem) clamp(2.5rem, 8vw, 3.5rem);
+  }
+  .page-hero__stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2.25rem, 8vw, 3.25rem);
+  }
+  .page-hero h1 { max-width: 18ch; font-size: clamp(2.35rem, 9.4vw, 3.4rem); }
+  .page-hero__lead { max-width: 38ch; }
+  .page-hero__actions .button { min-height: 2.9rem; padding-inline: 1.05rem; font-size: .88rem; }
+  .hero-meta { gap: 1.25rem 2rem; }
+}
+
+/* El hero por capas arranca bajo el header flotante: sin padding superior. */
+.inner-page:has(.page-hero) { padding-top: 0; }

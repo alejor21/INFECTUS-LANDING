@@ -1,72 +1,53 @@
-# INFECTUS — Control de Infecciones & Investigación Clínica
+# Infectus Website
 
-[![Status](https://img.shields.io/badge/Status-In--Progress-orange)](#)
-[![Tech](https://img.shields.io/badge/Tech-Vite%20%7C%20GSAP%20%7C%20Lenis-blue)](#)
+## Stack
 
-**Infectus** es una plataforma de vanguardia dedicada a la precisión antimicrobiana, el control de infecciones y la investigación clínica de alto nivel en Colombia. Este repositorio contiene la landing page oficial, diseñada con una estética "Liquid Glass" minimalista y profesional.
+- Vite 5
+- HTML5 multipágina
+- CSS Vanilla
+- JavaScript Vanilla ES Modules
 
----
+## Requisitos
 
-## 🇪🇸 Resumen del Proyecto
+- Node.js compatible con Vite 5
+- npm
 
-Este proyecto busca transformar la comunicación clínica mediante una interfaz dinámica y moderna. 
+## Instalación
 
-### Características Principales:
-- **Liquid Glass Design**: Estética clínica de alta gama con efectos de transparencia y profundidad.
-- **Scroll Animado (GSAP)**: Integración de animaciones basadas en scroll para una narrativa fluida.
-- **Optimización de Rendimiento**: Uso de Vite para una carga ultrarrápida.
-- **Responsive**: Adaptable a dispositivos móviles y de escritorio.
+```bash
+npm install
+```
 
-### Estado Actual:
-> [!NOTE]
-> El sitio se encuentra actualmente **en desarrollo**. Algunas secciones y funcionalidades pueden estar incompletas mientras se finaliza la integración de datos y el pulido visual.
+## Desarrollo
 
----
+```bash
+npm run dev
+```
 
-## 🇺🇸 Project Overview
+## Build
 
-**Infectus** is a cutting-edge platform dedicated to antimicrobial precision, infection control, and high-level clinical research in Colombia. This repository hosts the official landing page, featuring a minimalist and professional "Liquid Glass" aesthetic.
+```bash
+npm run build
+```
 
-### Key Features:
-- **GSAP Animations**: Fluid scroll-based storytelling.
-- **Modern Tech Stack**: Built with Vite, GSAP, and Lenis Scroll.
-- **Clinical Aesthetics**: Premium dark-mode design tailored for medical excellence.
+## Preview
 
----
+```bash
+npm run preview
+```
 
-## 🛠️ Tecnologías / Tech Stack
+## Estructura
 
-- **Core**: HTML5, Vanilla CSS3, JavaScript (ES6+)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Animations**: [GSAP](https://greensock.com/gsap/) (ScrollTrigger)
-- **Smooth Scroll**: [Lenis](https://github.com/darkroomengineering/lenis)
+- `src/styles/`: tokens, base, layout, componentes y estilos de página.
+- `src/scripts/`: navegación, acordeón y formulario.
+- `frames/`: material fuente del experimento visual anterior; no forma parte de la experiencia activa.
+- `assets/`: recursos entregados que aún deben clasificarse para su uso posterior.
+- Raíz: cinco páginas HTML de producción y la configuración multipágina de Vite.
 
----
+## Arquitectura
 
-## 🚀 Instalación y Uso / Installation
+El sitio usa Vite como compilador de una aplicación HTML multipágina. Los patrones compartidos se centralizan en CSS y módulos JavaScript nativos; el markup de header y footer se mantiene explícito por página para evitar incorporar tooling de plantillas antes de que sea necesario.
 
-1. **Clonar el repositorio / Clone the repo:**
-   ```bash
-   git clone https://github.com/alejor21/INFECTUS-LANDING.git
-   ```
+## Estado del proyecto
 
-2. **Instalar dependencias / Install deps:**
-   ```bash
-   npm install
-   ```
-
-3. **Iniciar servidor de desarrollo / Local dev:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Construir para producción / Build for prod:**
-   ```bash
-   npm run build
-   ```
-
----
-
-## 📄 Licencia
-
-Este proyecto es privado. Todos los derechos reservados por Infectus SC.
+El sitio está en proceso de renovación. La Fase 1 sanea la arquitectura técnica; el contenido institucional, identidad gráfica y diseño definitivo se trabajarán en fases posteriores.

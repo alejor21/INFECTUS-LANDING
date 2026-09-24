@@ -1,0 +1,41 @@
+.header-brand {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: clamp(7.5rem, 9vw, 8.25rem);
+  height: 2.25rem;
+  transform-origin: left center;
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 220ms cubic-bezier(.2, .8, .2, 1);
+  will-change: transform;
+}
+
+.site-header.is-visible .header-brand:hover { transform: scale(1.05); }
+.header-brand:active { transform: scale(.99); }
+
+.header-brand__wordmark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(106deg, var(--infectus-primary) 0%, var(--infectus-primary) 29%, var(--infectus-secondary) 52%, var(--infectus-primary) 74%, var(--infectus-primary) 100%);
+  background-size: 220% 100%;
+  -webkit-mask: url('/brand/infectus-wordmark-lowercase-white.png') center / auto 520% no-repeat;
+  mask: url('/brand/infectus-wordmark-lowercase-white.png') center / auto 520% no-repeat;
+  animation: header-brand-shimmer 12s ease-in-out infinite alternate;
+}
+
+@keyframes header-brand-shimmer {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-brand, .header-brand__wordmark { animation: none; transition: none; background-position: 50% 50%; }
+}
+
+@media (max-width: 768px) {
+  .header-brand { width:7rem; height:2rem; }
+}

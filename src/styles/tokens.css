@@ -1,0 +1,33 @@
+:root {
+  --white: #ffffff; --white-rgb: 255 255 255;
+  --infectus-primary-rgb: 8 45 91; --infectus-secondary-rgb: 63 132 217;
+  --infectus-light-rgb: 127 183 240; --infectus-surface-rgb: 234 242 251;
+  /* Official identity, phase 8. White and alpha derivatives are permitted. */
+  --infectus-primary: #082D5B; --infectus-secondary: #3F84D9; --infectus-light: #7FB7F0; --infectus-surface: #EAF2FB;
+  --vaccine-primary: #0D4A6B; --vaccine-secondary: #00B5B8; --vaccine-light: #4ED7D9; --vaccine-surface: #E8FAFA;
+  --research-primary: #0D4A6B; --research-secondary: #1E6FA8; --research-light: #6FB3E3; --research-surface: #E8F2FA;
+  --lab-primary: #0B3A6B; --lab-secondary: #00B7C3; --lab-light: #4DD3E4; --lab-surface: #E6F6FA;
+  --brand-primary: var(--infectus-primary); --brand-primary-hover: var(--research-primary); --brand-primary-soft: var(--infectus-surface);
+  --brand-accent: var(--infectus-secondary); --brand-accent-hover: var(--research-secondary); --brand-accent-soft: var(--infectus-surface);
+  --surface-page: #ffffff; --surface-section: var(--infectus-surface); --surface-card: #ffffff; --surface-elevated: #ffffff; --surface-dark: var(--infectus-primary);
+  --surface-warm: var(--infectus-surface); --surface-ice: var(--infectus-surface); --surface-blue-soft: var(--infectus-light); --surface-mist: var(--research-surface); --surface-navy-soft: var(--research-primary);
+  --text-primary: var(--infectus-primary); --text-secondary: var(--research-primary); --text-muted: var(--research-secondary); --text-inverse: #ffffff;
+  --border-subtle: rgba(8,45,91,.12); --border-strong: rgba(8,45,91,.3); --focus-ring: var(--infectus-secondary);
+  --status-success: var(--vaccine-primary); --status-warning: var(--infectus-primary); --status-error: var(--infectus-primary); --status-info: var(--research-secondary);
+  /* Satoshi is temporary for display and UI until licensed brand typography is supplied. */
+  --font-display: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display-uppercase: var(--font-display);
+  --font-body: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --display-xl: clamp(2.9rem, 2rem + 3vw, 5.25rem); --display-lg: clamp(2.35rem, 1.7rem + 2.2vw, 4rem);
+  --heading-1: clamp(2.1rem, 1.6rem + 1.6vw, 3.2rem); --heading-2: clamp(1.7rem, 1.35rem + 1vw, 2.4rem); --heading-3: clamp(1.25rem, 1.1rem + .5vw, 1.55rem); --heading-4: 1.1rem;
+  --body-lg: clamp(1.08rem, 1rem + .3vw, 1.25rem); --body: 1rem; --body-sm: .9rem; --caption: .78rem; --label: .75rem;
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem; --space-7: 2.5rem; --space-8: 3rem; --space-10: 4rem; --space-12: 5rem; --space-16: 7rem;
+  --radius-sm: .5rem; --radius-md: .875rem; --radius-lg: 1.25rem; --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(8,45,91,.05); --shadow-md: 0 12px 30px rgba(8,45,91,.08);
+  --duration-fast: 150ms; --duration-normal: 240ms; --duration-slow: 400ms; --ease-standard: cubic-bezier(.16,1,.3,1);
+  --container-wide: 80rem; --container-main: 70rem; --container-reading: 42rem; --gutter: clamp(1.25rem,4vw,4.5rem);
+  /* Transitional aliases for existing page foundations. */
+  --color-surface-primary: var(--surface-page); --color-surface-secondary: var(--surface-section); --color-surface-glass: var(--surface-card); --color-surface-glass-strong: var(--surface-elevated);
+  --color-brand-primary: var(--brand-primary); --color-brand-accent: var(--brand-accent); --color-brand-accent-hover: var(--brand-accent-hover); --color-text-primary: var(--text-primary); --color-text-secondary: var(--text-secondary); --color-text-subtle: var(--text-muted); --color-border: var(--border-subtle); --color-border-strong: var(--border-strong); --color-focus: var(--focus-ring); --color-success: var(--status-success); --color-danger: var(--status-error);
+  --text-xs: var(--caption); --text-sm: var(--body-sm); --text-base: var(--body); --text-lg: var(--body-lg); --text-xl: var(--heading-2); --text-2xl: var(--heading-1); --text-hero: var(--display-xl); --transition-base: var(--duration-normal) var(--ease-standard); --shadow-glass: var(--shadow-sm); --container-content: var(--container-main);
+}

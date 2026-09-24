@@ -1,0 +1,228 @@
+/* ============================================================
+   FASE D1 — Nuestro equipo
+   Personalidad: humanidad y experiencia. El hero es el único lugar donde
+   aparecen profesionales genéricos; los seis perfiles reales conservan su
+   monograma hasta que la institución entregue fotografías autorizadas.
+   ============================================================ */
+
+.team-page {
+  --hero-base: var(--infectus-surface);
+  --hero-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  --hero-align: end;
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+.page-hero--team {
+  --hero-bg-position: 72% center;
+  --hero-veil: linear-gradient(98deg,
+      rgb(var(--white-rgb) / .95) 0%,
+      rgb(var(--white-rgb) / .8) 36%,
+      rgb(var(--infectus-surface-rgb) / .34) 66%,
+      rgb(var(--infectus-light-rgb) / .2) 100%);
+  padding-bottom: 0;
+}
+.page-hero--team .page-hero__bg { background-image: url('/images/team/team-hero-background.webp'); }
+
+.team-figure { position: relative; display: flex; justify-content: center; }
+.team-figure__group {
+  display: block;
+  width: min(100%, 32rem);
+  height: auto;
+  filter: drop-shadow(0 32px 56px rgb(var(--infectus-primary-rgb) / .24));
+}
+.team-figure__glow {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  z-index: -1;
+  width: min(116%, 36rem);
+  aspect-ratio: 1.15;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(var(--infectus-light-rgb) / .48) 0%, transparent 68%);
+  transform: translateX(-50%);
+}
+
+/* --- Enfoque interdisciplinario ------------------------------------------ */
+.team-approach { padding-block: clamp(3.5rem, 6vw, 5rem); background: var(--white); }
+.team-approach__inner {
+  display: grid;
+  grid-template-columns: minmax(0, .42fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  width: min(100% - (var(--gutter) * 2), var(--container-wide));
+  margin-inline: auto;
+}
+.team-approach__index { color: var(--research-secondary); font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+.team-approach h2 { margin: .5rem 0 0; color: var(--infectus-primary); font-size: clamp(1.85rem, 2.9vw, 2.7rem); line-height: 1.14; letter-spacing: -.04em; }
+.team-approach p { max-width: 62ch; margin: 0; color: var(--research-primary); font-size: clamp(1.02rem, 1.2vw, 1.12rem); line-height: 1.78; }
+
+/* --- Roster -------------------------------------------------------------- */
+.team-roster-section {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  background: linear-gradient(180deg, var(--infectus-surface), var(--white) 78%);
+  box-shadow: none;
+  clip-path: none;
+}
+.team-roster-section .section-heading--inline { align-items: end; margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.team-roster-section h2 { color: var(--infectus-primary); font-size: clamp(1.85rem, 2.9vw, 2.7rem); line-height: 1.14; letter-spacing: -.04em; }
+.team-roster-section__note { max-width: 34ch; margin: 0; color: var(--research-secondary); font-size: .92rem; line-height: 1.6; }
+.team-roster-host { min-height: 20rem; margin-top: 0; }
+
+.team-roster__status {
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+  color: var(--research-secondary);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.team-roster__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 1.8vw, 1.5rem); }
+
+/* Tarjeta editorial: retrato vertical, monograma y marca de unidad lateral. */
+.roster-slot {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .1);
+  border-radius: 1.1rem;
+  background: var(--white);
+  box-shadow: 0 1px 2px rgb(var(--infectus-primary-rgb) / .04);
+  contain: layout paint;
+  transition: border-color var(--duration-normal) var(--ease-standard),
+              box-shadow var(--duration-normal) var(--ease-standard),
+              transform var(--duration-normal) var(--ease-standard);
+}
+.roster-slot:hover,
+.roster-slot:focus-within {
+  border-color: rgb(var(--infectus-secondary-rgb) / .42);
+  box-shadow: 0 18px 40px rgb(var(--infectus-primary-rgb) / .1);
+  transform: translateY(-2px);
+}
+
+.roster-slot__portrait {
+  position: relative;
+  /* La tarjeta es una sola columna: el retrato se fija al ancho disponible.
+     Sin esto, la relación de aspecto se resuelve desde la altura de la fila y
+     el bloque acaba más ancho que su tarjeta en pantallas estrechas. */
+  justify-self: stretch;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0;
+  background:
+    radial-gradient(ellipse at 74% 26%, rgb(var(--infectus-light-rgb) / .55) 0%, transparent 62%),
+    linear-gradient(142deg, var(--infectus-surface), rgb(var(--infectus-light-rgb) / .26));
+}
+.roster-slot__portrait::after {
+  position: absolute;
+  right: -14%;
+  bottom: -46%;
+  width: 62%;
+  aspect-ratio: 1;
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .12);
+  border-radius: 50%;
+  content: "";
+}
+.roster-slot__index {
+  position: absolute;
+  top: .85rem;
+  left: 1.05rem;
+  color: rgb(var(--infectus-primary-rgb) / .34);
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.roster-slot__monogram {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--infectus-primary-rgb) / .32);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+.roster-slot__profile-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+
+.roster-slot__body { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.1rem, 1.8vw, 1.5rem); }
+.roster-slot__area {
+  margin: 0 0 .5rem;
+  color: var(--research-primary);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.roster-slot__name { margin: 0 0 .45rem; color: var(--infectus-primary); font-size: 1.16rem; line-height: 1.22; letter-spacing: -.025em; }
+.roster-slot__track { margin: 0 0 .9rem; padding-bottom: .9rem; border-bottom: 1px solid rgb(var(--infectus-primary-rgb) / .1); color: var(--research-secondary); font-size: .78rem; line-height: 1.55; }
+.roster-slot__body > p { margin: 0 0 1rem; color: var(--research-primary); font-size: .9rem; line-height: 1.68; }
+
+.roster-slot__detail { width: 100%; margin-top: auto; }
+.roster-slot__detail > summary {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 44px;
+  color: var(--research-secondary);
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.roster-slot__detail > summary::-webkit-details-marker { display: none; }
+.roster-slot__detail > summary::after { content: "↓"; transition: transform var(--duration-normal) var(--ease-standard); }
+.roster-slot__detail[open] > summary::after { transform: rotate(180deg); }
+.roster-slot__detail > summary:hover { color: var(--infectus-primary); }
+.roster-slot__detail-body { padding-top: .85rem; border-top: 1px solid rgb(var(--infectus-primary-rgb) / .1); }
+.roster-slot__detail-body p { margin: 0 0 .7rem; color: var(--research-primary); font-size: .88rem; line-height: 1.7; }
+.roster-slot__detail-body p:last-child { margin-bottom: 0; }
+
+/* --- Unidades del modelo (cierre) ---------------------------------------- */
+.team-areas { padding-block: clamp(3.5rem, 6vw, 5rem); background: var(--white); }
+.team-areas__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; display: grid; gap: clamp(1.75rem, 3vw, 2.5rem); }
+.team-areas h2 { margin: .5rem 0 0; color: var(--infectus-primary); font-size: clamp(1.85rem, 2.9vw, 2.7rem); line-height: 1.14; letter-spacing: -.04em; }
+.team-areas__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgb(var(--infectus-primary-rgb) / .14); border-radius: 1.1rem; overflow: hidden; }
+.team-area { position: relative; display: grid; gap: .5rem; padding: clamp(1.4rem, 2.4vw, 2rem); background: var(--white); }
+.team-area::after { position: absolute; top: 0; right: 0; left: 0; height: 3px; background: var(--area-color); content: ""; }
+.team-area:nth-child(1) { --area-color: var(--vaccine-secondary); --area-label: var(--vaccine-primary); }
+.team-area:nth-child(2) { --area-color: var(--lab-secondary); --area-label: var(--lab-primary); }
+.team-area:nth-child(3) { --area-color: var(--research-secondary); --area-label: var(--research-primary); }
+.team-area > span { color: var(--area-label); font-family: var(--font-display); font-size: .74rem; font-weight: 700; letter-spacing: .18em; }
+.team-area h3 { margin: 0; font-size: 1.22rem; }
+.team-area h3 a { color: var(--infectus-primary); text-decoration: none; }
+.team-area h3 a:hover { color: var(--area-color); }
+.team-area p { margin: 0; color: var(--research-primary); font-size: .94rem; line-height: 1.68; }
+
+@media (max-width: 1024px) {
+  .team-approach__inner { grid-template-columns: minmax(0, 1fr); }
+  .team-roster__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-areas__list { grid-template-columns: 1fr; }
+  .team-figure__group { width: min(100%, 26rem); }
+}
+
+@media (max-width: 768px) {
+  .page-hero--team .page-hero__veil {
+    background: linear-gradient(176deg,
+      rgb(var(--white-rgb) / .94) 0%,
+      rgb(var(--white-rgb) / .84) 46%,
+      rgb(var(--infectus-light-rgb) / .28) 100%);
+  }
+  .team-figure__group { width: min(90%, 22rem); }
+  .roster-slot__portrait { aspect-ratio: 2 / 1; }
+  .team-roster-section .section-heading--inline { display: grid; gap: 1rem; }
+  .team-roster-section__note { max-width: none; }
+}
+
+/* Dos columnas mientras la tarjeta mantenga una medida legible; por debajo,
+   una sola. A 768 px una tarjeta a ancho completo se estiraba demasiado. */
+@media (max-width: 560px) {
+  .team-roster__grid { grid-template-columns: minmax(0, 1fr); }
+}

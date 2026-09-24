@@ -1,0 +1,311 @@
+/* ============================================================
+   FASE D1 — Nuestro modelo
+   Personalidad: ecosistema conectado. Un solo sistema, tres unidades.
+   ============================================================ */
+
+.model-page {
+  --hero-base: var(--infectus-primary);
+  --hero-title: var(--white);
+  --hero-accent: var(--infectus-light);
+  --hero-body: var(--infectus-surface);
+  --hero-eyebrow: var(--infectus-light);
+  --hero-meta: var(--infectus-light);
+  --hero-rule: rgb(var(--white-rgb) / .22);
+  --hero-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  /* Tokens de unidad por defecto: la página es INFECTUS; cada sección los
+     sobrescribe con los suyos mediante data-unit. */
+  --unit-primary: var(--infectus-primary);
+  --unit-secondary: var(--infectus-secondary);
+  --unit-light: var(--infectus-light);
+  --unit-surface: var(--infectus-surface);
+  padding-top: 0;
+}
+.model-page .unit-contact .home-eyebrow { color: var(--infectus-light); }
+.model-page .unit-contact h2 { color: var(--white); }
+.model-page .unit-contact p:not(.home-eyebrow) { max-width: 48ch; color: rgb(var(--infectus-surface-rgb) / .9); }
+.model-page .unit-contact .button { background: var(--white); border-color: var(--white); color: var(--infectus-primary); }
+
+/* --- Hero ---------------------------------------------------------------- */
+.page-hero--model {
+  --hero-bg-position: 30% center;
+  --hero-veil: linear-gradient(104deg,
+      rgb(var(--infectus-primary-rgb) / .94) 0%,
+      rgb(var(--infectus-primary-rgb) / .82) 38%,
+      rgb(var(--infectus-primary-rgb) / .38) 68%,
+      rgb(var(--infectus-primary-rgb) / .18) 100%);
+}
+.page-hero--model .page-hero__bg { background-image: url('/images/model/ecosystem-background.webp'); }
+.page-hero--model .page-hero__lead { color: rgb(var(--infectus-surface-rgb) / .9); }
+.page-hero--model .button--secondary {
+  border-color: rgb(var(--white-rgb) / .42);
+  background: rgb(var(--white-rgb) / .08);
+  color: var(--white);
+}
+.page-hero--model .button--secondary:hover { background: rgb(var(--white-rgb) / .16); }
+
+/* --- Componente: ecosistema triádico -------------------------------------
+   El núcleo es INFECTUS; los tres nodos son unidades del mismo sistema, no
+   marcas separadas. Los conectores nacen del núcleo, nunca entre nodos. */
+.triadic {
+  position: relative;
+  aspect-ratio: 1 / .92;
+  width: min(100%, 34rem);
+  margin-inline: auto;
+}
+
+.triadic__links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.triadic__link {
+  fill: none;
+  stroke: rgb(var(--white-rgb) / .34);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  transition: stroke var(--duration-normal) var(--ease-standard), stroke-width var(--duration-normal) var(--ease-standard);
+}
+
+.triadic__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52%;
+  transform: translate(-50%, -50%);
+}
+.triadic__core img { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 46px rgb(0 0 0 / .34)); }
+@media (prefers-reduced-motion: no-preference) {
+  .triadic__core { animation: triadic-core 16s ease-in-out infinite alternate; }
+}
+@keyframes triadic-core {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to   { transform: translate(-50%, calc(-50% - .9rem)) scale(1.025); }
+}
+
+.triadic__core-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  padding: .32rem .75rem;
+  border: 1px solid rgb(var(--white-rgb) / .3);
+  border-radius: var(--radius-pill);
+  background: rgb(var(--infectus-primary-rgb) / .88);
+  color: var(--white);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.triadic__node {
+  position: absolute;
+  display: grid;
+  gap: .18rem;
+  width: max-content;
+  max-width: 11rem;
+  padding: .7rem .95rem;
+  border: 1px solid rgb(var(--white-rgb) / .2);
+  border-radius: .9rem;
+  background: rgb(var(--infectus-primary-rgb) / .42);
+  color: var(--white);
+  text-align: left;
+  text-decoration: none;
+  transition: transform var(--duration-normal) var(--ease-standard),
+              border-color var(--duration-normal) var(--ease-standard),
+              background var(--duration-normal) var(--ease-standard);
+}
+.triadic__node::before {
+  position: absolute;
+  top: 50%;
+  left: -.35rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--node-color);
+  box-shadow: 0 0 0 4px rgb(var(--infectus-primary-rgb) / .55);
+  content: "";
+  transform: translateY(-50%);
+}
+.triadic__node strong { font-family: var(--font-display); font-size: .96rem; font-weight: 700; letter-spacing: -.01em; }
+.triadic__node span { color: var(--node-color); font-size: .64rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+
+.triadic__node--vaccine  { --node-color: var(--vaccine-light);  top: 6%;  left: 2%; }
+.triadic__node--lab      { --node-color: var(--lab-light);      bottom: 4%; left: 8%; }
+.triadic__node--research { --node-color: var(--research-light); top: 34%; right: 0; }
+
+.triadic__node:hover,
+.triadic__node:focus-visible {
+  border-color: var(--node-color);
+  background: rgb(var(--infectus-primary-rgb) / .7);
+  transform: translateY(-3px);
+}
+.triadic:has(.triadic__node--vaccine:hover) .triadic__link--vaccine,
+.triadic:has(.triadic__node--lab:hover) .triadic__link--lab,
+.triadic:has(.triadic__node--research:hover) .triadic__link--research {
+  stroke: rgb(var(--white-rgb) / .8);
+  stroke-width: 1.4;
+}
+
+@media (max-width: 768px) {
+  .triadic { aspect-ratio: auto; width: 100%; display: grid; gap: 1rem; }
+  .triadic__links { display: none; }
+  .triadic__core { position: relative; top: auto; left: auto; width: min(62%, 15rem); margin-inline: auto; transform: none; animation: none; }
+  .triadic__core-label { position: relative; top: auto; left: auto; justify-self: center; transform: none; }
+  .triadic__node { position: relative; inset: auto; max-width: none; width: 100%; }
+  .triadic__node::before { left: .85rem; }
+  .triadic__node { padding-left: 1.7rem; }
+}
+
+/* --- Ecosistema: declaración editorial ----------------------------------- */
+.model-statement { padding-block: clamp(3.5rem, 6vw, 5.5rem); background: var(--white); }
+.model-statement__inner {
+  display: grid;
+  grid-template-columns: minmax(0, .42fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  width: min(100% - (var(--gutter) * 2), var(--container-wide));
+  margin-inline: auto;
+}
+.model-statement h2 {
+  margin: 0;
+  color: var(--infectus-primary);
+  font-size: clamp(1.9rem, 3vw, 2.9rem);
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+.model-statement p {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--research-primary);
+  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
+  line-height: 1.78;
+}
+.model-statement__index {
+  color: var(--research-secondary);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+/* --- Unidades: cada una con su propia composición ------------------------ */
+.model-unit { position: relative; padding-block: clamp(3.5rem, 6vw, 5.5rem); scroll-margin-top: 5.5rem; }
+.model-unit__inner {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.75rem);
+  align-items: center;
+  width: min(100% - (var(--gutter) * 2), var(--container-wide));
+  margin-inline: auto;
+}
+.model-unit__label {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0 0 1.1rem;
+  /* El secundario de unidad es un cian brillante: sobre superficie clara no
+     alcanza 4.5:1, así que la etiqueta usa el primario y el acento se reserva
+     para los elementos decorativos. */
+  color: var(--unit-primary);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.model-unit__label::before { width: 1.9rem; height: 1px; background: currentColor; content: ""; }
+.model-unit__logo { display: block; width: clamp(9rem, 14vw, 11.5rem); height: auto; margin-bottom: 1.25rem; }
+.model-unit h2 {
+  max-width: 17ch;
+  margin: 0 0 1.1rem;
+  color: var(--unit-primary);
+  font-size: clamp(1.85rem, 2.9vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+.model-unit p { max-width: 58ch; color: var(--research-primary); font-size: 1.02rem; line-height: 1.78; }
+.model-unit p + p { margin-top: 1rem; }
+
+.model-unit__media { position: relative; margin: 0; }
+.model-unit__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 1.6rem .35rem 1.6rem .35rem;
+}
+.model-unit__media figcaption {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  padding: .4rem .8rem;
+  border-radius: var(--radius-pill);
+  background: rgb(var(--white-rgb) / .88);
+  color: var(--unit-primary);
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+/* Vaccine: retrato editorial a la derecha, número grande al fondo. */
+.model-unit--vaccine { background: linear-gradient(160deg, var(--vaccine-surface), var(--white) 62%); }
+.model-unit--vaccine .model-unit__inner { grid-template-columns: minmax(0, 1fr) minmax(0, .74fr); }
+
+/* Lab: composición invertida y superficie propia. */
+.model-unit--lab { background: var(--white); }
+.model-unit--lab .model-unit__inner { grid-template-columns: minmax(0, .74fr) minmax(0, 1fr); }
+.model-unit--lab .model-unit__media { order: -1; }
+.model-unit--lab .model-unit__media img { aspect-ratio: 5 / 4; border-radius: .35rem 1.6rem .35rem 1.6rem; }
+
+/* Research: full-bleed oscuro, tipografía grande, sin foto de apoyo. */
+.model-unit--research { background: linear-gradient(120deg, var(--research-primary), var(--infectus-primary) 74%); color: var(--white); }
+.model-unit--research .model-unit__inner { grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); align-items: end; }
+.model-unit--research h2 { color: var(--white); font-size: clamp(2.1rem, 3.6vw, 3.4rem); max-width: 14ch; }
+.model-unit--research p { color: rgb(var(--infectus-surface-rgb) / .9); }
+.model-unit--research .model-unit__label { color: var(--research-light); }
+.model-unit--research .model-unit__media img { aspect-ratio: 16 / 10; border-radius: 1.6rem .35rem 1.6rem .35rem; opacity: .9; }
+.model-unit--research .model-unit__media figcaption { background: rgb(var(--infectus-primary-rgb) / .8); color: var(--white); }
+
+/* --- Ciclo de valor: triángulo operativo --------------------------------- */
+.model-cycle { padding-block: clamp(3.5rem, 6vw, 5.5rem); background: var(--infectus-surface); }
+.model-cycle__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; }
+.model-cycle__head { max-width: 46ch; margin-bottom: clamp(2rem, 3.5vw, 3rem); }
+.model-cycle__head h2 { margin: 0 0 .9rem; color: var(--infectus-primary); font-size: clamp(1.9rem, 3vw, 2.9rem); line-height: 1.12; letter-spacing: -.04em; }
+.model-cycle__head p { margin: 0; color: var(--research-primary); font-size: 1.05rem; line-height: 1.75; }
+
+.model-cycle__steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgb(var(--infectus-primary-rgb) / .14); border-radius: 1.25rem; overflow: hidden; }
+.model-cycle__step { position: relative; display: grid; gap: .55rem; padding: clamp(1.5rem, 2.6vw, 2.25rem); background: var(--white); }
+.model-cycle__step::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: var(--step-color);
+  content: "";
+}
+.model-cycle__step:nth-child(1) { --step-color: var(--vaccine-secondary); --step-label: var(--vaccine-primary); }
+.model-cycle__step:nth-child(2) { --step-color: var(--lab-secondary); --step-label: var(--lab-primary); }
+.model-cycle__step:nth-child(3) { --step-color: var(--research-secondary); --step-label: var(--research-primary); }
+.model-cycle__step span { color: var(--step-label); font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.model-cycle__step h3 { margin: 0; color: var(--infectus-primary); font-size: 1.28rem; }
+.model-cycle__step p { margin: 0; color: var(--research-primary); font-size: .95rem; line-height: 1.7; }
+.model-cycle__closing { max-width: 68ch; margin: clamp(1.75rem, 3vw, 2.5rem) 0 0; color: var(--research-primary); font-size: 1.02rem; line-height: 1.78; }
+
+/* --- Documento institucional --------------------------------------------- */
+.model-page .document-section { background: var(--white); border-top: 1px solid var(--border-subtle); }
+
+@media (max-width: 1024px) {
+  .model-statement__inner { grid-template-columns: minmax(0, 1fr); }
+  .model-unit--vaccine .model-unit__inner,
+  .model-unit--lab .model-unit__inner,
+  .model-unit--research .model-unit__inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .model-unit--lab .model-unit__media { order: 0; }
+  .model-cycle__steps { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .model-unit__media img,
+  .model-unit--lab .model-unit__media img,
+  .model-unit--research .model-unit__media img { aspect-ratio: 4 / 3; }
+  .model-unit h2 { max-width: 20ch; }
+}

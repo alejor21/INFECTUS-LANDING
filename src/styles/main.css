@@ -1,0 +1,27 @@
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './components.css';
+@import './components/header-atmosphere.css';
+@import './components/header-brand.css';
+@import './components/accordion-gallery.css';
+@import './components/section-wave.css';
+@import './pages/home.css';
+@import './pages/internal.css';
+@import './pages/team.css';
+@import './pages/services.css';
+@import './pages/editorial.css';
+@import './components/hero-editorial.css';
+@import './components/drift-wall.css';
+@import './components/border-glow.css';
+@import './brand-finish.css';
+@import './scientific-editorial.css';
+
+/* FASE D1 — cierre de diseño de las páginas internas.
+   Se importan al final para que el sistema de composición por capas resuelva
+   la cascada sin necesidad de !important. */
+@import './components/layered-hero.css';
+@import './pages/model-design.css';
+@import './pages/services-design.css';
+@import './pages/team-design.css';
+@import './pages/editorial-design.css';

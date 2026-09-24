@@ -1,224 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Infectus — Precisión antimicrobiana, control de infecciones e investigación clínica de primer nivel.">
-  <meta name="theme-color" content="#060a0e">
-  <title>Infectus | Control de Infecciones · Colombia</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="INFECTUS combina ciencia de precisión y vocación humana para acompañar a las instituciones de salud en la prevención y el control de las enfermedades infecciosas."><meta name="theme-color" content="#082D5B">
+  <link rel="icon" type="image/png" href="/brand/infectus-mark-shield.png">
+  <title>INFECTUS | Ciencia de precisión, vocación humana</title><link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/src/styles/main.css">
 </head>
-<body>
-
-<!-- LOADER -->
-<div id="loader" class="loader">
-  <div class="loader-content">
-    <div class="loader-logo">INFECTUS</div>
-    <div class="loader-bar-wrap"><div class="loader-bar" id="loader-progress"></div></div>
-    <div class="loader-text" id="loader-text">Inicializando sistema clínico...</div>
-    <div class="loader-percent" id="loader-percent">0%</div>
-  </div>
-</div>
-
-<!-- HEADER — SIEMPRE TRANSPARENTE -->
-<header class="site-header" id="site-header">
-  <div class="header-inner">
-
-    <a href="index.html" class="logo-link" aria-label="Infectus">
-      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect x="14" y="3" width="4" height="26" rx="2" fill="#00c2cc"/>
-        <rect x="5"  y="14" width="22" height="4" rx="2" fill="#00c2cc"/>
-      </svg>
-      <span class="logo-text">INFECTUS</span>
-    </a>
-
-    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="acerca-de.html">Acerca de</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="blog.html">Blog</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-
-    <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
-
-  </div>
-</header>
-
-<!-- CANVAS SCROLL (GSAP — estructura intacta) -->
-<div id="scroll-container" class="scroll-container">
-  <div id="canvas-wrap" class="canvas-wrap">
-
-    <canvas id="product-canvas"></canvas>
-
-    <!-- Glow sutil ≤6% -->
-    <div aria-hidden="true" style="
-      position:absolute;inset:0;pointer-events:none;z-index:2;
-      background:radial-gradient(ellipse 40% 50% at 60% 50%,rgba(0,194,204,0.05) 0%,transparent 70%);
-    "></div>
-
-    <!-- Stats overlay -->
-    <div class="overlay" id="overlay">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number"><span class="counter" data-target="1270000">0</span></div>
-          <div class="stat-label">Vidas perdidas cada año por resistencia antimicrobiana</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number"><span>$</span><span class="counter" data-target="100">0</span><span>B</span></div>
-          <div class="stat-label">Costo económico global anual por fallos en tratamientos</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Marquee -->
-    <div id="marquee" class="marquee-wrap" aria-hidden="true">
-      <div class="marquee-text">
-        <span>CONTROL DE INFECCIONES</span><span class="dot">·</span>
-        <span>INVESTIGACIÓN AVANZADA</span><span class="dot">·</span>
-        <span>OPTIMIZACIÓN ANTIMICROBIANA</span><span class="dot">·</span>
-        <span>CUMPLIMIENTO NORMATIVO</span><span class="dot">·</span>
-        <span>CONSULTORÍA ACREDITACIÓN</span><span class="dot">·</span>
-      </div>
-    </div>
-
-    <!-- SECCIONES GSAP -->
-    <div id="sections" class="sections-container">
-
-      <!-- HERO -->
-      <section class="content-section align-left" id="hero" data-enter="0" data-leave="10">
-        <div class="hero-glass-panel">
-          <h1 class="hero-title">TRANSFORMANDO<br>LA SALUD</h1>
-          <p class="hero-subtitle">
-            En Colombia. Servicios de excelencia en control de infecciones,
-            optimización antimicrobiana e investigación científica de vanguardia.
-          </p>
-        </div>
-        <div class="hero-scroll-indicator" aria-hidden="true">
-          <span>Scroll</span>
-          <svg class="scroll-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </section>
-
-      <!-- SECCIÓN 2 -->
-      <section class="content-section align-right" data-enter="15" data-leave="30">
-        <div class="glass-panel">
-          <div class="panel-badge">Programas Especializados</div>
-          <h2 class="panel-title">Control y<br>Optimización</h2>
-          <ul class="panel-list">
-            <li><strong>01. Control de Infecciones</strong> — Asesoría experta en IAAS.</li>
-            <li><strong>02. Optimización Antimicrobiana</strong> — PROA estratégico.</li>
-            <li><strong>03. Consultoría</strong> — Acreditación, estándares globales.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- SECCIÓN 3 -->
-      <section class="content-section align-left" data-enter="35" data-leave="50">
-        <div class="glass-panel">
-          <div class="panel-badge">Propuesta de Valor</div>
-          <h2 class="panel-title">Rigor Científico<br>desde el Día 1</h2>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h3>Investigación Avanzada</h3>
-              <p>Servicios basados en evidencia de primer nivel científico.</p>
-            </div>
-            <div class="feature-card">
-              <h3>Asesoría Personalizada</h3>
-              <p>Soluciones hechas a medida de tu ecosistema hospitalario.</p>
-            </div>
+<body class="home-page">
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  <header class="site-header"><div class="header-inner"><a href="index.html" class="logo-link logo-link--image" aria-label="Infectus, inicio"><img src="/brand/infectus-primary-transparent.png" alt="Infectus" class="brand-logo"></a><nav class="main-nav" id="main-nav" data-main-nav aria-label="Navegación principal"><a href="index.html" class="active" aria-current="page">Inicio</a><a href="acerca-de.html">Nosotros</a><a href="modelo-de-negocio.html">Nuestro modelo</a><a href="servicios.html">Servicios</a><a href="equipo.html">Nuestro equipo</a><a href="blog.html">Actualidad</a><a class="mobile-nav-contact" href="contacto.html">Contacto</a></nav><a class="header-cta" href="contacto.html">Contacto</a><button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">Menú</button></div></header>
+  <main id="main-content" tabindex="-1">
+    <section class="home-hero hero-editorial" aria-labelledby="hero-title">
+      <img class="hero-science-orbit" src="/images/science/molecular-ribbon.svg" width="600" height="600" alt="" aria-hidden="true"><div class="hero-editorial__field" aria-hidden="true"></div>
+      <div class="hero-editorial__texture" aria-hidden="true"></div>
+      <div class="hero-editorial__inner section-shell">
+        <div class="hero-editorial__copy reveal">
+          <p class="home-eyebrow">INFECTUS · Colombia</p>
+          <h1 id="hero-title">Ciencia de precisión.<br><span>Vocación humana.</span></h1>
+          <p class="hero-editorial__lead">Acompañamos a las instituciones de salud en la prevención y el control de las enfermedades infecciosas.</p>
+          <div class="home-actions">
+            <a class="button" href="contacto.html">Hablemos<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+            <a class="button button--secondary" href="modelo-de-negocio.html">Conocer nuestro modelo</a>
           </div>
         </div>
-      </section>
-
-      <!-- SECCIÓN 4 -->
-      <section class="content-section align-right" data-enter="55" data-leave="70">
-        <div class="glass-panel">
-          <div class="panel-badge">Impacto Clínico</div>
-          <h2 class="panel-title">Resultados<br>Medibles</h2>
-          <p style="color:rgba(255,255,255,0.52);font-family:var(--font-sans);font-size:var(--t-sm);line-height:1.8;">
-            Reducciones significativas en tasas de IAAS y uso racional de
-            antimicrobianos en cada institución que implementa nuestros protocolos.
-          </p>
+        <div class="hero-carousel reveal" data-hero-carousel role="region" aria-roledescription="carrusel" aria-label="Imágenes de ciencia y colaboración">
+          <div class="hero-carousel__stage" id="hero-images" aria-live="off">
+            <figure class="hero-carousel__slide" data-hero-slide data-position="front" role="group" aria-roledescription="diapositiva" aria-label="1 de 3: Ciencia aplicada">
+              <img src="/images/home/hero-infectus.webp" width="1672" height="941" fetchpriority="high" alt="Microscopio y equipos de un laboratorio luminoso" style="object-position:78% center">
+              <figcaption><span>Ciencia aplicada</span><span aria-hidden="true">01</span></figcaption>
+            </figure>
+            <figure class="hero-carousel__slide" data-hero-slide data-position="next" role="group" aria-roledescription="diapositiva" aria-label="2 de 3: Investigación" aria-hidden="true">
+              <img src="/images/about/about-science-analysis.webp" width="1536" height="1024" decoding="async" alt="Investigadora analiza una visualización científica" style="object-position:54% center">
+              <figcaption><span>Investigación</span><span aria-hidden="true">02</span></figcaption>
+            </figure>
+            <figure class="hero-carousel__slide" data-hero-slide data-position="back" role="group" aria-roledescription="diapositiva" aria-label="3 de 3: Colaboración científica" aria-hidden="true">
+              <img src="/images/home/identity-lab-collaboration.webp" width="1536" height="1024" decoding="async" alt="Profesionales colaboran en el análisis de información en un laboratorio" style="object-position:58% center">
+              <figcaption><span>Colaboración científica</span><span aria-hidden="true">03</span></figcaption>
+            </figure>
+          </div>
+          <div class="hero-carousel__controls" hidden>
+            <div class="hero-carousel__pagination" role="group" aria-label="Elegir imagen">
+              <button type="button" data-hero-dot aria-label="Ver imagen 1: Ciencia aplicada" aria-current="true" aria-controls="hero-images"><span></span></button>
+              <button type="button" data-hero-dot aria-label="Ver imagen 2: Investigación" aria-controls="hero-images"><span></span></button>
+              <button type="button" data-hero-dot aria-label="Ver imagen 3: Colaboración científica" aria-controls="hero-images"><span></span></button>
+            </div>
+            <button class="hero-carousel__pause" type="button" data-hero-pause aria-label="Pausar carrusel"><svg aria-hidden="true" viewBox="0 0 20 20"><path data-pause-icon d="M7 5v10M13 5v10"/></svg><span data-hero-pause-text>Pausar</span></button>
+            <button class="hero-carousel__next" type="button" data-hero-next aria-label="Siguiente imagen" aria-controls="hero-images"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+          </div>
+          <span class="visually-hidden" data-hero-status role="status" aria-live="polite"></span>
         </div>
-      </section>
-
-    </div><!-- /sections -->
-  </div><!-- /canvas-wrap -->
-</div><!-- /scroll-container -->
-
-<!-- CONTENIDO POST-SCROLL -->
-<main class="standard-content">
-  <div class="methodology-header fade-in">
-    <h2>Metodología Especializada</h2>
-    <p>Un enfoque tridimensional que garantiza resultados bajo los estándares médicos más exigentes.</p>
-  </div>
-
-  <div class="methodology-grid">
-    <div class="methodology-card slide-up">
-      <span class="card-index">01</span>
-      <h3>Investigación Clínica</h3>
-      <p>Análisis exhaustivo de ecosistemas intrahospitalarios para comprender patrones de resistencia únicos por institución.</p>
-    </div>
-    <div class="methodology-card highlight slide-up">
-      <span class="card-index">02</span>
-      <h3>Análisis de Datos</h3>
-      <p>Implementación de estrategias basadas en evidencia real. Métricas que permiten recomendaciones precisas en tiempo real y ajuste continuo de protocolos.</p>
-    </div>
-    <div class="methodology-card slide-up">
-      <span class="card-index">03</span>
-      <h3>Optimización PROA</h3>
-      <p>Uso racionalizado de antimicrobianos que salva recursos y vidas mediante ajuste exacto de dosis y tiempos de tratamiento.</p>
-    </div>
-  </div>
-</main>
-
-<!-- CTA -->
-<section class="cta-section fade-in">
-  <div class="cta-inner">
-    <h2 class="cta-title">Implementa el futuro clínico hoy.</h2>
-    <p class="cta-subtitle">Solicita una evaluación para ver cómo Infectus puede transformar los resultados de tu institución médica.</p>
-    <a class="btn-pill" href="contacto.html">Programar Demostración</a>
-  </div>
-  <footer class="footer">
-    <div class="footer-bottom">
-      <div class="footer-logo">INFECTUS SC.</div>
-      <div class="footer-links">
-        <a href="#">Privacidad</a>
-        <a href="#">Seguridad HIPAA</a>
-        <a href="contacto.html">Contacto</a>
       </div>
-      <div class="footer-copy">© 2026. Data Driven Healthcare.</div>
-    </div>
-  </footer>
-</section>
+    </section>
+    <div class="section-wave-transition section-wave-transition--hero" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><defs><linearGradient id="hero-identity-gradient"><stop offset="0" stop-color="#EAF2FB"/><stop offset=".48" stop-color="#EAF2FB"/><stop offset="1" stop-color="#EAF2FB"/></linearGradient></defs><path style="fill:url(#hero-identity-gradient)" d="M0,26 C210,100 390,4 638,49 C892,96 1070,13 1440,48 L1440,110 L0,110 Z"/></svg></div>
+    <section class="home-intro section-shell" aria-labelledby="identity-title"><div class="home-intro__label reveal"><p class="home-eyebrow">Nuestra identidad</p><span>01</span></div><div class="home-intro__copy reveal"><h2 id="identity-title">Ciencia de precisión con vocación humana.</h2><p>Nuestro equipo integra experiencia clínica, epidemiología hospitalaria y medicina basada en la evidencia para acompañar a las instituciones de salud en la prevención y el control de las enfermedades infecciosas.</p></div><figure class="home-media home-media--identity reveal"><img src="/images/home/identity-lab-collaboration.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Dos profesionales revisan información en un laboratorio"><figcaption class="visually-hidden">Colaboración científica</figcaption></figure></section>
+    <div class="section-wave-transition section-wave-transition--identity" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,39 C192,8 377,93 632,58 C889,22 1118,104 1440,37 L1440,110 L0,110 Z"/></svg></div>
+    <section class="home-areas home-areas--gallery" aria-labelledby="areas-title">
+      <div class="accordion-gallery-intro section-shell reveal"><p class="home-eyebrow">Modelo integral</p><h2 id="areas-title">Tres unidades.<br>Un solo ecosistema.</h2><p>En INFECTUS abordamos la prevención y el control de las enfermedades infecciosas desde una visión sistémica. Nuestro modelo integra inmunización, diagnóstico de precisión y generación de evidencia científica dentro de un mismo ecosistema de salud.</p></div>
+      <div class="accordion-gallery-shell reveal">
+        <div class="accordion-gallery" data-accordion-gallery role="group" aria-label="Unidades de negocio del modelo INFECTUS">
+          <button class="accordion-gallery__panel is-active" type="button" data-accordion-panel aria-expanded="true" style="--media-position: 72% center;">
+            <span class="accordion-gallery__media"><img src="/images/home/hero-infectus-molecular.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Representación molecular en tonos azules"></span><span class="accordion-gallery__wash" aria-hidden="true"></span><span class="accordion-gallery__number" aria-hidden="true">01</span><span class="accordion-gallery__rail-label" aria-hidden="true">Nuestro modelo</span><span class="accordion-gallery__caption" data-accordion-caption><span class="accordion-gallery__eyebrow">Modelo integral</span><h3>Una visión sistémica, no fragmentada.</h3><p>Nuestro modelo articula tres unidades de negocio dentro de un mismo ecosistema para prevenir, diagnosticar y generar evidencia científica.</p></span>
+          </button>
+          <button class="accordion-gallery__panel" type="button" data-accordion-panel aria-expanded="false" style="--media-position: 56% center;">
+            <span class="accordion-gallery__media"><img src="/images/home/identity-lab-collaboration.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Profesionales colaborando en un laboratorio"></span><span class="accordion-gallery__wash" aria-hidden="true"></span><span class="accordion-gallery__number" aria-hidden="true">02</span><span class="accordion-gallery__rail-label" aria-hidden="true">Ecosistema triádico</span><span class="accordion-gallery__caption" data-accordion-caption><span class="accordion-gallery__eyebrow">INFECTUS</span><h3>Prevenir, diagnosticar y generar evidencia.</h3><p>Tres pilares indisolubles que responden de manera integral a cada fase del desafío biológico dentro de un mismo ecosistema de salud.</p></span>
+          </button>
+          <a class="accordion-gallery__panel" href="modelo-de-negocio.html#vaccine" data-accordion-panel data-branch="vaccine" aria-label="INFECTUS Vaccine, prevención"  style="--media-position: 48% center;">
+            <span class="accordion-gallery__media"><img src="/images/home/vaccine-vial-analysis.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Vial empleado en un contexto de inmunización"></span><span class="accordion-gallery__wash" aria-hidden="true"></span><span class="accordion-gallery__number" aria-hidden="true">03</span><span class="accordion-gallery__rail-label" aria-hidden="true">Prevención</span><img class="accordion-gallery__rail-logo" src="/brand/infectus-vaccine-white.png" alt="" aria-hidden="true" width="250" height="100"><span class="accordion-gallery__caption" data-accordion-caption><img class="accordion-gallery__logo" src="/brand/infectus-vaccine-white.png" alt="INFECTUS Vaccine" width="250" height="100"><h3 class="branch-claim">Prevención.</h3><p>Protegemos antes del contacto mediante inmunización estratégica a lo largo del ciclo vital.</p></span>
+          <span class="branch-visit">Conocer la unidad ↗</span></a>
+          <a class="accordion-gallery__panel" href="modelo-de-negocio.html#lab" data-accordion-panel data-branch="lab" aria-label="INFECTUS Lab, precisión"  style="--media-position: 72% center;">
+            <span class="accordion-gallery__media"><img src="/images/home/hero-infectus.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Equipamiento de laboratorio científico"></span><span class="accordion-gallery__wash" aria-hidden="true"></span><span class="accordion-gallery__number" aria-hidden="true">04</span><span class="accordion-gallery__rail-label" aria-hidden="true">Precisión</span><span class="accordion-gallery__rail-logo accordion-gallery__rail-logo--labs accordion-gallery__labs-mark" aria-hidden="true"></span><span class="accordion-gallery__caption" data-accordion-caption><span class="accordion-gallery__logo accordion-gallery__logo--labs accordion-gallery__labs-mark" role="img" aria-label="INFECTUS Lab"></span><h3 class="branch-claim">Precisión.</h3><p>Identificamos y caracterizamos amenazas biológicas mediante diagnóstico microbiológico y molecular.</p></span>
+          <span class="branch-visit">Conocer la unidad ↗</span></a>
+          <a class="accordion-gallery__panel" href="modelo-de-negocio.html#research" data-accordion-panel data-branch="research" aria-label="INFECTUS Research, evidencia"  style="--media-position: 54% center;">
+            <span class="accordion-gallery__media"><img src="/images/home/research-data-review.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Equipo científico revisando datos de investigación"></span><span class="accordion-gallery__wash" aria-hidden="true"></span><span class="accordion-gallery__number" aria-hidden="true">05</span><span class="accordion-gallery__rail-label" aria-hidden="true">Evidencia</span><img class="accordion-gallery__rail-logo" src="/brand/infectus-research-white.png" alt="" aria-hidden="true" width="250" height="100"><span class="accordion-gallery__caption" data-accordion-caption><img class="accordion-gallery__logo" src="/brand/infectus-research-white.png" alt="INFECTUS Research" width="250" height="100"><h3 class="branch-claim">Evidencia.</h3><p>Analizamos datos, auditamos procesos y transformamos experiencia en evidencia científica.</p></span>
+          <span class="branch-visit">Conocer la unidad ↗</span></a>
+        </div>
+      </div>
+    </section>
+    <div class="section-wave-transition section-wave-transition--areas" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,32 C226,98 441,8 702,57 C938,102 1171,12 1440,51 L1440,110 L0,110 Z"/></svg></div>
+    <section class="science-feature" aria-labelledby="science-title"><figure class="science-feature__media reveal"><img src="/images/home/research-cellular-science.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Visualización celular para investigación científica"><figcaption>Investigación</figcaption></figure><div class="science-feature__copy reveal"><p class="home-eyebrow">Ciencia e investigación</p><h2 id="science-title">Una base científica para cada conversación.</h2><p>La prevención nutre la investigación y el diagnóstico de precisión contribuye a tratamientos seguros y costo-efectivos dentro de un mismo ciclo de valor.</p><a class="text-link" href="blog.html">Ver actualidad e investigación</a></div></section>
+    <div class="section-wave-transition section-wave-transition--science" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,42 C214,6 440,97 700,52 C949,9 1179,101 1440,44 L1440,110 L0,110 Z"/></svg></div>
+    <section class="home-services section-shell" aria-labelledby="services-title"><div class="section-heading reveal"><p class="home-eyebrow">Capacidades</p><h2 id="services-title">Servicios especializados.</h2></div><div class="service-summary"><article class="service-summary__item reveal"><span>01</span><h3>Consultoría y asesoría</h3><p>Programas PROA, consultoría en programas de infecciones para IPS, control de IAAS, comité de infecciones e higiene de manos.</p></article><article class="service-summary__item reveal"><span>02</span><h3>Investigación y educación continua</h3><p>Fortalecimiento de capacidades del talento humano y diseño e implementación de guías de práctica clínica.</p></article><article class="service-summary__item reveal"><span>03</span><h3>Gestión clínica asistencial</h3><p>Consulta y valoración por infectología y vacunación especializada.</p></article></div><a class="button button--secondary reveal" href="servicios.html">Explorar servicios</a></section>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script type="module" src="/js/app.js"></script>
-
-<script>
-  /* Mobile nav */
-  document.getElementById('menu-toggle').addEventListener('click', function() {
-    const nav = document.getElementById('main-nav');
-    const open = nav.classList.toggle('active');
-    this.setAttribute('aria-expanded', open);
-  });
-</script>
-</body>
-</html>
+    <div class="section-wave-transition section-wave-transition--services" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,34 C198,104 416,4 668,55 C938,107 1177,8 1440,49 L1440,110 L0,110 Z"/></svg></div>
+    <section class="home-news section-shell" aria-labelledby="news-title"><div class="section-heading section-heading--inline reveal"><div><p class="home-eyebrow">Actualidad</p><h2 id="news-title">Investigación y perspectivas.</h2></div><a class="text-link" href="blog.html">Explorar actualidad</a></div><p class="home-news__intro">Un espacio para compartir investigación, conocimiento y perspectivas sobre salud. Las publicaciones se incorporarán aquí cuando estén disponibles.</p></section>
+    <div class="section-wave-transition section-wave-transition--news" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,38 C206,12 396,100 661,58 C940,15 1175,103 1440,43 L1440,110 L0,110 Z"/></svg></div>
+    <section class="home-cta" aria-labelledby="contact-title"><div class="home-cta__inner reveal"><p class="home-eyebrow">Contacto</p><h2 id="contact-title">Conversemos.</h2><p>Estamos disponibles para evaluar las necesidades de tu institución de salud.</p><a class="button" href="contacto.html">Contactar</a></div></section>
+  </main>
+  <footer class="footer footer--corporate"><div class="footer-bottom">
+<div class="footer-brand-block"><a href="index.html" class="footer-brand" aria-label="Infectus, inicio"><img src="/brand/infectus-mark-shield.png" width="112" height="128" alt="Escudo Infectus" class="footer-logo-image"></a><p class="footer-claim">Ciencia de precisión, vocación humana.</p></div>
+<nav class="footer-navigation" aria-label="Navegación del pie"><strong>Navegación</strong><a href="index.html">Inicio</a><a href="acerca-de.html">Nosotros</a><a href="modelo-de-negocio.html">Nuestro modelo</a><a href="servicios.html">Servicios</a><a href="equipo.html">Nuestro equipo</a><a href="blog.html">Actualidad</a><a href="contacto.html">Contacto</a></nav>
+<div class="footer-areas"><strong>Nuestro modelo</strong><a href="modelo-de-negocio.html#vaccine">INFECTUS Vaccine</a><a href="modelo-de-negocio.html#lab">INFECTUS Lab</a><a href="modelo-de-negocio.html#research">INFECTUS Research</a></div>
+<div class="footer-identity"><strong>Conocimiento que protege</strong><p>Prevención, precisión y evidencia.</p><a href="tel:+573216456132">+57 321 645 61 32</a><a href="mailto:leofo12@hotmail.com">leofo12@hotmail.com</a><span>Colombia</span></div>
+</div><div class="footer-signature"><span>INFECTUS</span><span>Prevención · Precisión · Evidencia</span></div></footer><script type="module" src="/src/scripts/main.js"></script>
+</body></html>

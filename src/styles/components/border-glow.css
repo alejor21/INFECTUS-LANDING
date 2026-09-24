@@ -1,0 +1,13 @@
+.institutional-pillars { padding-block:clamp(3.5rem,6vw,5.5rem); background:var(--white); }
+.institutional-pillars__intro { max-width:38rem; margin-bottom:2.5rem; }
+.institutional-pillars h2 { font-size:var(--heading-1); }
+.institutional-pillars__grid { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:1.25rem; }
+.border-glow-card { --glow-opacity:0; --cursor-angle:45deg; position:relative; isolation:isolate; padding:clamp(1.5rem,3vw,2.5rem); border:1px solid var(--border-subtle); border-radius:24px; background:var(--infectus-surface); }
+.border-glow-card::before { content:''; position:absolute; inset:-1px; padding:2px; border-radius:inherit; pointer-events:none; background:radial-gradient(at 80% 55%,var(--infectus-light),transparent 50%),radial-gradient(at 8% 6%,var(--infectus-secondary),transparent 50%),var(--infectus-primary); mask:linear-gradient(var(--white) 0 0) content-box,linear-gradient(var(--white) 0 0); mask-composite:exclude; opacity:var(--glow-opacity); transition:opacity 350ms; }
+.border-glow-card::after { content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; box-shadow:inset 0 0 18px rgb(var(--infectus-secondary-rgb) / .35),0 0 22px rgb(var(--infectus-light-rgb) / .3); mask-image:conic-gradient(from var(--cursor-angle),var(--white) 5%,transparent 22% 78%,var(--white) 95%); opacity:var(--glow-opacity); transition:opacity 350ms; }
+.border-glow-card h3 { margin-bottom:1rem; font-size:1.25rem; }
+.border-glow-card p { margin:0; line-height:1.65; color:var(--text-secondary); }
+.border-glow-card .pillar-number { display:block; margin-bottom:2rem; color:var(--infectus-secondary); font-size:.75rem; letter-spacing:.12em; }
+.border-glow-card:focus-within { outline:2px solid var(--focus-ring); outline-offset:3px; }
+@media(max-width:768px) { .institutional-pillars__grid { grid-template-columns:1fr; }.border-glow-card { border-radius:20px; }.border-glow-card .pillar-number { margin-bottom:1rem; } }
+@media(prefers-reduced-motion:reduce) { .border-glow-card::before,.border-glow-card::after { display:none; } }
