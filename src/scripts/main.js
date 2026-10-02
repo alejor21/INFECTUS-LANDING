@@ -3,8 +3,6 @@ import { initContactForm } from './contact-form.js';
 import { initReveal } from './reveal.js';
 import { initHeaderComponents } from './components/header.js';
 import './quality.js';
-import { initPdfReader } from './components/pdf-reader.js';
-import { initIslands } from './islands.js';
 
 initHeaderComponents();
 initNavigation();
@@ -14,9 +12,14 @@ initNavigation();
 document.querySelectorAll('.header-cta[aria-current]').forEach(link => link.removeAttribute('aria-current'));
 initContactForm();
 initReveal();
-initIslands();
 
-const pdfReaders = [...document.querySelectorAll('[data-pdf-reader]')].map(initPdfReader);
+const pdfReaderRoots = [...document.querySelectorAll('[data-pdf-reader]')];
+let pdfReaders = [];
+if (pdfReaderRoots.length) {
+  import('./components/pdf-reader.js').then(({ initPdfReader }) => {
+    pdfReaders = pdfReaderRoots.map(initPdfReader);
+  });
+}
 const scientificObjects = [...document.querySelectorAll('[data-science-motion]')];
 const reducedScientificMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scientificObserver = scientificObjects.length ? new IntersectionObserver(entries => {
@@ -70,17 +73,41 @@ if (borderGlowRoots.length) {
 const homeHero = document.querySelector('.home-hero');
 if (homeHero) {
   import('./effects/floating-3d-particles.js').then(({ initFloating3DParticles }) => {
-    initFloating3DParticles(homeHero);
+    // Particles fill the light half of the hero and fade before the navy
+    // wedge; on mobile the light area is the top band.
+    initFloating3DParticles(homeHero, {
+      fade: {
+        query: '(max-width: 768px)',
+        match: { axis: 'y', start: 0.3, end: 0.46 },
+        otherwise: { axis: 'x', start: 0.72, end: 1 }
+      }
+    });
   });
   import('./effects/glow-cursor.js').then(({ initGlowCursor }) => {
     initGlowCursor(homeHero);
   });
 }
 
-const editorialRailRoot = document.querySelector('[data-editorial-rail]');
-if (editorialRailRoot) {
+const newsFilterRoot = document.querySelector('[data-news-filters]');
+if (newsFilterRoot) {
+  import('./components/news-filter.js').then(({ initNewsFilter }) => {
+    const filter = initNewsFilter(newsFilterRoot);
+    if (import.meta.hot) import.meta.hot.dispose(() => filter?.destroy());
+  });
+}
+
+const badgesRoot = document.querySelector('[data-badges]');
+if (badgesRoot) {
+  import('./components/badges.js').then(({ initBadges }) => {
+    const badges = initBadges(badgesRoot);
+    if (import.meta.hot) import.meta.hot.dispose(() => badges?.destroy());
+  });
+}
+
+const editorialRailRoots = [...document.querySelectorAll('[data-editorial-rail]')];
+if (editorialRailRoots.length) {
   import('./components/editorial-rail.js').then(({ initEditorialRail }) => {
-    initEditorialRail(editorialRailRoot);
+    editorialRailRoots.forEach(initEditorialRail);
   });
 }
 

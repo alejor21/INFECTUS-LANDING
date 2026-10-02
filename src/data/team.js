@@ -5,9 +5,9 @@
  * - `credentials`: formación académica tal y como la entrega la institución.
  * - `summary`: resumen corto para la tarjeta (2–3 líneas).
  * - `bio`: párrafos del perfil extendido; se muestran al desplegar la tarjeta.
- * - `photo`: ruta a una imagen local en /images/team/. Mientras sea `null`, la
- *   tarjeta muestra un monograma neutro. Para publicar una fotografía autorizada
- *   basta con sustituir `null` por su ruta, sin tocar el componente.
+ * - `photo`: retrato oficial en /images/team/profiles/ (fuente:
+ *   assets/imagenes/grupo infectus individual/). Con `null` el componente
+ *   muestra un monograma neutro.
  *
  * No añadir personas que la institución no haya aprobado.
  */
@@ -24,7 +24,7 @@ export const approvedProfiles = [
       'En el entorno hospitalario se ha desempeñado como coordinador de Programas de Control y Prevención de Infecciones. Su experiencia incluye decisiones terapéuticas basadas en evidencia, contención de la resistencia bacteriana y seguridad del paciente.',
       'Como Gerente de INFECTUS lidera la visión estratégica de la organización y la transformación de la evidencia médica en soluciones sostenibles orientadas a la excelencia clínica y la seguridad del paciente.',
     ],
-    photo: null,
+    photo: '/images/team/profiles/david-forero.webp',
   },
   {
     id: 'paola-tulcan',
@@ -37,7 +37,7 @@ export const approvedProfiles = [
       'Su experiencia reúne el trabajo con enfermedades transmisibles, el criterio clínico, la epidemiología, la administración y el aseguramiento de la calidad asistencial.',
       'Como Médico PROA trabaja en la optimización de antibióticos, la contención de la resistencia bacteriana, la auditoría del riesgo clínico y los estándares de acreditación.',
     ],
-    photo: null,
+    photo: '/images/team/profiles/paola-tulcan.webp',
   },
   {
     id: 'natalia-gallego',
@@ -50,7 +50,7 @@ export const approvedProfiles = [
       'Su experiencia abarca la investigación clínica y aplicada, el diseño de modelos de atención y la articulación entre la gestión clínica y la dirección estratégica.',
       'Trabaja en Programas de IAAS, aseguramiento de la calidad, estrategias epidemiológicas, educación, optimización de procesos, gestión de brotes y decisiones basadas en evidencia científica.',
     ],
-    photo: null,
+    photo: '/images/team/profiles/natalia-gallego.webp',
   },
   {
     id: 'magda-forero',
@@ -63,7 +63,7 @@ export const approvedProfiles = [
       'Su trayectoria clínica incluye hospitalización, consulta prioritaria, consulta externa y atención domiciliaria de pacientes crónicos y paliativos.',
       'En INFECTUS trabaja en el diseño, el análisis y la monitorización de indicadores PROA, algoritmos terapéuticos, perfiles de morbilidad, resistencia bacteriana, guías de práctica clínica, toma de decisiones y seguridad del paciente en IPS.',
     ],
-    photo: null,
+    photo: '/images/team/profiles/magda-forero.webp',
   },
   {
     id: 'angelica-ojeda',
@@ -76,7 +76,7 @@ export const approvedProfiles = [
       'Ha trabajado en instituciones de mediana y alta complejidad, con paciente crítico, urgencias de tercer nivel, Equipos Básicos de Salud y Atención Primaria en Salud.',
       'En PROA se ocupa de la vigilancia activa, la auditoría de terapias antimicrobianas, la contención de la resistencia bacteriana, la calidad asistencial y la seguridad del paciente.',
     ],
-    photo: null,
+    photo: '/images/team/profiles/angelica-ojeda.webp',
   },
   {
     id: 'daniel-lopez',
@@ -89,6 +89,6 @@ export const approvedProfiles = [
       'Su experiencia comprende el diseño, la implementación y la evaluación de programas PROA en instituciones de mediana y alta complejidad, además de la auditoría de calidad asistencial y la asesoría técnica.',
       'Trabaja en enfermedades transmisibles, articulación con comités IAAS, decisiones clínicas basadas en evidencia y salud pública territorial.',
     ],
-    photo: null,
+    photo: '/images/team/profiles/daniel-lopez.webp',
   },
 ];

@@ -30,4 +30,49 @@
   --color-surface-primary: var(--surface-page); --color-surface-secondary: var(--surface-section); --color-surface-glass: var(--surface-card); --color-surface-glass-strong: var(--surface-elevated);
   --color-brand-primary: var(--brand-primary); --color-brand-accent: var(--brand-accent); --color-brand-accent-hover: var(--brand-accent-hover); --color-text-primary: var(--text-primary); --color-text-secondary: var(--text-secondary); --color-text-subtle: var(--text-muted); --color-border: var(--border-subtle); --color-border-strong: var(--border-strong); --color-focus: var(--focus-ring); --color-success: var(--status-success); --color-danger: var(--status-error);
   --text-xs: var(--caption); --text-sm: var(--body-sm); --text-base: var(--body); --text-lg: var(--body-lg); --text-xl: var(--heading-2); --text-2xl: var(--heading-1); --text-hero: var(--display-xl); --transition-base: var(--duration-normal) var(--ease-standard); --shadow-glass: var(--shadow-sm); --container-content: var(--container-main);
+
+  /* ----------------------------------------------------------------
+     FASE D2 — Sistema visual compartido.
+     Derivados de la paleta oficial (mezclas y alfas de los cuatro
+     colores + blanco). No introducen tonos nuevos: solo profundidad.
+     ---------------------------------------------------------------- */
+  --infectus-navy-deep: color-mix(in srgb, var(--infectus-primary) 88%, #000);
+  --infectus-blue-muted: color-mix(in srgb, var(--infectus-secondary) 62%, var(--infectus-primary));
+  --infectus-blue-dim: color-mix(in srgb, var(--infectus-secondary) 26%, var(--infectus-primary));
+  --infectus-ice: color-mix(in srgb, var(--infectus-light) 38%, var(--infectus-surface));
+  --infectus-ice-soft: color-mix(in srgb, var(--infectus-light) 16%, var(--infectus-surface));
+
+  /* Oscuro: el navy manda; el azul medio aparece tarde y acotado, y la luz
+     hielo solo como reflejo. Sustituye a los navys sueltos de cada página. */
+  --gradient-dark:
+    radial-gradient(ellipse 96% 70% at 88% 2%, rgb(var(--infectus-light-rgb) / .42), transparent 58%),
+    radial-gradient(ellipse 80% 62% at 62% 34%, rgb(var(--infectus-secondary-rgb) / .26), transparent 64%),
+    linear-gradient(116deg,
+      var(--infectus-navy-deep) 0%,
+      var(--infectus-primary) 40%,
+      var(--infectus-blue-dim) 72%,
+      var(--infectus-blue-muted) 100%);
+
+  /* Claro: blanco y hielo con bruma azul mínima. Nunca celeste plano. */
+  --gradient-light:
+    radial-gradient(ellipse 84% 62% at 82% 6%, rgb(var(--infectus-light-rgb) / .24), transparent 60%),
+    linear-gradient(168deg, var(--white) 0%, var(--white) 42%, var(--infectus-surface) 100%);
+  --gradient-mist:
+    radial-gradient(ellipse 76% 58% at 78% 10%, rgb(var(--infectus-light-rgb) / .18), transparent 62%),
+    radial-gradient(ellipse 66% 52% at 4% 92%, rgb(var(--infectus-surface-rgb) / .85), transparent 66%),
+    var(--white);
+  --gradient-surface: linear-gradient(180deg, var(--infectus-surface) 0%, var(--white) 70%);
+  --gradient-surface-invert: linear-gradient(180deg, var(--white) 0%, var(--infectus-surface) 100%);
+
+  /* Puentes entre bloques: evitan el corte seco oscuro <-> claro. */
+  --gradient-bridge-down: linear-gradient(180deg, rgb(var(--infectus-primary-rgb) / 0) 0%, rgb(var(--infectus-surface-rgb) / .5) 58%, var(--infectus-surface) 100%);
+  --gradient-bridge-up: linear-gradient(180deg, var(--infectus-surface) 0%, rgb(var(--infectus-surface-rgb) / .5) 42%, rgb(var(--infectus-primary-rgb) / 0) 100%);
+  --gradient-glow: radial-gradient(ellipse at center, rgb(var(--infectus-light-rgb) / .4) 0%, transparent 68%);
+
+  /* Filetes y sombras derivados de marca: nada de gris genérico ni glow azul. */
+  --hairline: rgb(var(--infectus-primary-rgb) / .1);
+  --hairline-strong: rgb(var(--infectus-primary-rgb) / .18);
+  --hairline-light: rgb(var(--white-rgb) / .16);
+  --shadow-soft: 0 1px 2px rgb(var(--infectus-primary-rgb) / .05), 0 10px 26px rgb(var(--infectus-primary-rgb) / .05);
+  --shadow-lift: 0 16px 40px rgb(var(--infectus-primary-rgb) / .09);
 }

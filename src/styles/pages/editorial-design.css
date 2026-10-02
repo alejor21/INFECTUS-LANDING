@@ -20,14 +20,19 @@
 /* --- Hero ---------------------------------------------------------------- */
 .page-hero--editorial {
   --hero-bg-position: center 62%;
-  --hero-veil: linear-gradient(100deg,
+  /* El velo lineal dejaba la esquina superior derecha casi limpia y la
+     fotografía de fondo formaba allí un bloque tonal con borde visible.
+     El radial la vuelve a cerrar y el degradado queda continuo. */
+  --hero-veil:
+    radial-gradient(ellipse 88% 76% at 96% 6%, rgb(var(--infectus-primary-rgb) / .46), transparent 72%),
+    linear-gradient(100deg,
       rgb(var(--infectus-primary-rgb) / .93) 0%,
-      rgb(var(--infectus-primary-rgb) / .78) 42%,
-      rgb(var(--infectus-primary-rgb) / .34) 74%,
-      rgb(var(--infectus-primary-rgb) / .16) 100%);
+      rgb(var(--infectus-primary-rgb) / .8) 42%,
+      rgb(var(--infectus-primary-rgb) / .52) 74%,
+      rgb(var(--infectus-primary-rgb) / .4) 100%);
   --hero-fg-position: left bottom;
-  --hero-fg-size: 62% auto;
-  --hero-fg-opacity: .34;
+  --hero-fg-size: cover;
+  --hero-fg-opacity: .3;
 }
 .page-hero--editorial .page-hero__bg { background-image: url('/images/editorial/editorial-hero-background.webp'); }
 .page-hero--editorial .page-hero__fg { background-image: url('/images/editorial/editorial-foreground.webp'); z-index: 0; }
@@ -39,11 +44,22 @@
 .page-hero--editorial .button--secondary:hover { background: rgb(var(--white-rgb) / .16); }
 
 .editorial-figure { position: relative; display: flex; justify-content: center; }
+.editorial-figure::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: min(118%, 32rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--infectus-light-rgb) / .22) 0%, transparent 66%);
+  content: "";
+  transform: translate(-50%, -50%);
+}
 .editorial-figure img {
   display: block;
   width: min(100%, 27rem);
   height: auto;
-  filter: drop-shadow(0 26px 52px rgb(0 0 0 / .36));
 }
 .editorial-figure__caption {
   position: absolute;
@@ -165,7 +181,7 @@
 }
 
 @media (max-width: 768px) {
-  .page-hero--editorial { --hero-fg-opacity: .22; --hero-fg-size: 92% auto; }
+  .page-hero--editorial { --hero-fg-opacity: .2; }
   .page-hero--editorial .page-hero__veil {
     background: linear-gradient(178deg,
       rgb(var(--infectus-primary-rgb) / .92) 0%,
@@ -175,4 +191,45 @@
   .editorial-figure img { width: min(76%, 18rem); }
   .editorial-figure__caption { right: 4%; bottom: 0; }
   .editorial-library__links { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ============================================================
+   D3 — KnowledgeTopics
+   Las líneas temáticas que estructuran el trabajo de INFECTUS. No son
+   artículos ni publicaciones: cada una enlaza al contenido institucional
+   que ya existe, de modo que la página informa sin inventar nada.
+   ============================================================ */
+.knowledge { padding-block: clamp(3rem, 5.5vw, 5rem); background: var(--gradient-mist); }
+.knowledge__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; }
+.knowledge__head { max-width: 54ch; margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.knowledge__head h2 { margin: .5rem 0 .8rem; color: var(--infectus-primary); font-size: clamp(1.85rem, 2.9vw, 2.7rem); line-height: 1.14; letter-spacing: -.04em; }
+.knowledge__head p { margin: 0; color: var(--research-primary); font-size: 1.02rem; line-height: 1.75; }
+
+.knowledge__list { display: grid; border-top: 1px solid var(--hairline); }
+.knowledge-topic {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) 1.75rem;
+  gap: clamp(.85rem, 2.5vw, 2rem);
+  align-items: center;
+  padding-block: clamp(1.05rem, 2vw, 1.5rem);
+  border-bottom: 1px solid var(--hairline);
+  text-decoration: none;
+  transition: background var(--duration-normal) var(--ease-standard), padding-left var(--duration-normal) var(--ease-standard);
+}
+.knowledge-topic:hover,
+.knowledge-topic:focus-visible { background: rgb(var(--white-rgb) / .72); padding-left: .5rem; }
+.knowledge-topic__index { color: var(--research-secondary); font-family: var(--font-display); font-size: .86rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.knowledge-topic__body { display: grid; gap: .25rem; min-width: 0; }
+.knowledge-topic__body strong { color: var(--infectus-primary); font-family: var(--font-display); font-size: clamp(1.05rem, 1.5vw, 1.3rem); font-weight: 700; letter-spacing: -.02em; }
+.knowledge-topic__body span { max-width: 62ch; color: var(--research-primary); font-size: .94rem; line-height: 1.65; }
+.knowledge-topic__go { justify-self: end; color: var(--research-secondary); font-size: 1rem; transition: transform var(--duration-normal) var(--ease-standard); }
+.knowledge-topic:hover .knowledge-topic__go { transform: translate(2px, -2px); }
+
+@media (max-width: 768px) {
+  .knowledge-topic { grid-template-columns: 2.1rem minmax(0, 1fr) 1.25rem; align-items: start; }
+  .knowledge-topic__index, .knowledge-topic__go { padding-top: .18rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .knowledge-topic:hover { padding-left: 0; }
+  .knowledge-topic:hover .knowledge-topic__go { transform: none; }
 }

@@ -154,6 +154,7 @@ export const initGlowCursor = (container, options = {}) => {
       head.x = x; head.y = y; initialized = true;
     }
     target.x = x; target.y = y; isPointerInside = true; lastInput = performance.now();
+    resume();
   };
 
   const updateFade = now => {
@@ -181,6 +182,9 @@ export const initGlowCursor = (container, options = {}) => {
     program.uniforms.uTime.value = now * 0.001;
     program.uniforms.uFade.value = fade;
     renderer.render({ scene: mesh });
+    // Idle and fully faded: the trail is invisible, so stop drawing until the
+    // pointer moves again instead of running a full-screen shader every frame.
+    if (fade < 0.002 && (!isPointerInside || now - lastInput > config.idleTimeout)) { frameId = 0; return; }
     frameId = requestAnimationFrame(render);
   };
 

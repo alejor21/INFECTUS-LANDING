@@ -1,0 +1,92 @@
+/**
+ * Nuestros aliados (D4) — franja breve bajo el hero de Home.
+ * Los logos se muestran a color: el sitio presenta a cada institución tal como
+ * es. Sus proporciones son muy distintas (Hispanoamérica ~8.5:1, Proinsalud
+ * casi cuadrado), así que cada uno recibe su propia caja para quedar
+ * ópticamente equilibrado en lugar de forzar una altura común.
+ */
+.allies {
+  position: relative;
+  background: var(--infectus-surface);
+  padding-block: clamp(1.75rem, 3.4vw, 2.75rem) clamp(2.25rem, 4vw, 3.25rem);
+}
+.allies__inner {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 2fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+.allies__title {
+  display: grid;
+  gap: .45rem;
+  max-width: 22ch;
+  margin: 0;
+  color: var(--research-primary);
+  font-family: var(--font-body);
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+.allies__title span {
+  color: var(--research-secondary);
+  font-size: var(--label);
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.allies__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--hairline);
+}
+.allies__item {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: .5rem;
+  min-height: 7rem;
+  padding: 1rem clamp(.75rem, 2vw, 1.5rem);
+  border-right: 1px solid var(--hairline);
+  min-width: 0;
+  text-align: center;
+}
+.allies__logo {
+  display: grid;
+  place-items: center;
+  width: min(var(--ally-w, 10rem), 100%);
+  height: var(--ally-h, 3rem);
+  max-width: 100%;
+  opacity: .9;
+  transition: opacity var(--duration-base, 400ms) var(--ease-standard), transform var(--duration-base, 400ms) var(--ease-standard);
+}
+.allies__logo img { width: 100%; height: 100%; object-fit: contain; }
+/* Proinsalud se entrega a 173 px: más grande se pixelaría. */
+.allies__logo[data-ally="proinsalud"] { --ally-w: 3.8rem; --ally-h: 4.5rem; }
+.allies__logo[data-ally="corposalud"] { --ally-w: 13.5rem; --ally-h: 3.8rem; }
+.allies__logo[data-ally="hispanoamerica"] { --ally-w: 16rem; --ally-h: 2.7rem; }
+.allies__meta {
+  color: var(--research-primary);
+  font-size: .76rem;
+  letter-spacing: .02em;
+}
+.allies__item:hover .allies__logo { opacity: 1; transform: translateY(-2px); }
+
+@media (max-width: 860px) {
+  .allies__inner { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
+  .allies__title { max-width: none; }
+}
+@media (max-width: 560px) {
+  .allies__list { grid-template-columns: minmax(0, 1fr); border-left: 0; border-top: 1px solid var(--hairline); }
+  .allies__item { grid-template-columns: minmax(0, 1fr) auto; justify-items: start; min-height: 0; padding: .9rem .25rem; border-right: 0; border-bottom: 1px solid var(--hairline); text-align: left; }
+  .allies__logo { place-items: center start; }
+  .allies__logo[data-ally="proinsalud"] { --ally-h: 3rem; }
+  .allies__logo[data-ally="corposalud"] { --ally-w: 9.5rem; --ally-h: 2.6rem; }
+  .allies__logo[data-ally="hispanoamerica"] { --ally-w: 11.5rem; --ally-h: 1.9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .allies__item:hover .allies__logo { transform: none; }
+}

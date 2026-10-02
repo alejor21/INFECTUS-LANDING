@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Espacio editorial de INFECTUS para publicaciones, investigación y recursos dirigidos a los equipos de salud.">
+  <meta name="description" content="Actualidad en enfermedades infecciosas: fuentes oficiales, líneas de conocimiento y documentos de INFECTUS para los equipos de salud.">
   <meta name="theme-color" content="#082D5B">
   <link rel="icon" type="image/png" href="/brand/infectus-mark-shield.png">
   <title>Actualidad | INFECTUS</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body class="inner-page blog-page">
@@ -15,72 +18,194 @@
   <header class="site-header"><div class="header-inner"><a href="index.html" class="logo-link logo-link--image" aria-label="Infectus, inicio"><img src="/brand/infectus-primary-transparent.png" alt="Infectus" class="brand-logo"></a><nav class="main-nav" id="main-nav" data-main-nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="acerca-de.html">Nosotros</a><a href="modelo-de-negocio.html">Nuestro modelo</a><a href="servicios.html">Servicios</a><a href="equipo.html">Nuestro equipo</a><a href="blog.html" class="active" aria-current="page">Actualidad</a><a class="mobile-nav-contact" href="contacto.html">Contacto</a></nav><a class="header-cta" href="contacto.html">Contacto</a><button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">Menú</button></div></header>
   <main id="main-content" tabindex="-1">
 
-    <section class="page-hero page-hero--editorial" aria-labelledby="blog-title">
-      <div class="page-hero__bg" aria-hidden="true"></div>
-      <div class="page-hero__veil" aria-hidden="true"></div>
-      <div class="page-hero__fg" aria-hidden="true"></div>
-      <div class="page-hero__stage">
-        <div class="page-hero__copy reveal">
-          <p class="page-hero__eyebrow">Actualidad</p>
-          <h1 id="blog-title">La ciencia abre nuevas <em>perspectivas</em>.</h1>
-          <p class="page-hero__lead">El espacio editorial de INFECTUS para publicaciones, investigación y recursos dirigidos a los equipos de salud.</p>
-          <div class="page-hero__actions">
-            <a class="button button--secondary" href="#formatos">Ver los formatos<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
-            <a class="button button--secondary" href="#biblioteca">Biblioteca institucional</a>
-          </div>
-          <div class="hero-meta">
-            <div class="hero-meta__item"><strong>Cinco formatos</strong><span>Criterio editorial propio</span></div>
-            <div class="hero-meta__item"><strong>Revisión editorial</strong><span>Antes de publicar</span></div>
-            <div class="hero-meta__item"><strong>Dos documentos</strong><span>Disponibles hoy</span></div>
+    <section class="news-hero" aria-labelledby="blog-title">
+      <div class="news-hero__inner">
+        <div class="news-hero__copy reveal">
+          <p class="news-kicker"><span>Actualidad</span> Centro de conocimiento INFECTUS</p>
+          <h1 id="blog-title">Actualidad en enfermedades <em>infecciosas</em>.</h1>
+          <p class="news-hero__lead">Fuentes oficiales, líneas de conocimiento y documentos de INFECTUS reunidos en un solo lugar para los equipos de salud.</p>
+          <div class="news-hero__actions">
+            <a class="button" href="#fuentes">Explorar fuentes<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-5-5 5 5 5-5"/></svg></a>
+            <a class="button button--secondary" href="#documentos">Ver documentos</a>
           </div>
         </div>
-        <div class="page-hero__visual">
-          <figure class="editorial-figure reveal">
-            <img src="/images/editorial/editorial-object.webp" width="1254" height="1254" alt="" aria-hidden="true" fetchpriority="high">
-            <figcaption class="editorial-figure__caption"><strong>Perspectivas INFECTUS</strong><span>Observar · Investigar · Compartir</span></figcaption>
-          </figure>
-        </div>
+        <aside class="news-brief reveal" aria-labelledby="brief-title">
+          <img class="news-brief__art" src="/images/editorial/editorial-object.webp" width="1254" height="1254" alt="" aria-hidden="true" fetchpriority="high">
+          <p class="news-brief__kicker" id="brief-title">Fuentes destacadas</p>
+          <ol class="news-brief__list">
+            <li><a href="https://www.ins.gov.co/buscador-eventos/Paginas/Vista-Boletin-Epidemilogico.aspx" target="_blank" rel="noopener"><span>INS</span><strong>Boletín Epidemiológico Semanal</strong><em aria-hidden="true">↗</em><span class="visually-hidden">(se abre en una pestaña nueva)</span></a></li>
+            <li><a href="https://www.who.int/es/news-room/fact-sheets/detail/antimicrobial-resistance" target="_blank" rel="noopener"><span>OMS</span><strong>Resistencia a los antimicrobianos</strong><em aria-hidden="true">↗</em><span class="visually-hidden">(se abre en una pestaña nueva)</span></a></li>
+            <li><a href="https://vacunacion.minsalud.gov.co/RT/Paginas/programa-ampliado-de-inmunizaciones-pai.aspx" target="_blank" rel="noopener"><span>MinSalud</span><strong>Programa Ampliado de Inmunizaciones</strong><em aria-hidden="true">↗</em><span class="visually-hidden">(se abre en una pestaña nueva)</span></a></li>
+          </ol>
+          <a class="news-brief__all" href="#fuentes">Ver las 8 fuentes <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <div class="news-ticker" aria-label="Temas de actualidad">
+        <ul class="news-ticker__track"><li>Prevención e inmunización</li><li>Resistencia antimicrobiana</li><li>Infecciones asociadas a la atención en salud</li><li>Higiene de manos</li><li>Programas PROA</li><li>Vigilancia epidemiológica</li><li>Medicina del viajero</li><li>Seguridad del paciente</li></ul>
+        <ul class="news-ticker__track" aria-hidden="true"><li>Prevención e inmunización</li><li>Resistencia antimicrobiana</li><li>Infecciones asociadas a la atención en salud</li><li>Higiene de manos</li><li>Programas PROA</li><li>Vigilancia epidemiológica</li><li>Medicina del viajero</li><li>Seguridad del paciente</li></ul>
       </div>
     </section>
 
-    <section class="editorial-statement" aria-labelledby="editorial-title">
-      <div class="editorial-statement__inner">
-        <div class="reveal">
-          <p class="editorial-statement__index">Perspectiva editorial</p>
-          <blockquote id="editorial-title">Conocimiento para compartir.</blockquote>
-        </div>
-        <div class="editorial-statement__body reveal">
-          <p>Investigación, publicaciones y recursos de INFECTUS para acercar la ciencia a la práctica de los equipos de salud.</p>
-          <p>Las publicaciones de INFECTUS buscan traducir la evidencia científica en información útil para los equipos de salud y para las comunidades que atienden.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="editorial-formats" id="formatos" aria-labelledby="formats-title">
-      <div class="editorial-formats__inner">
-        <div class="editorial-formats__head reveal">
+    <section class="news-sources" id="fuentes" aria-labelledby="sources-title">
+      <div class="news-shell">
+        <div class="news-head reveal">
           <div>
-            <p class="editorial-statement__index">Formatos</p>
-            <h2 id="formats-title">Qué encontrarás aquí.</h2>
+            <p class="news-index">01 · Fuentes de referencia</p>
+            <h2 id="sources-title">Información oficial, <em>verificada</em>.</h2>
           </div>
-          <p>Cada formato define su propio criterio editorial y su nivel de respaldo científico.</p>
+          <p>Organismos que orientan la práctica clínica y la salud pública. Los enlaces abren el sitio oficial de cada entidad en una pestaña nueva.</p>
         </div>
-        <div class="editorial-formats__list reveal">
-          <article class="editorial-format"><span class="editorial-format__index" aria-hidden="true">01</span><h3 class="editorial-format__name">Investigación</h3><p class="editorial-format__desc">Desarrollos de investigación de INFECTUS, con su contexto metodológico y las referencias que permiten una lectura informada.</p></article>
-          <article class="editorial-format"><span class="editorial-format__index" aria-hidden="true">02</span><h3 class="editorial-format__name">Publicaciones</h3><p class="editorial-format__desc">Publicaciones y participaciones académicas, con su autoría y el respaldo editorial correspondiente.</p></article>
-          <article class="editorial-format"><span class="editorial-format__index" aria-hidden="true">03</span><h3 class="editorial-format__name">Recursos</h3><p class="editorial-format__desc">Documentos y materiales de consulta dirigidos a equipos clínicos e instituciones de salud.</p></article>
-          <article class="editorial-format"><span class="editorial-format__index" aria-hidden="true">04</span><h3 class="editorial-format__name">Casos</h3><p class="editorial-format__desc">Aprendizajes derivados del acompañamiento institucional, publicados únicamente con la autorización de cada institución.</p></article>
-          <article class="editorial-format"><span class="editorial-format__index" aria-hidden="true">05</span><h3 class="editorial-format__name">Guías</h3><p class="editorial-format__desc">Orientaciones prácticas sobre control de infecciones y uso racional de antimicrobianos, basadas en evidencia.</p></article>
+        <div class="news-filters" role="group" aria-label="Filtrar fuentes por tema" data-news-filters>
+            <button type="button" class="news-chip" data-news-filter="todas" aria-pressed="true">Todas<span>8</span></button>
+            <button type="button" class="news-chip" data-news-filter="vigilancia" aria-pressed="false">Vigilancia<span>1</span></button>
+            <button type="button" class="news-chip" data-news-filter="vacunacion" aria-pressed="false">Vacunación<span>4</span></button>
+            <button type="button" class="news-chip" data-news-filter="resistencia" aria-pressed="false">Resistencia antimicrobiana<span>1</span></button>
+            <button type="button" class="news-chip" data-news-filter="control" aria-pressed="false">Control de infecciones<span>1</span></button>
+            <button type="button" class="news-chip" data-news-filter="viajeros" aria-pressed="false">Viajeros<span>1</span></button>
+        </div>
+        <ul class="news-sources__grid" data-news-list>
+          <li class="news-source" data-topic="vigilancia">
+            <a href="https://www.ins.gov.co/buscador-eventos/Paginas/Vista-Boletin-Epidemilogico.aspx" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">INS</span><span class="news-source__topic">Vigilancia</span></span>
+              <strong class="news-source__title">Boletín Epidemiológico Semanal</strong>
+              <span class="news-source__desc">Comportamiento semana a semana de los eventos de interés en salud pública en Colombia, incluidas las infecciones asociadas a la atención en salud.</span>
+              <span class="news-source__foot"><span>Instituto Nacional de Salud</span><span>ins.gov.co · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="vacunacion">
+            <a href="https://vacunacion.minsalud.gov.co/RT/Paginas/programa-ampliado-de-inmunizaciones-pai.aspx" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">MinSalud</span><span class="news-source__topic">Vacunación</span></span>
+              <strong class="news-source__title">Programa Ampliado de Inmunizaciones (PAI)</strong>
+              <span class="news-source__desc">Esquema nacional de vacunación, población objetivo y lineamientos del programa de inmunización en Colombia.</span>
+              <span class="news-source__foot"><span>Ministerio de Salud y Protección Social</span><span>minsalud.gov.co · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="vacunacion">
+            <a href="https://vacunacion.minsalud.gov.co/RT/Paginas/lineamientos-tecnicos.aspx" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">MinSalud</span><span class="news-source__topic">Vacunación</span></span>
+              <strong class="news-source__title">Lineamientos técnicos de vacunación</strong>
+              <span class="news-source__desc">Documentos técnicos y operativos que orientan la vacunación en el territorio nacional.</span>
+              <span class="news-source__foot"><span>Ministerio de Salud y Protección Social</span><span>minsalud.gov.co · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="vacunacion">
+            <a href="https://www.paho.org/es/documents/inmunizacion" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">OPS</span><span class="news-source__topic">Vacunación</span></span>
+              <strong class="news-source__title">Documentos de inmunización</strong>
+              <span class="news-source__desc">Publicaciones técnicas, boletines y planes regionales de inmunización para las Américas.</span>
+              <span class="news-source__foot"><span>Organización Panamericana de la Salud</span><span>paho.org · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="vacunacion">
+            <a href="https://www.who.int/es/news-room/fact-sheets/detail/immunization-coverage" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">OMS</span><span class="news-source__topic">Vacunación</span></span>
+              <strong class="news-source__title">Cobertura de la inmunización</strong>
+              <span class="news-source__desc">Nota descriptiva sobre la cobertura mundial de vacunación y las enfermedades que previene.</span>
+              <span class="news-source__foot"><span>Organización Mundial de la Salud</span><span>who.int · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="resistencia">
+            <a href="https://www.who.int/es/news-room/fact-sheets/detail/antimicrobial-resistance" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">OMS</span><span class="news-source__topic">Resistencia antimicrobiana</span></span>
+              <strong class="news-source__title">Resistencia a los antimicrobianos</strong>
+              <span class="news-source__desc">Qué es la resistencia a los antimicrobianos, por qué amenaza la salud pública y cómo contenerla.</span>
+              <span class="news-source__foot"><span>Organización Mundial de la Salud</span><span>who.int · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="control">
+            <a href="https://apps.who.int/iris/bitstream/handle/10665/102536/WHO_IER_PSP_2009.02_spa.pdf" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">OMS</span><span class="news-source__topic">Control de infecciones</span></span>
+              <strong class="news-source__title">Guía de aplicación de la estrategia de higiene de manos</strong>
+              <span class="news-source__desc">Guía para implementar la estrategia multimodal de higiene de manos «Salve vidas: límpiese las manos».</span>
+              <span class="news-source__foot"><span>Organización Mundial de la Salud</span><span>who.int · PDF · Español</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+          <li class="news-source" data-topic="viajeros">
+            <a href="https://wwwnc.cdc.gov/travel/page/vaccine-guide" target="_blank" rel="noopener">
+              <span class="news-source__top"><span class="news-source__org">CDC</span><span class="news-source__topic">Viajeros</span></span>
+              <strong class="news-source__title">Guía de vacunas para viajeros</strong>
+              <span class="news-source__desc">Recomendaciones de vacunación según el destino y la planificación del viaje internacional.</span>
+              <span class="news-source__foot"><span>Centers for Disease Control and Prevention</span><span>cdc.gov · Inglés</span><span class="news-source__go" aria-hidden="true">↗</span></span>
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        </ul>
+        <p class="news-sources__status visually-hidden" role="status" data-news-status></p>
+      </div>
+    </section>
+
+    <section class="news-topics" id="temas" aria-labelledby="topics-title">
+      <div class="news-shell">
+        <div class="news-head reveal">
+          <div>
+            <p class="news-index">02 · Líneas de conocimiento</p>
+            <h2 id="topics-title">Los temas que <em>trabajamos</em>.</h2>
+          </div>
+          <p>Cada línea enlaza al contenido institucional de INFECTUS que la respalda.</p>
+        </div>
+        <div class="news-topics__grid reveal">
+          <a class="news-topic news-topic--feature" href="modelo-de-negocio.html#vaccine">
+            <img src="/images/services/vaccine-vials-lab.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
+            <span class="news-topic__index" aria-hidden="true">01</span>
+            <span class="news-topic__body"><strong>Prevención e inmunización</strong><span>Inmunización a lo largo del ciclo vital y protección del huésped susceptible.</span></span>
+            <span class="news-topic__go" aria-hidden="true">→</span>
+          </a>
+          <a class="news-topic " href="servicios.html#gestion-clinica">
+            <img src="/images/team/researcher-portrait.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
+            <span class="news-topic__index" aria-hidden="true">02</span>
+            <span class="news-topic__body"><strong>Infectología clínica</strong><span>Valoración especializada y esquemas terapéuticos basados en guías.</span></span>
+            <span class="news-topic__go" aria-hidden="true">→</span>
+          </a>
+          <a class="news-topic " href="modelo-de-negocio.html#lab">
+            <img src="/images/team/microscope-work.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+            <span class="news-topic__index" aria-hidden="true">03</span>
+            <span class="news-topic__body"><strong>Diagnóstico de precisión</strong><span>Detección temprana y contención de la multirresistencia.</span></span>
+            <span class="news-topic__go" aria-hidden="true">→</span>
+          </a>
+          <a class="news-topic " href="acerca-de.html#politicas">
+            <img src="/images/blog/community-health.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+            <span class="news-topic__index" aria-hidden="true">04</span>
+            <span class="news-topic__body"><strong>Seguridad del paciente</strong><span>Prevención del riesgo y prácticas seguras.</span></span>
+            <span class="news-topic__go" aria-hidden="true">→</span>
+          </a>
+          <a class="news-topic news-topic--wide" href="modelo-de-negocio.html#research">
+            <img src="/images/shared/molecular-macro.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
+            <span class="news-topic__index" aria-hidden="true">05</span>
+            <span class="news-topic__body"><strong>Epidemiología y evidencia</strong><span>Vigilancia, análisis de datos y generación de nuevo conocimiento.</span></span>
+            <span class="news-topic__go" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="editorial-empty" aria-labelledby="upcoming-title">
-      <div class="editorial-empty__inner reveal">
-        <p class="editorial-empty__index">Estado editorial</p>
-        <h2 id="upcoming-title">Aún no hay publicaciones disponibles.</h2>
-        <p>Este espacio reunirá publicaciones, desarrollos y contenidos científicos de INFECTUS una vez completen su proceso de revisión editorial.</p>
-        <a class="button" href="contacto.html">Solicitar información</a>
+    <section class="news-docs" id="documentos" aria-labelledby="docs-title">
+      <div class="news-shell news-docs__inner">
+        <div class="news-head news-head--stack reveal">
+          <p class="news-index">03 · Documentos INFECTUS</p>
+          <h2 id="docs-title">Consulta nuestros <em>portafolios</em>.</h2>
+          <p>Los dos documentos se leen en línea, página por página, en la sección de Servicios.</p>
+        </div>
+        <div class="news-docs__list reveal">
+          <a class="news-doc" href="servicios.html#portafolios">
+            <img src="/images/home/vaccine-portfolio-cover.webp" width="160" height="226" loading="lazy" decoding="async" alt="">
+            <span class="news-doc__body"><span class="news-doc__meta">INFECTUS Vaccine · 32 páginas · Interactivo</span><strong>Portafolio de vacunación 2026</strong><span class="news-doc__go">Leer en línea <span aria-hidden="true">→</span></span></span>
+          </a>
+          <a class="news-doc" href="servicios.html#portafolios">
+            <img src="/images/blog/services-portfolio-cover.webp" width="160" height="226" loading="lazy" decoding="async" alt="">
+            <span class="news-doc__body"><span class="news-doc__meta">INFECTUS · 6 páginas</span><strong>Portafolio de servicios</strong><span class="news-doc__go">Leer en línea <span aria-hidden="true">→</span></span></span>
+          </a>
+          <div class="news-doc news-doc--soon">
+            <span class="news-doc__mark" aria-hidden="true">+</span>
+            <span class="news-doc__body"><span class="news-doc__meta">Próximamente</span><strong>Publicaciones INFECTUS</strong><span>Investigaciones y artículos propios, una vez completen su revisión editorial.</span></span>
+          </div>
+        </div>
       </div>
       <!-- Contrato de datos de una futura entrada editorial. Se mantiene fuera del
            documento renderizado hasta que existan publicaciones aprobadas. -->
@@ -97,34 +222,25 @@
       </template>
     </section>
 
-    <section class="editorial-library" id="biblioteca" aria-labelledby="library-title">
-      <div class="editorial-library__inner">
-        <div class="reveal">
-          <p class="editorial-statement__index">Biblioteca institucional</p>
-          <h2 id="library-title">Documentos para consultar hoy.</h2>
-          <p>Conoce las capacidades de INFECTUS a través de sus portafolios.</p>
+    <section class="news-cta" aria-labelledby="blog-contact-title">
+      <div class="news-shell news-cta__inner reveal">
+        <div>
+          <p class="news-index news-index--light">Conversemos</p>
+          <h2 id="blog-contact-title">¿Tu institución necesita <em>acompañamiento</em>?</h2>
+          <p>Escríbenos y conversemos sobre prevención, control de infecciones y vacunación.</p>
         </div>
-        <div class="editorial-library__links reveal">
-          <a href="modelo-de-negocio.html#portafolio-vacunacion"><span>Prevención e inmunización</span><strong>Portafolio de vacunación</strong><span>32 páginas · PDF interactivo ↗</span></a>
-          <a href="servicios.html#portafolio"><span>Salud institucional</span><strong>Portafolio de servicios</strong><span>6 páginas · PDF ↗</span></a>
+        <div class="news-cta__actions">
+          <a class="button" href="contacto.html">Contactar a INFECTUS</a>
+          <a class="news-cta__mail" href="mailto:infectuspasto@gmail.com">infectuspasto@gmail.com</a>
         </div>
-      </div>
-    </section>
-
-    <section class="blog-cta" aria-labelledby="blog-contact-title">
-      <div class="section-shell blog-cta__inner reveal">
-        <p class="home-eyebrow">Contacto</p>
-        <h2 id="blog-contact-title">Conversemos sobre ciencia y salud.</h2>
-        <p>Para ampliar información sobre INFECTUS, puedes comunicarte con nuestro equipo.</p>
-        <a class="button" href="contacto.html">Contactar</a>
       </div>
     </section>
   </main>
   <footer class="footer footer--corporate"><div class="footer-bottom">
 <div class="footer-brand-block"><a href="index.html" class="footer-brand" aria-label="Infectus, inicio"><img src="/brand/infectus-mark-shield.png" width="112" height="128" alt="Escudo Infectus" class="footer-logo-image"></a><p class="footer-claim">Ciencia de precisión, vocación humana.</p></div>
 <nav class="footer-navigation" aria-label="Navegación del pie"><strong>Navegación</strong><a href="index.html">Inicio</a><a href="acerca-de.html">Nosotros</a><a href="modelo-de-negocio.html">Nuestro modelo</a><a href="servicios.html">Servicios</a><a href="equipo.html">Nuestro equipo</a><a href="blog.html">Actualidad</a><a href="contacto.html">Contacto</a></nav>
-<div class="footer-areas"><strong>Nuestro modelo</strong><a href="modelo-de-negocio.html#vaccine">INFECTUS Vaccine</a><a href="modelo-de-negocio.html#lab">INFECTUS Lab</a><a href="modelo-de-negocio.html#research">INFECTUS Research</a></div>
-<div class="footer-identity"><strong>Conocimiento que protege</strong><p>Prevención, precisión y evidencia.</p><a href="tel:+573216456132">+57 321 645 61 32</a><a href="mailto:leofo12@hotmail.com">leofo12@hotmail.com</a><span>Colombia</span></div>
+<div class="footer-areas"><strong>Nuestro modelo</strong><a href="modelo-de-negocio.html#vaccine">INFECTUS Vaccine</a><a href="modelo-de-negocio.html#lab">INFECTUS Labs</a><a href="modelo-de-negocio.html#research">INFECTUS Research</a></div>
+<div class="footer-identity"><strong>Conocimiento que protege</strong><p>Prevención, precisión y evidencia.</p><a href="tel:+573216456132">+57 321 645 61 32</a><a href="mailto:infectuspasto@gmail.com">infectuspasto@gmail.com</a><span>Colombia</span></div>
 </div><div class="footer-signature"><span>INFECTUS</span><span>Prevención · Precisión · Evidencia</span></div></footer>
   <script type="module" src="/src/scripts/main.js"></script>
 </body>

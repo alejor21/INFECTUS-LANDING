@@ -28,11 +28,13 @@
 /* --- Hero ---------------------------------------------------------------- */
 .page-hero--model {
   --hero-bg-position: 30% center;
-  --hero-veil: linear-gradient(104deg,
+  --hero-veil:
+    radial-gradient(ellipse 86% 74% at 98% 4%, rgb(var(--infectus-primary-rgb) / .4), transparent 74%),
+    linear-gradient(104deg,
       rgb(var(--infectus-primary-rgb) / .94) 0%,
-      rgb(var(--infectus-primary-rgb) / .82) 38%,
-      rgb(var(--infectus-primary-rgb) / .38) 68%,
-      rgb(var(--infectus-primary-rgb) / .18) 100%);
+      rgb(var(--infectus-primary-rgb) / .84) 38%,
+      rgb(var(--infectus-primary-rgb) / .54) 68%,
+      rgb(var(--infectus-primary-rgb) / .4) 100%);
 }
 .page-hero--model .page-hero__bg { background-image: url('/images/model/ecosystem-background.webp'); }
 .page-hero--model .page-hero__lead { color: rgb(var(--infectus-surface-rgb) / .9); }
@@ -69,7 +71,19 @@
   width: 52%;
   transform: translate(-50%, -50%);
 }
-.triadic__core img { display: block; width: 100%; height: auto; filter: drop-shadow(0 20px 46px rgb(0 0 0 / .34)); }
+.triadic__core img { display: block; width: 100%; height: auto; }
+.triadic__core::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 130%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--infectus-light-rgb) / .2) 0%, transparent 64%);
+  content: "";
+  transform: translate(-50%, -50%);
+}
 @media (prefers-reduced-motion: no-preference) {
   .triadic__core { animation: triadic-core 16s ease-in-out infinite alternate; }
 }
@@ -250,21 +264,6 @@
 .model-unit--vaccine { background: linear-gradient(160deg, var(--vaccine-surface), var(--white) 62%); }
 .model-unit--vaccine .model-unit__inner { grid-template-columns: minmax(0, 1fr) minmax(0, .74fr); }
 
-/* Lab: composición invertida y superficie propia. */
-.model-unit--lab { background: var(--white); }
-.model-unit--lab .model-unit__inner { grid-template-columns: minmax(0, .74fr) minmax(0, 1fr); }
-.model-unit--lab .model-unit__media { order: -1; }
-.model-unit--lab .model-unit__media img { aspect-ratio: 5 / 4; border-radius: .35rem 1.6rem .35rem 1.6rem; }
-
-/* Research: full-bleed oscuro, tipografía grande, sin foto de apoyo. */
-.model-unit--research { background: linear-gradient(120deg, var(--research-primary), var(--infectus-primary) 74%); color: var(--white); }
-.model-unit--research .model-unit__inner { grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); align-items: end; }
-.model-unit--research h2 { color: var(--white); font-size: clamp(2.1rem, 3.6vw, 3.4rem); max-width: 14ch; }
-.model-unit--research p { color: rgb(var(--infectus-surface-rgb) / .9); }
-.model-unit--research .model-unit__label { color: var(--research-light); }
-.model-unit--research .model-unit__media img { aspect-ratio: 16 / 10; border-radius: 1.6rem .35rem 1.6rem .35rem; opacity: .9; }
-.model-unit--research .model-unit__media figcaption { background: rgb(var(--infectus-primary-rgb) / .8); color: var(--white); }
-
 /* --- Ciclo de valor: triángulo operativo --------------------------------- */
 .model-cycle { padding-block: clamp(3.5rem, 6vw, 5.5rem); background: var(--infectus-surface); }
 .model-cycle__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; }
@@ -291,21 +290,149 @@
 .model-cycle__step p { margin: 0; color: var(--research-primary); font-size: .95rem; line-height: 1.7; }
 .model-cycle__closing { max-width: 68ch; margin: clamp(1.75rem, 3vw, 2.5rem) 0 0; color: var(--research-primary); font-size: 1.02rem; line-height: 1.78; }
 
-/* --- Documento institucional --------------------------------------------- */
-.model-page .document-section { background: var(--white); border-top: 1px solid var(--border-subtle); }
-
 @media (max-width: 1024px) {
   .model-statement__inner { grid-template-columns: minmax(0, 1fr); }
-  .model-unit--vaccine .model-unit__inner,
-  .model-unit--lab .model-unit__inner,
-  .model-unit--research .model-unit__inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
-  .model-unit--lab .model-unit__media { order: 0; }
+  .model-unit--vaccine .model-unit__inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
   .model-cycle__steps { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-  .model-unit__media img,
-  .model-unit--lab .model-unit__media img,
-  .model-unit--research .model-unit__media img { aspect-ratio: 4 / 3; }
+  .model-unit__media img { aspect-ratio: 4 / 3; }
   .model-unit h2 { max-width: 20ch; }
+}
+
+/* --- D3 — el ecosistema se lee como ciclo -------------------------------
+   Faltaba la relación circular: los tres conectores salían del núcleo pero
+   nada indicaba que prevención, precisión y evidencia se alimentan entre sí.
+   La órbita cierra el ciclo y la secuencia numera el recorrido. */
+.triadic__orbit {
+  fill: none;
+  stroke: rgb(var(--white-rgb) / .16);
+  stroke-width: .6;
+  stroke-dasharray: 1.5 4;
+}
+.triadic__node span b {
+  margin-right: .45rem;
+  color: rgb(var(--white-rgb) / .5);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+/* Al activar un nodo, los otros dos ceden protagonismo sin desaparecer:
+   la conexión con INFECTUS debe seguir siendo legible. */
+.triadic:has(.triadic__node:hover) .triadic__node:not(:hover),
+.triadic:has(.triadic__node:focus-visible) .triadic__node:not(:focus-visible) {
+  opacity: .58;
+}
+.triadic:has(.triadic__node:hover) .triadic__orbit,
+.triadic:has(.triadic__node:focus-visible) .triadic__orbit { stroke: rgb(var(--white-rgb) / .3); }
+.triadic__node { transition: transform var(--duration-normal) var(--ease-standard), border-color var(--duration-normal) var(--ease-standard), background var(--duration-normal) var(--ease-standard), opacity var(--duration-normal) var(--ease-standard); }
+@media (prefers-reduced-motion: reduce) {
+  .triadic:has(.triadic__node:hover) .triadic__node:not(:hover) { opacity: 1; }
+}
+@media (max-width: 768px) { .triadic__node span b { color: rgb(var(--white-rgb) / .55); } }
+
+/* --- D4 — Unidades por igual; Labs y Research en desarrollo -----------------
+   Las tres unidades tienen el mismo peso. Vaccine, ya en operación, lleva el
+   conector sólido con pulso; Labs y Research, en desarrollo, trazo punteado.
+   vector-effect evita que el trazo se deforme al escalar. */
+.triadic__link,
+.triadic__orbit,
+.triadic__flow { vector-effect: non-scaling-stroke; }
+.triadic__orbit { stroke: rgb(var(--white-rgb) / .14); stroke-width: 1px; stroke-dasharray: 2 7; }
+.triadic__link { stroke-width: 1.6px; stroke-linecap: round; stroke-dasharray: 1 6; }
+.triadic__link--vaccine { stroke: url(#link-vaccine); stroke-width: 2.75px; stroke-dasharray: none; filter: drop-shadow(0 0 4px rgb(78 215 217 / .55)); }
+.triadic__link--lab { stroke: url(#link-lab); }
+.triadic__link--research { stroke: url(#link-research); }
+.triadic__flow {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 7 93;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .triadic__flow { opacity: .85; animation: triadic-flow 3.6s cubic-bezier(.45, 0, .2, 1) infinite; }
+  .triadic__orbit { animation: triadic-orbit 60s linear infinite; }
+}
+@keyframes triadic-flow {
+  0%   { stroke-dashoffset: 100; opacity: 0; }
+  15%  { opacity: .85; }
+  80%  { opacity: .85; }
+  100% { stroke-dashoffset: 7; opacity: 0; }
+}
+@keyframes triadic-orbit { to { stroke-dashoffset: -90; } }
+.triadic:has(.triadic__node--lab:hover) .triadic__link--lab,
+.triadic:has(.triadic__node--research:hover) .triadic__link--research { stroke-width: 1.75px; stroke-dasharray: none; }
+.triadic:has(.triadic__node--vaccine:hover) .triadic__link--vaccine { stroke-width: 3px; }
+
+.triadic__node em {
+  color: rgb(var(--white-rgb) / .62);
+  font-size: .66rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.triadic__node--lab,
+.triadic__node--research { background: rgb(var(--infectus-primary-rgb) / .3); border-style: dashed; border-color: rgb(var(--white-rgb) / .24); }
+
+/* Estado de la unidad en desarrollo. */
+.model-unit .model-unit__status,
+.model-unit__status {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin: 0;
+  padding: .28rem .7rem;
+  border: 1px dashed rgb(var(--infectus-primary-rgb) / .3);
+  border-radius: var(--radius-pill);
+  color: var(--research-primary);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.model-unit__status::before { width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--infectus-primary-rgb) / .35); content: ""; }
+
+/* Vaccine: logo legible y CTA al portafolio. */
+.model-unit--vaccine .model-unit__logo { width: clamp(10rem, 14vw, 12rem); }
+.model-unit__actions { margin-top: 1.75rem; }
+.model-unit__actions .button { gap: .6rem; white-space: nowrap; }
+.model-unit__actions .button svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Unidades en desarrollo: dos tarjetas hermanas, mismo peso entre sí. */
+.model-next { padding-block: clamp(3.5rem, 6vw, 5.5rem); background: var(--infectus-surface); }
+.model-next__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; }
+.model-next__head { max-width: 52ch; margin-bottom: clamp(2rem, 3.5vw, 3rem); }
+.model-next__head h2 { margin: 0 0 .9rem; color: var(--infectus-primary); font-size: clamp(1.9rem, 3vw, 2.7rem); line-height: 1.12; letter-spacing: -.04em; }
+.model-next__head p { margin: 0; color: var(--research-primary); font-size: 1.04rem; line-height: 1.75; }
+.model-next__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.4vw, 1.75rem); }
+.model-next__card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 1.4rem;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+  scroll-margin-top: 6rem;
+  transition: transform var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard);
+}
+.model-next__card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.model-next__media { position: relative; margin: 0; }
+.model-next__media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; filter: saturate(.8); }
+.model-next__media::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgb(var(--white-rgb) / .5)); content: ""; }
+.model-next__body { display: grid; align-content: start; gap: .9rem; padding: clamp(1.4rem, 2.6vw, 2.1rem); }
+.model-next__meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; }
+.model-next__meta .model-unit__label { margin: 0; }
+.model-next__logo { display: block; width: auto; height: clamp(2.6rem, 3.6vw, 3.2rem); margin-block: .2rem .1rem; }
+.model-next__card h3 { margin: 0; color: var(--unit-primary); font-size: clamp(1.3rem, 1.9vw, 1.6rem); line-height: 1.2; letter-spacing: -.03em; }
+.model-next__card p:not(.model-unit__label):not(.model-unit__status) { margin: 0; color: var(--research-primary); font-size: .97rem; line-height: 1.72; }
+
+@media (max-width: 860px) {
+  .model-next__grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .model-next__card:hover { transform: none; }
 }

@@ -51,6 +51,10 @@
   background-repeat: no-repeat;
   opacity: var(--hero-fg-opacity, 1);
   mix-blend-mode: var(--hero-fg-blend, normal);
+  /* Sin esta máscara, una capa que no cubre el hero entero deja una costura
+     recta donde termina la imagen. El desvanecido la disuelve. */
+  -webkit-mask-image: var(--hero-fg-mask, radial-gradient(ellipse 130% 110% at 18% 100%, #000 0%, #000 42%, transparent 80%));
+  mask-image: var(--hero-fg-mask, radial-gradient(ellipse 130% 110% at 18% 100%, #000 0%, #000 42%, transparent 80%));
 }
 
 .page-hero__stage {
@@ -184,3 +188,56 @@
 
 /* El hero por capas arranca bajo el header flotante: sin padding superior. */
 .inner-page:has(.page-hero) { padding-top: 0; }
+
+/* ============================================================
+   FASE D2 — Anclaje de sujetos recortados
+   ------------------------------------------------------------
+   Diagnóstico: los recortes de personas NO tienen relleno alfa inferior
+   (bbox medido: padding-bottom = 0 px en los tres assets). La franja que
+   se veía bajo los médicos era de maquetación y tenía dos causas
+   sumadas:
+
+     1. `<figure>` conserva el margen del agente de usuario (1em ≈ 16 px
+        arriba y abajo), que separaba la imagen del borde de su columna.
+     2. `.page-hero__visual` traía `align-self: center`, que ignoraba el
+        `align-items: end` del stage y repartía el espacio sobrante mitad
+        arriba y mitad abajo.
+
+   Solución: la columna visual se estira a toda la altura del stage y el
+   sujeto se alinea a su base, de modo que
+   imagen.bottom === stage.bottom === hero.bottom.
+   ============================================================ */
+.page-hero--anchored .page-hero__visual {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.page-hero--anchored .page-hero__visual > figure {
+  margin: 0;
+  width: 100%;
+  align-items: flex-end;
+}
+.page-hero--anchored .page-hero__subject,
+.page-hero--anchored .page-hero__visual img {
+  display: block;
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+/* Sin relleno inferior: el sujeto define dónde termina el hero.
+   `align-items: end` sobre la propia sección es necesario: cuando el stage
+   supera la altura mínima del hero, el `center` heredado repartía el
+   sobrante mitad arriba y mitad abajo y recortaba los pies del sujeto. */
+.page-hero--anchored { padding-bottom: 0; align-items: end; }
+
+@media (max-width: 768px) {
+  /* En móvil el visual es la última fila del stage apilado: mantener el
+     padding inferior a cero conserva el anclaje sin ocultar a nadie. */
+  .page-hero--anchored { padding-bottom: 0; }
+}
+
+/* El sujeto anclado entra solo con opacidad: el desplazamiento vertical del
+   reveal genérico lo sacaba 16 px por debajo de la base durante la entrada y
+   el hero, que recorta, le cortaba los pies mientras duraba la animación. */
+.page-hero--anchored .page-hero__visual > figure.reveal { transform: none; }
+.page-hero--anchored .page-hero__visual > figure.reveal.is-revealed { transform: none; }

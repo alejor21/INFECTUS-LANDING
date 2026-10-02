@@ -1,19 +1,17 @@
+import { useState } from 'react';
 import { approvedProfiles } from '../data/team.js';
 import { LazyMotion, MotionConfig, domAnimation, m } from 'framer-motion';
 
 /**
- * Roster institucional de INFECTUS.
+ * TeamSpotlight — roster institucional de INFECTUS.
  *
- * Solo se publican los perfiles aprobados por la institución. Mientras un perfil
- * no tenga fotografía autorizada, la tarjeta muestra un monograma neutro: el
- * nombre, el cargo y la biografía sí son información oficial y se publican.
+ * En lugar de seis tarjetas iguales, una lista de integrantes gobierna un área
+ * protagonista que muestra el perfil completo. Solo se publican los perfiles
+ * aprobados; si un perfil no tiene retrato oficial, se usa un monograma neutro.
+ *
  * No se agrupa por unidad de negocio porque la institución no ha asignado a
  * estas personas a INFECTUS Vaccine, Lab o Research.
  */
-const reveal = {
-  hidden: { opacity: 0, y: 18 },
-  visible: index => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] } }),
-};
 
 /**
  * Monograma del nombre y el primer apellido. En los nombres compuestos que usa
@@ -26,46 +24,16 @@ const initials = name => {
   return `${parts[0][0]}${surname[0]}`;
 };
 
-function ProfileCard({ profile, index }) {
-  return (
-    <m.article
-      className="roster-slot"
-      custom={index}
-      variants={reveal}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <div className="roster-slot__portrait">
-        <span className="roster-slot__index">{String(index + 1).padStart(2, '0')}</span>
-        {profile.photo ? (
-          <img className="roster-slot__profile-photo" src={profile.photo} alt={profile.name} loading="lazy" width="480" height="480" />
-        ) : (
-          <span className="roster-slot__monogram" aria-hidden="true">{initials(profile.name)}</span>
-        )}
-      </div>
-      <div className="roster-slot__body">
-        <p className="roster-slot__area">{profile.role}</p>
-        <h3 className="roster-slot__name">{profile.name}</h3>
-        <p className="roster-slot__track">{profile.credentials}</p>
-        <p>{profile.summary}</p>
-        {profile.bio?.length ? (
-          <details className="roster-slot__detail">
-            <summary>Ver perfil completo</summary>
-            <div className="roster-slot__detail-body">
-              {profile.bio.map((paragraph, position) => (
-                <p key={position}>{paragraph}</p>
-              ))}
-            </div>
-          </details>
-        ) : null}
-      </div>
-    </m.article>
-  );
+function Portrait({ profile }) {
+  if (profile.photo) {
+    return <img className="spotlight__photo" src={profile.photo} alt={profile.name} loading="lazy" width="640" height="800" />;
+  }
+  return <span className="spotlight__monogram" aria-hidden="true">{initials(profile.name)}</span>;
 }
 
 export default function TeamRoster() {
   const profiles = approvedProfiles.filter(profile => profile.name && profile.role);
+  const [activeId, setActiveId] = useState(profiles[0]?.id);
 
   if (!profiles.length) {
     return (
@@ -75,18 +43,66 @@ export default function TeamRoster() {
     );
   }
 
+  const active = profiles.find(profile => profile.id === activeId) ?? profiles[0];
+
   return (
     <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">
-        <div className="team-roster">
-          <p className="team-roster__status" role="status">
-            {profiles.length} profesionales en el equipo de INFECTUS.
-          </p>
-          <div className="team-roster__grid">
-            {profiles.map((profile, index) => (
-              <ProfileCard key={profile.id} profile={profile} index={index} />
-            ))}
+        <div className="spotlight">
+          <div className="spotlight__index" role="group" aria-label="Integrantes del equipo">
+            <p className="spotlight__count">{profiles.length} profesionales</p>
+            <ul className="spotlight__list">
+              {profiles.map((profile, index) => {
+                const isActive = profile.id === active.id;
+                return (
+                  <li key={profile.id}>
+                    <button
+                      type="button"
+                      className="spotlight__entry"
+                      aria-pressed={isActive}
+                      aria-controls="spotlight-panel"
+                      onClick={() => setActiveId(profile.id)}
+                      onFocus={() => setActiveId(profile.id)}
+                    >
+                      <span className="spotlight__entry-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                      <span className="spotlight__avatar" aria-hidden="true">
+                        {profile.photo
+                          ? <img src={profile.photo} alt="" loading="lazy" width="80" height="100" />
+                          : initials(profile.name)}
+                      </span>
+                      <span className="spotlight__entry-body">
+                        <strong>{profile.name}</strong>
+                        <span>{profile.role}</span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
+
+          <m.article
+            id="spotlight-panel"
+            className="spotlight__panel"
+            key={active.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            aria-live="polite"
+          >
+            <div className="spotlight__portrait">
+              <Portrait profile={active} />
+            </div>
+            <div className="spotlight__body">
+              <p className="spotlight__role">{active.role}</p>
+              <h3 className="spotlight__name">{active.name}</h3>
+              <p className="spotlight__credentials">{active.credentials}</p>
+              <p className="spotlight__summary">{active.summary}</p>
+              {active.bio?.map((paragraph, position) => (
+                <p key={position} className="spotlight__bio">{paragraph}</p>
+              ))}
+            </div>
+          </m.article>
         </div>
       </MotionConfig>
     </LazyMotion>

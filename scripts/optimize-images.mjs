@@ -9,7 +9,10 @@ import sharp from 'sharp';
 const SRC = 'assets/imagenes';
 const OUT = 'public/images';
 
-/** source (relative to assets/imagenes) -> published path (relative to public/images) */
+/**
+ * source (relative to assets/imagenes) -> published path (relative to public/images),
+ * or [published path, max width] when the source must be downscaled.
+ */
 const MAP = {
   // Home / Nosotros (already published in FASE 9)
   'FONDOS/1923d230-090d-4fcd-8c8a-3335fdf7f0ee.png': 'contact/contact-hero-background.webp',
@@ -55,12 +58,24 @@ const MAP = {
   'FONDOS/fondos3': 'editorial/editorial-hero-background.webp',
   'varios/molecula2.png': 'editorial/editorial-object.webp',
   'varios/capa foreground1.png': 'editorial/editorial-foreground.webp',
+  // FASE D3 — fondo propio para Contacto (no se reutiliza en otra página).
+  'FONDOS/fondo4': 'contact/contact-hero-field.webp',
+
+  // FASE D4 — logos de aliados: se procesan aparte con trim (ver public/images/allies/).
+  // FASE D4 — retratos oficiales del equipo (el nombre del archivo es la persona).
+  'grupo infectus individual/david forero.png': ['team/profiles/david-forero.webp', 800],
+  'grupo infectus individual/july paola.png': ['team/profiles/paola-tulcan.webp', 800],
+  'grupo infectus individual/nathalia.png': ['team/profiles/natalia-gallego.webp', 800],
+  'grupo infectus individual/magda julieth.png': ['team/profiles/magda-forero.webp', 800],
+  'grupo infectus individual/angelica ojeda.png': ['team/profiles/angelica-ojeda.webp', 800],
+  'grupo infectus individual/daniel.png': ['team/profiles/daniel-lopez.webp', 800],
 };
 
 let totalBefore = 0;
 let totalAfter = 0;
 
-for (const [source, target] of Object.entries(MAP)) {
+for (const [source, entry] of Object.entries(MAP)) {
+  const [target, width] = Array.isArray(entry) ? entry : [entry];
   const from = join(SRC, source);
   const to = join(OUT, target);
   if (!existsSync(from)) { console.warn('missing source:', from); continue; }
@@ -68,7 +83,7 @@ for (const [source, target] of Object.entries(MAP)) {
 
   const before = statSync(from).size;
   const meta = await sharp(from).metadata();
-  await sharp(from).webp({ quality: 78, effort: 6 }).toFile(to);
+  await sharp(from).resize({ width, withoutEnlargement: true }).webp({ quality: 78, effort: 6 }).toFile(to);
   const after = statSync(to).size;
 
   totalBefore += before;

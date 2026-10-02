@@ -45,6 +45,16 @@ export const initFloating3DParticles = (container, options = {}) => {
   const accent = toRgb(config.accentColor);
 
   const tierScale = byTier({ low: 0.35, balanced: 0.7, high: 1 });
+  // Optional fade toward one edge, applied while drawing. A CSS mask on an
+  // animated canvas forces the browser to recomposite it on every frame.
+  const fadeQuery = config.fade ? window.matchMedia(config.fade.query || 'all') : null;
+  const fadeFactor = (x, y) => {
+    if (!fadeQuery) return 1;
+    const fade = fadeQuery.matches ? config.fade.match : config.fade.otherwise;
+    if (!fade) return 1;
+    const position = fade.axis === 'y' ? y / height : x / width;
+    return clamp((fade.end - position) / (fade.end - fade.start), 0, 1);
+  };
 
   const particleCount = () => {
     if (window.innerWidth < 768) return Math.round(config.quantity * 0.24 * tierScale);
@@ -59,7 +69,7 @@ export const initFloating3DParticles = (container, options = {}) => {
       y: particle.y,
       scale: perspective,
       radius: Math.max(0.7, particle.size * perspective),
-      alpha: particle.opacity * (0.48 + particle.z * 0.72)
+      alpha: particle.opacity * (0.48 + particle.z * 0.72) * fadeFactor(particle.x, particle.y)
     };
   };
 
@@ -88,6 +98,7 @@ export const initFloating3DParticles = (container, options = {}) => {
       }
     }
     projected.sort((first, second) => first.scale - second.scale).forEach((point, index) => {
+      if (point.alpha < 0.004) return;
       context.beginPath();
       context.fillStyle = `rgba(${index % 9 === 0 ? accent : primary}, ${point.alpha})`;
       context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);

@@ -24,4 +24,8 @@
 @import './pages/model-design.css';
 @import './pages/services-design.css';
 @import './pages/team-design.css';
-@import './pages/editorial-design.css';
+@import './pages/news-design.css';
+@import './pages/contact-design.css';
+@import './components/allies.css';
+@import './components/pdf-reader.css';
+@import './components/visual-system.css';

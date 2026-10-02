@@ -1,0 +1,111 @@
+/* ============================================================
+   FASE D3 — Contacto
+   Personalidad: conversión y conexión.
+   El problema no era falta de contenido sino un hero vacío y demasiado
+   espacio muerto entre bloques. El hero pasa al sistema por capas y aloja
+   el ContactFlow como visual protagonista; el resto se compacta.
+   ============================================================ */
+
+.contact-page {
+  --hero-base: var(--infectus-surface);
+  --hero-columns: minmax(0, 1fr) minmax(0, .86fr);
+}
+
+.page-hero--contact {
+  --hero-bg-position: 72% center;
+  --hero-veil: linear-gradient(98deg,
+      rgb(var(--white-rgb) / .96) 0%,
+      rgb(var(--white-rgb) / .88) 38%,
+      rgb(var(--infectus-surface-rgb) / .52) 68%,
+      rgb(var(--infectus-light-rgb) / .22) 100%);
+  min-height: max(30rem, 64svh);
+}
+.page-hero--contact .page-hero__bg { background-image: url('/images/contact/contact-hero-field.webp'); }
+
+/* --- ContactFlow: contacto -> conversacion -> seguimiento ----------------
+   Tres pasos encadenados. Los terminos son neutrales y describen lo que la
+   pagina ya promete; no inventan un proceso comercial. */
+.contact-flow { display: grid; gap: .75rem; }
+.contact-flow__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: clamp(.95rem, 1.8vw, 1.25rem) clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid var(--hairline);
+  border-radius: 1rem;
+  background: rgb(var(--white-rgb) / .84);
+  box-shadow: var(--shadow-soft);
+  transition: border-color var(--duration-normal) var(--ease-standard),
+              transform var(--duration-normal) var(--ease-standard);
+}
+.contact-flow__step:hover { border-color: rgb(var(--infectus-secondary-rgb) / .38); transform: translateY(-2px); }
+/* El hilo que une los pasos: la conexion es el mensaje. */
+.contact-flow__step:not(:last-child)::after {
+  position: absolute;
+  bottom: calc(-.75rem - 1px);
+  left: calc(1.3rem + clamp(1rem, 2vw, 1.35rem));
+  width: 1px;
+  height: .75rem;
+  background: rgb(var(--infectus-secondary-rgb) / .4);
+  content: "";
+}
+.contact-flow__mark {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid rgb(var(--infectus-secondary-rgb) / .3);
+  border-radius: 50%;
+  color: var(--research-secondary);
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.contact-flow__body { display: grid; gap: .25rem; min-width: 0; }
+.contact-flow__body strong { color: var(--infectus-primary); font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; }
+.contact-flow__body span { max-width: 44ch; color: var(--research-primary); font-size: .9rem; line-height: 1.6; }
+
+/* --- Compactacion: el espacio muerto era el problema, no el contenido ---- */
+.contact-page .contact-channels,
+.contact-page .contact-reasons,
+.contact-page .contact-form-section,
+.contact-page .contact-institutional { padding-block: clamp(2.75rem, 5vw, 4.25rem); }
+
+/* Canales como composicion editorial, no tres tarjetas SaaS. */
+.contact-channels__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 1.1rem; overflow: hidden; }
+.contact-tile {
+  display: grid;
+  gap: .3rem;
+  align-content: start;
+  padding: clamp(1.25rem, 2.2vw, 1.75rem);
+  background: var(--white);
+  text-decoration: none;
+  transition: background var(--duration-normal) var(--ease-standard);
+}
+a.contact-tile:hover { background: var(--infectus-surface); }
+.contact-tile__label { color: var(--research-secondary); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.contact-tile__value { color: var(--infectus-primary); font-family: var(--font-display); font-size: clamp(1.02rem, 1.4vw, 1.2rem); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.contact-tile__hint { color: var(--research-primary); font-size: .85rem; }
+
+/* Formulario: mas aire entre campos y superficie coherente. */
+.contact-page .contact-form-wrap { padding: clamp(1.4rem, 2.6vw, 2.25rem); border: 1px solid var(--hairline); border-radius: 1.25rem; background: var(--white); box-shadow: var(--shadow-soft); }
+.contact-page .form-group + .form-group { margin-top: var(--space-5); }
+.contact-page .form-input { border-color: rgb(var(--infectus-primary-rgb) / .16); border-radius: .65rem; transition: border-color var(--duration-fast) var(--ease-standard); }
+.contact-page .form-input:hover { border-color: rgb(var(--infectus-primary-rgb) / .3); }
+.contact-page .contact-form-wrap .button { width: 100%; margin-top: var(--space-6); }
+.contact-page .form-status { margin-top: var(--space-4); }
+
+.contact-page .contact-institutional__inner h2 { color: var(--white); }
+.contact-page .contact-institutional__inner p { max-width: 52ch; color: rgb(var(--infectus-surface-rgb) / .9); }
+.contact-page .contact-institutional .home-eyebrow { color: var(--infectus-light); }
+.contact-page .contact-institutional .button { background: var(--white); border-color: var(--white); color: var(--infectus-primary); }
+
+@media (max-width: 860px) {
+  .contact-channels__grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-flow__step:hover { transform: none; }
+}

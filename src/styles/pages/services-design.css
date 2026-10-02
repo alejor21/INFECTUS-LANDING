@@ -14,15 +14,16 @@
 /* --- Hero ---------------------------------------------------------------- */
 .page-hero--services {
   --hero-bg-position: 68% center;
+  /* La zona del copy se mantiene muy velada hasta pasado el 46%: el vidrio
+     del foreground tiene reflejos brillantes y lavaba el texto. */
   --hero-veil: linear-gradient(96deg,
-      rgb(var(--white-rgb) / .96) 0%,
-      rgb(var(--white-rgb) / .82) 34%,
-      rgb(var(--white-rgb) / .28) 58%,
-      rgb(var(--infectus-surface-rgb) / .1) 100%);
+      rgb(var(--white-rgb) / .97) 0%,
+      rgb(var(--white-rgb) / .92) 40%,
+      rgb(var(--white-rgb) / .5) 60%,
+      rgb(var(--infectus-surface-rgb) / .12) 100%);
   --hero-fg-position: left bottom;
-  --hero-fg-size: 58% auto;
-  --hero-fg-opacity: .5;
-  padding-bottom: 0;
+  --hero-fg-size: cover;
+  --hero-fg-opacity: .34;
 }
 .page-hero--services .page-hero__bg { background-image: url('/images/services/services-hero-background.webp'); }
 .page-hero--services .page-hero__fg {
@@ -32,11 +33,15 @@
 }
 
 /* El clínico se apoya en la base del hero, sin recorte de cabeza ni manos. */
-.services-figure { position: relative; display: flex; justify-content: center; }
+.services-figure { position: relative; display: flex; justify-content: center; margin: 0; }
+/* D3 — el clínico quedaba pequeño frente a su hero (432 px, 71% de la altura,
+   contra el 81% del grupo de Equipo). Sube ~24% conservando base y anclaje:
+   la figura se alinea a flex-end, así que crece hacia arriba. */
 .services-figure__subject {
   display: block;
-  width: min(100%, 27rem);
+  width: min(118%, 33.5rem);
   height: auto;
+  transform-origin: bottom center;
   filter: drop-shadow(0 30px 54px rgb(var(--infectus-primary-rgb) / .26));
 }
 .services-figure__halo {
@@ -44,7 +49,7 @@
   bottom: 6%;
   left: 50%;
   z-index: -1;
-  width: min(110%, 30rem);
+  width: min(104%, 34rem);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle, rgb(var(--infectus-light-rgb) / .5) 0%, transparent 66%);
@@ -176,26 +181,165 @@
 }
 
 /* --- Documento institucional --------------------------------------------- */
-.services-page .document-section { background: var(--white); border-top: 1px solid var(--border-subtle); }
 
 @media (max-width: 1024px) {
   .services-lede__inner,
   .services-category__head { grid-template-columns: minmax(0, 1fr); }
   .services-category--care .services-category__head { grid-template-columns: minmax(0, 1fr); }
   .services-category__portrait { display: none; }
-  .services-figure__subject { width: min(100%, 22rem); }
+  .services-figure__subject { width: min(112%, 26rem); }
 }
 
 @media (max-width: 768px) {
-  .page-hero--services { --hero-fg-opacity: .32; --hero-fg-size: 86% auto; }
+  .page-hero--services { --hero-fg-opacity: .26; }
   .page-hero--services .page-hero__veil {
     background: linear-gradient(176deg,
       rgb(var(--white-rgb) / .95) 0%,
       rgb(var(--white-rgb) / .86) 48%,
       rgb(var(--infectus-surface-rgb) / .5) 100%);
   }
-  .services-figure__subject { width: min(82%, 19rem); }
+  .services-figure__subject { width: min(94%, 22rem); }
   .services-figure__badge { right: 2%; bottom: 14%; padding: .6rem .8rem; }
   .service-row > summary { grid-template-columns: 2.3rem minmax(0, 1fr) 1.6rem; }
   .service-row__body { grid-template-columns: 2.3rem minmax(0, 1fr); }
+}
+
+/* ============================================================
+   D3 — CapabilitiesIndex
+   Rail de tres categorías con panel activo y acceso directo a cada
+   servicio del catálogo. Reutiliza el componente de tabs accesible que
+   ya existe (`editorial-rail.js`): no añade JavaScript nuevo.
+   ============================================================ */
+.capabilities { padding-block: clamp(3rem, 5vw, 4.5rem); background: var(--gradient-mist); }
+.capabilities__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; }
+.capabilities__head { margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem); }
+.capabilities__head h2 { margin: .5rem 0 0; color: var(--infectus-primary); font-size: clamp(1.7rem, 2.5vw, 2.35rem); line-height: 1.16; letter-spacing: -.035em; }
+
+.capabilities__rail {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  padding: clamp(1.25rem, 2.4vw, 2rem);
+  border: 1px solid var(--hairline);
+  border-radius: 1.25rem;
+  background: rgb(var(--white-rgb) / .8);
+  box-shadow: var(--shadow-soft);
+}
+
+.capabilities__strip { display: grid; gap: .5rem; align-content: start; }
+.capabilities__tab {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: .2rem .9rem;
+  padding: .95rem 1.05rem;
+  border: 1px solid transparent;
+  border-radius: .9rem;
+  background: transparent;
+  color: var(--infectus-primary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--duration-normal) var(--ease-standard),
+              border-color var(--duration-normal) var(--ease-standard),
+              transform var(--duration-normal) var(--ease-standard);
+}
+.capabilities__tab:hover { background: rgb(var(--infectus-surface-rgb) / .8); }
+.capabilities__tab[aria-selected="true"] {
+  border-color: rgb(var(--infectus-secondary-rgb) / .35);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+  transform: translateX(2px);
+}
+.capabilities__tab-mark {
+  grid-row: 1 / 3;
+  align-self: center;
+  color: rgb(var(--infectus-primary-rgb) / .24);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.04em;
+  transition: color var(--duration-normal) var(--ease-standard);
+}
+.capabilities__tab[aria-selected="true"] .capabilities__tab-mark { color: var(--infectus-secondary); }
+.capabilities__tab-label { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; line-height: 1.25; letter-spacing: -.02em; }
+.capabilities__tab-count { color: var(--research-secondary); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+
+.capabilities__stage { min-width: 0; }
+.capabilities__panel { display: grid; gap: 1rem; align-content: start; }
+.capabilities__panel[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .capabilities__panel.is-active { animation: capabilities-in 460ms var(--ease-standard) both; }
+}
+@keyframes capabilities-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.capabilities__lead { max-width: 52ch; margin: 0; color: var(--research-primary); font-size: 1rem; line-height: 1.7; }
+.capabilities__list { display: grid; gap: .1rem; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--hairline); }
+.capabilities__list a {
+  display: grid;
+  grid-template-columns: 2.1rem minmax(0, 1fr);
+  gap: .75rem;
+  align-items: baseline;
+  padding-block: .62rem;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--infectus-primary);
+  font-size: .95rem;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard), padding-left var(--duration-normal) var(--ease-standard);
+}
+.capabilities__list a span { color: var(--research-secondary); font-family: var(--font-display); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.capabilities__list a:hover { color: var(--infectus-secondary); padding-left: .35rem; }
+.capabilities__jump { color: var(--research-secondary); font-size: .85rem; font-weight: 700; text-decoration: none; }
+.capabilities__jump:hover { color: var(--infectus-primary); }
+
+/* El destino del índice necesita aire bajo el header flotante. */
+.service-row { scroll-margin-top: 6rem; }
+
+@media (max-width: 860px) {
+  .capabilities__rail { grid-template-columns: minmax(0, 1fr); }
+  .capabilities__strip { grid-auto-flow: row; }
+  .capabilities__tab { grid-template-columns: 2rem minmax(0, 1fr); }
+}
+
+/* --- D4 — Portafolios en línea ---------------------------------------------
+   Los dos PDFs viven aquí, uno por pestaña. Cada visor solo se carga cuando
+   su pestaña está visible. */
+.portfolios { padding-block: clamp(3.5rem, 6vw, 5.5rem); background: var(--gradient-mist); border-top: 1px solid var(--hairline); scroll-margin-top: 4.5rem; }
+.portfolios__inner { width: min(100% - (var(--gutter) * 2), var(--container-wide)); margin-inline: auto; }
+.portfolios__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .8fr);
+  align-items: end;
+  gap: 1rem clamp(1.5rem, 4vw, 4rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+.portfolios__head h2 { margin: 0; color: var(--infectus-primary); font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.12; letter-spacing: -.04em; }
+.portfolios__head > p { max-width: 46ch; margin: 0; color: var(--research-primary); font-size: 1rem; line-height: 1.7; }
+.portfolios__tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1rem; }
+.portfolios__tab {
+  display: grid;
+  gap: .2rem;
+  padding: .95rem 1.2rem;
+  border: 1px solid var(--hairline);
+  border-radius: 1rem;
+  background: rgb(var(--white-rgb) / .6);
+  color: var(--infectus-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.portfolios__tab strong { font-family: var(--font-display); font-size: 1.02rem; letter-spacing: -.01em; }
+.portfolios__tab span { color: var(--research-primary); font-size: .8rem; }
+.portfolios__tab:hover { background: var(--white); }
+.portfolios__tab[aria-selected="true"] { border-color: transparent; background: var(--gradient-dark); color: var(--white); box-shadow: var(--shadow-soft); }
+.portfolios__tab[aria-selected="true"] span { color: rgb(var(--white-rgb) / .78); }
+.portfolios__tab:focus-visible { outline: 2px solid var(--infectus-secondary); outline-offset: 2px; }
+.portfolios__panel[hidden] { display: none; }
+@media (max-width: 860px) {
+  .portfolios__head { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .portfolios__tabs { grid-template-columns: minmax(0, 1fr); }
 }

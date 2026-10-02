@@ -15,15 +15,14 @@
 .page-hero--team {
   --hero-bg-position: 72% center;
   --hero-veil: linear-gradient(98deg,
-      rgb(var(--white-rgb) / .95) 0%,
-      rgb(var(--white-rgb) / .8) 36%,
-      rgb(var(--infectus-surface-rgb) / .34) 66%,
-      rgb(var(--infectus-light-rgb) / .2) 100%);
-  padding-bottom: 0;
+      rgb(var(--white-rgb) / .96) 0%,
+      rgb(var(--white-rgb) / .9) 40%,
+      rgb(var(--infectus-surface-rgb) / .42) 66%,
+      rgb(var(--infectus-light-rgb) / .22) 100%);
 }
 .page-hero--team .page-hero__bg { background-image: url('/images/team/team-hero-background.webp'); }
 
-.team-figure { position: relative; display: flex; justify-content: center; }
+.team-figure { position: relative; display: flex; justify-content: center; margin: 0; }
 .team-figure__group {
   display: block;
   width: min(100%, 32rem);
@@ -66,124 +65,6 @@
 .team-roster-section .section-heading--inline { align-items: end; margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
 .team-roster-section h2 { color: var(--infectus-primary); font-size: clamp(1.85rem, 2.9vw, 2.7rem); line-height: 1.14; letter-spacing: -.04em; }
 .team-roster-section__note { max-width: 34ch; margin: 0; color: var(--research-secondary); font-size: .92rem; line-height: 1.6; }
-.team-roster-host { min-height: 20rem; margin-top: 0; }
-
-.team-roster__status {
-  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
-  color: var(--research-secondary);
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.team-roster__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 1.8vw, 1.5rem); }
-
-/* Tarjeta editorial: retrato vertical, monograma y marca de unidad lateral. */
-.roster-slot {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid rgb(var(--infectus-primary-rgb) / .1);
-  border-radius: 1.1rem;
-  background: var(--white);
-  box-shadow: 0 1px 2px rgb(var(--infectus-primary-rgb) / .04);
-  contain: layout paint;
-  transition: border-color var(--duration-normal) var(--ease-standard),
-              box-shadow var(--duration-normal) var(--ease-standard),
-              transform var(--duration-normal) var(--ease-standard);
-}
-.roster-slot:hover,
-.roster-slot:focus-within {
-  border-color: rgb(var(--infectus-secondary-rgb) / .42);
-  box-shadow: 0 18px 40px rgb(var(--infectus-primary-rgb) / .1);
-  transform: translateY(-2px);
-}
-
-.roster-slot__portrait {
-  position: relative;
-  /* La tarjeta es una sola columna: el retrato se fija al ancho disponible.
-     Sin esto, la relación de aspecto se resuelve desde la altura de la fila y
-     el bloque acaba más ancho que su tarjeta en pantallas estrechas. */
-  justify-self: stretch;
-  width: 100%;
-  min-width: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border-radius: 0;
-  background:
-    radial-gradient(ellipse at 74% 26%, rgb(var(--infectus-light-rgb) / .55) 0%, transparent 62%),
-    linear-gradient(142deg, var(--infectus-surface), rgb(var(--infectus-light-rgb) / .26));
-}
-.roster-slot__portrait::after {
-  position: absolute;
-  right: -14%;
-  bottom: -46%;
-  width: 62%;
-  aspect-ratio: 1;
-  border: 1px solid rgb(var(--infectus-primary-rgb) / .12);
-  border-radius: 50%;
-  content: "";
-}
-.roster-slot__index {
-  position: absolute;
-  top: .85rem;
-  left: 1.05rem;
-  color: rgb(var(--infectus-primary-rgb) / .34);
-  font-family: var(--font-display);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-}
-.roster-slot__monogram {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(var(--infectus-primary-rgb) / .32);
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 3.4vw, 2.9rem);
-  font-weight: 700;
-  letter-spacing: .06em;
-}
-.roster-slot__profile-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
-
-.roster-slot__body { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.1rem, 1.8vw, 1.5rem); }
-.roster-slot__area {
-  margin: 0 0 .5rem;
-  color: var(--research-primary);
-  font-size: .66rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.roster-slot__name { margin: 0 0 .45rem; color: var(--infectus-primary); font-size: 1.16rem; line-height: 1.22; letter-spacing: -.025em; }
-.roster-slot__track { margin: 0 0 .9rem; padding-bottom: .9rem; border-bottom: 1px solid rgb(var(--infectus-primary-rgb) / .1); color: var(--research-secondary); font-size: .78rem; line-height: 1.55; }
-.roster-slot__body > p { margin: 0 0 1rem; color: var(--research-primary); font-size: .9rem; line-height: 1.68; }
-
-.roster-slot__detail { width: 100%; margin-top: auto; }
-.roster-slot__detail > summary {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  min-height: 44px;
-  color: var(--research-secondary);
-  font-size: .8rem;
-  font-weight: 700;
-  cursor: pointer;
-  list-style: none;
-  transition: color var(--duration-fast) var(--ease-standard);
-}
-.roster-slot__detail > summary::-webkit-details-marker { display: none; }
-.roster-slot__detail > summary::after { content: "↓"; transition: transform var(--duration-normal) var(--ease-standard); }
-.roster-slot__detail[open] > summary::after { transform: rotate(180deg); }
-.roster-slot__detail > summary:hover { color: var(--infectus-primary); }
-.roster-slot__detail-body { padding-top: .85rem; border-top: 1px solid rgb(var(--infectus-primary-rgb) / .1); }
-.roster-slot__detail-body p { margin: 0 0 .7rem; color: var(--research-primary); font-size: .88rem; line-height: 1.7; }
-.roster-slot__detail-body p:last-child { margin-bottom: 0; }
 
 /* --- Unidades del modelo (cierre) ---------------------------------------- */
 .team-areas { padding-block: clamp(3.5rem, 6vw, 5rem); background: var(--white); }
@@ -203,7 +84,6 @@
 
 @media (max-width: 1024px) {
   .team-approach__inner { grid-template-columns: minmax(0, 1fr); }
-  .team-roster__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .team-areas__list { grid-template-columns: 1fr; }
   .team-figure__group { width: min(100%, 26rem); }
 }
@@ -216,13 +96,208 @@
       rgb(var(--infectus-light-rgb) / .28) 100%);
   }
   .team-figure__group { width: min(90%, 22rem); }
-  .roster-slot__portrait { aspect-ratio: 2 / 1; }
+  /* El halo se ceñía al 116% y sobresalía 8 px por lado en pantallas
+     estrechas; aquí no necesita desbordar para leerse. */
+  .team-figure__glow { width: 100%; }
   .team-roster-section .section-heading--inline { display: grid; gap: 1rem; }
   .team-roster-section__note { max-width: none; }
 }
 
-/* Dos columnas mientras la tarjeta mantenga una medida legible; por debajo,
-   una sola. A 768 px una tarjeta a ancho completo se estiraba demasiado. */
-@media (max-width: 560px) {
-  .team-roster__grid { grid-template-columns: minmax(0, 1fr); }
+
+/* ============================================================
+   D4 — Carnés institucionales
+   Los seis perfiles visibles a la vez. Anverso: identidad (foto, cargo,
+   nombre, formación). Reverso: trayectoria. El giro es 3D salvo con
+   «reducir movimiento», donde se resuelve con un fundido.
+   ============================================================ */
+.badges {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.4vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.badge-card { perspective: 1400px; }
+.badge-card__inner {
+  --flip: 0deg;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  position: relative;
+  display: grid;
+  height: 100%;
+  margin: 0;
+  transform: rotateX(var(--tilt-x)) rotateY(calc(var(--tilt-y) + var(--flip)));
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+.badge-card.is-flipped .badge-card__inner { --flip: 180deg; }
+.badge-card__face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.35rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* --- Anverso -------------------------------------------------------------- */
+.badge-card__front {
+  position: relative;
+  border: 1px solid var(--hairline);
+  background: var(--white);
+  box-shadow: 0 1px 2px rgb(var(--infectus-primary-rgb) / .08), 0 26px 50px -30px rgb(var(--infectus-primary-rgb) / .55);
+}
+.badge-card__front::after {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 0%), rgb(var(--white-rgb) / .38), transparent 46%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s var(--ease-standard);
+}
+.badge-card:hover .badge-card__front::after { opacity: 1; }
+.badge-card__slot {
+  position: absolute;
+  top: .85rem;
+  left: 50%;
+  z-index: 2;
+  width: 3.4rem;
+  height: .55rem;
+  border-radius: var(--radius-pill);
+  background: var(--infectus-surface);
+  box-shadow: inset 0 2px 3px rgb(var(--infectus-primary-rgb) / .45);
+  transform: translateX(-50%);
+}
+.badge-card__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  min-height: 7.25rem;
+  padding: 2.1rem 1.25rem 2.9rem;
+  background:
+    radial-gradient(ellipse 80% 90% at 100% 0%, rgb(var(--infectus-light-rgb) / .35), transparent 60%),
+    var(--gradient-dark);
+}
+.badge-card__shield { width: auto; height: 2.5rem; }
+.badge-card__org { display: grid; gap: .3rem; }
+.badge-card__org img { width: auto; height: 1rem; }
+.badge-card__org span { color: rgb(var(--white-rgb) / .72); font-size: .6rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.badge-card__photo {
+  position: relative;
+  z-index: 1;
+  width: 54%;
+  margin: -2.4rem auto 0;
+  overflow: hidden;
+  border: 4px solid var(--white);
+  border-radius: 1rem;
+  background: var(--infectus-surface);
+  box-shadow: 0 16px 30px -18px rgb(var(--infectus-primary-rgb) / .7);
+  aspect-ratio: 4 / 5;
+}
+.badge-card__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 14%; }
+.badge-card__body { display: grid; justify-items: center; gap: .45rem; padding: 1.1rem 1.25rem 1.25rem; text-align: center; }
+.badge-card__role {
+  margin: 0;
+  padding: .26rem .7rem;
+  border-radius: var(--radius-pill);
+  background: var(--infectus-surface);
+  color: var(--research-secondary);
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.badge-card__name { margin: 0; color: var(--infectus-primary); font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.28rem); line-height: 1.2; letter-spacing: -.02em; }
+.badge-card__credentials { max-width: 30ch; margin: 0; color: var(--research-primary); font-size: .82rem; line-height: 1.5; }
+.badge-card__foot {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: auto;
+  padding: .85rem 1.1rem;
+  border-top: 1px dashed var(--hairline-strong);
+}
+.badge-card__code { color: var(--research-secondary); font-family: var(--font-display); font-size: .74rem; font-weight: 700; letter-spacing: .08em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.badge-card__bars {
+  flex: 1;
+  height: 1.35rem;
+  max-width: 4.5rem;
+  background: repeating-linear-gradient(90deg, var(--infectus-primary) 0 1px, transparent 1px 3px, var(--infectus-primary) 3px 5px, transparent 5px 6px, var(--infectus-primary) 6px 7px, transparent 7px 10px);
+  opacity: .32;
+}
+.badge-card__flip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-left: auto;
+  padding: .5rem .85rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-dark);
+  color: var(--white);
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: filter var(--duration-fast) var(--ease-standard);
+}
+.badge-card__flip:hover { filter: brightness(1.15); }
+.badge-card__flip:focus-visible { outline: 2px solid var(--infectus-secondary); outline-offset: 2px; }
+.badge-card__flip svg { width: .95rem; height: .95rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* --- Reverso -------------------------------------------------------------- */
+/* El alto del carné lo marca el anverso; la trayectoria se desplaza por dentro
+   si no cabe, en lugar de estirar el carné y dejar el anverso con un hueco. */
+.badge-card__back {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--white-rgb) / .3) transparent;
+  gap: .75rem;
+  padding: 1.6rem 1.4rem 1.25rem;
+  background:
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgb(var(--infectus-light-rgb) / .22), transparent 60%),
+    var(--gradient-dark);
+  color: var(--white);
+  transform: rotateY(180deg);
+}
+.badge-card__back-kicker { margin: 0; color: var(--infectus-light); font-size: .64rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.badge-card__back-name { margin: 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; }
+.badge-card__summary { margin: 0; padding-bottom: .75rem; border-bottom: 1px solid rgb(var(--white-rgb) / .16); color: var(--white); font-size: .88rem; line-height: 1.55; }
+.badge-card__bio { display: grid; gap: .6rem; }
+.badge-card__bio p { margin: 0; color: rgb(var(--infectus-surface-rgb) / .86); font-size: .8rem; line-height: 1.6; }
+.badge-card__flip--back { align-self: flex-start; margin: auto 0 0; background: var(--white); color: var(--infectus-primary); }
+
+@media (max-width: 1024px) {
+  .badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* En móvil, carrusel horizontal con imán: se ve un carné y asoma el siguiente. */
+@media (max-width: 640px) {
+  .badges {
+    grid-auto-columns: min(82%, 20rem);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    overflow-x: auto;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: .5rem var(--gutter) 1.25rem;
+    scroll-padding-inline: var(--gutter);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .badges::-webkit-scrollbar { display: none; }
+  .badge-card { scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge-card__inner { transform: none; transition: none; }
+  .badge-card__back { transform: none; visibility: hidden; opacity: 0; }
+  .badge-card__face { transition: opacity .2s linear, visibility .2s linear; }
+  .badge-card.is-flipped .badge-card__front { visibility: hidden; opacity: 0; }
+  .badge-card.is-flipped .badge-card__back { visibility: visible; opacity: 1; }
 }
