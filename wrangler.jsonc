@@ -1,0 +1,19 @@
+// Despliegue en Cloudflare Workers (recursos estáticos). Cada push a main
+// compila el sitio con Vite y publica la carpeta dist.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "infectus-landing",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist",
+    // /servicios sirve servicios.html y la versión con .html redirige a la limpia.
+    "html_handling": "auto-trailing-slash",
+    // Rutas inexistentes muestran 404.html con estado 404.
+    "not_found_handling": "404-page"
+  }
+}
