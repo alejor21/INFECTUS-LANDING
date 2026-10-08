@@ -6,6 +6,11 @@
   "compatibility_date": "2026-10-01",
   "workers_dev": true,
   "preview_urls": false,
+  // Dominio propio (zona infectus.com.co en esta cuenta de Cloudflare).
+  "routes": [
+    { "pattern": "infectus.com.co", "custom_domain": true },
+    { "pattern": "www.infectus.com.co", "custom_domain": true }
+  ],
   "build": {
     "command": "npm run build"
   },

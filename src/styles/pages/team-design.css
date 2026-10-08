@@ -286,6 +286,3 @@
   .badge-card.is-flipped .badge-card__back { visibility: visible; opacity: 1; }
 }
 
-/* Sin fotografía autorizada: monograma sobre el campo de marca. */
-.badge-card__photo--monogram { display: grid; place-items: center; margin-inline: auto; background: var(--gradient-dark); }
-.badge-card__photo--monogram span { color: var(--white); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -.04em; }

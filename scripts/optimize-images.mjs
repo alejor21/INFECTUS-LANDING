@@ -64,6 +64,7 @@ const MAP = {
   'grupo infectus individual/magda julieth.png': ['team/profiles/magda-forero.webp', 800],
   'grupo infectus individual/angelica ojeda.png': ['team/profiles/angelica-ojeda.webp', 800],
   'grupo infectus individual/daniel.png': ['team/profiles/daniel-lopez.webp', 800],
+  'grupo infectus individual/natasha.png': ['team/profiles/natasha-camejo.webp', 800],
 };
 
 let totalBefore = 0;
