@@ -114,24 +114,7 @@
 /* --- Zona visual: donde viven el sujeto y los objetos --------------------- */
 .page-hero__visual { position: relative; z-index: 1; min-width: 0; align-self: var(--hero-visual-align, center); }
 
-.page-hero__subject {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 26px 48px rgb(var(--infectus-primary-rgb) / .22));
-}
-
-.page-hero__object {
-  position: absolute;
-  z-index: 2;
-  display: block;
-  pointer-events: none;
-}
-
 /* Deriva mínima y continua: solo transform, sin repintados. */
-@media (prefers-reduced-motion: no-preference) {
-  .page-hero__object--drift { animation: hero-object-drift 14s ease-in-out infinite alternate; }
-}
 @keyframes hero-object-drift {
   from { transform: translate3d(0, 0, 0) rotate(-1.4deg); }
   to   { transform: translate3d(0, -1.6rem, 0) rotate(1.4deg); }
@@ -218,7 +201,7 @@
   width: 100%;
   align-items: flex-end;
 }
-.page-hero--anchored .page-hero__subject,
+
 .page-hero--anchored .page-hero__visual img {
   display: block;
   margin-bottom: 0;

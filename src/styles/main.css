@@ -29,3 +29,12 @@
 @import './components/allies.css';
 @import './components/pdf-reader.css';
 @import './components/visual-system.css';
+@import './components/life.css';
+@import './pages/home-life.css';
+@import './pages/home-hero-sell.css';
+@import './pages/about-life.css';
+@import './pages/about-story.css';
+@import './pages/model-life.css';
+@import './pages/services-life.css';
+@import './pages/contact-life.css';
+@import './refine.css';

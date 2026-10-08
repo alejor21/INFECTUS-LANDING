@@ -5,7 +5,7 @@
 export function createHeaderBrand() {
   const link = document.createElement('a');
   link.className = 'header-brand';
-  link.href = 'index.html';
+  link.href = '/';
   link.setAttribute('aria-label', 'Infectus, inicio');
 
   const wordmark = document.createElement('span');

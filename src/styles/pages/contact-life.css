@@ -1,0 +1,140 @@
+/* ============================================================
+   D5 — Contacto con identidad propia
+   El hero deja el agua cristalina (era el mismo fondo de Servicios) y
+   pasa a navy con las burbujas del sistema. Debajo: canales con el
+   teléfono como protagonista, motivos en tarjetas de color y un
+   formulario elevado junto a un panel navy.
+   ============================================================ */
+
+/* --- Hero navy ----------------------------------------------------------------- */
+.contact-page .page-hero--contact {
+  --hero-title: var(--white);
+  --hero-body: rgb(var(--infectus-surface-rgb) / .88);
+  position: relative;
+  overflow: hidden;
+  background:
+    var(--gradient-dark);
+  isolation: isolate;
+}
+.contact-page .page-hero--contact .page-hero__bg,
+.contact-page .page-hero--contact .page-hero__veil { display: none; }
+.contact-page .page-hero--contact h1 { color: var(--white); }
+.contact-page .page-hero--contact h1 em { color: var(--infectus-light); }
+.contact-page .page-hero--contact .page-hero__lead { color: rgb(var(--infectus-surface-rgb) / .88); }
+.contact-page .page-hero--contact .hero-cta.button { border-color: var(--white); background: var(--white); color: var(--infectus-primary); }
+.contact-page .page-hero--contact .hero-cta__icon { background: var(--infectus-primary); color: var(--white); }
+.contact-page .page-hero--contact .hero-link { color: var(--white); }
+.contact-page .page-hero--contact .hero-link:hover { color: var(--infectus-light); }
+
+/* Flujo de contacto en cristal oscuro. */
+.contact-page .contact-flow__step {
+  border-color: rgb(var(--white-rgb) / .16);
+  background: rgb(var(--white-rgb) / .08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px -30px rgb(0 0 0 / .6);
+  transition: background .35s var(--ease-out-expo), transform .35s var(--ease-out-expo);
+}
+.contact-page .contact-flow__step:hover { background: rgb(var(--white-rgb) / .14); transform: translateX(4px); }
+.contact-page .contact-flow__mark { border-color: rgb(var(--white-rgb) / .3); background: rgb(var(--white-rgb) / .1); color: var(--white); }
+.contact-page .contact-flow__body strong { color: var(--white); }
+.contact-page .contact-flow__body span { color: rgb(var(--infectus-surface-rgb) / .82); }
+.contact-page .contact-flow__step::after { background: rgb(var(--white-rgb) / .25); }
+
+/* --- Canales: el teléfono como protagonista -------------------------------------- */
+.contact-page .contact-channels { background: linear-gradient(180deg, var(--infectus-surface), var(--white)); }
+.contact-page .contact-channels h2 { letter-spacing: -.04em; }
+.contact-page .contact-channels__grid { gap: 1rem; background: none; }
+.contact-page .contact-tile {
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .08);
+  border-radius: 1.4rem;
+  background: var(--white);
+  box-shadow: 0 22px 44px -34px rgb(var(--infectus-primary-rgb) / .6);
+  transition: transform .4s var(--ease-out-expo), box-shadow .4s var(--ease-out-expo);
+}
+.contact-page a.contact-tile:hover { transform: translateY(-4px); box-shadow: 0 28px 52px -32px rgb(var(--infectus-primary-rgb) / .65); }
+.contact-page .contact-tile--primary {
+  border-color: transparent;
+  background:
+    var(--gradient-dark);
+}
+.contact-page .contact-tile--primary .contact-tile__label { color: var(--infectus-light); }
+.contact-page .contact-tile--primary .contact-tile__value { color: var(--white); }
+.contact-page .contact-tile--primary .contact-tile__hint { color: rgb(var(--infectus-surface-rgb) / .8); }
+.contact-page .contact-tile:nth-child(2) { background: linear-gradient(160deg, var(--infectus-surface), var(--white) 70%); }
+.contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 1.25rem;
+  padding: .7rem 1.1rem;
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .1);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--infectus-primary);
+  font-size: .92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color .25s ease, transform .35s var(--ease-out-expo);
+}
+.contact-whatsapp:hover { border-color: var(--vaccine-secondary); transform: translateY(-2px); }
+
+/* --- Motivos: campo hielo y tarjetas con color ------------------------------------ */
+.contact-page .contact-reasons {
+  background:
+    linear-gradient(180deg, var(--infectus-surface), var(--infectus-ice-soft));
+}
+.contact-page .contact-reasons h2 { letter-spacing: -.04em; }
+.contact-page .contact-reasons__media img { border-radius: 1.6rem; box-shadow: 0 30px 60px -36px rgb(var(--infectus-primary-rgb) / .6); }
+.contact-page .contact-reasons__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-self: center; gap: .9rem; border: 0; }
+.contact-page .contact-reasons__list li:nth-child(4) > span { color: var(--infectus-light); }
+.contact-page .contact-reasons__list li {
+  padding: 1.25rem 1.35rem;
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .08);
+  border-radius: 1.2rem;
+  background: var(--white);
+  box-shadow: 0 18px 36px -30px rgb(var(--infectus-primary-rgb) / .55);
+  transition: transform .4s var(--ease-out-expo);
+}
+.contact-page .contact-reasons__list li:hover { transform: translateY(-3px); }
+.contact-page .contact-reasons__list li:nth-child(1) { background: linear-gradient(160deg, var(--infectus-surface), var(--white) 70%); }
+.contact-page .contact-reasons__list li:nth-child(2) { background: linear-gradient(160deg, var(--vaccine-surface), var(--white) 70%); }
+.contact-page .contact-reasons__list li:nth-child(3) { background: linear-gradient(160deg, var(--lab-surface), var(--white) 70%); }
+.contact-page .contact-reasons__list li:nth-child(4) {
+  border-color: transparent;
+  background: var(--gradient-dark);
+}
+.contact-page .contact-reasons__list li:nth-child(4) strong { color: var(--white); }
+.contact-page .contact-reasons__list li:nth-child(4) p { color: rgb(var(--infectus-surface-rgb) / .84); }
+
+/* --- Formulario: panel navy + tarjeta blanca elevada ------------------------------- */
+.contact-page .contact-form-section { background: linear-gradient(180deg, var(--infectus-ice-soft), var(--infectus-surface)); }
+.contact-page .contact-form-aside {
+  align-self: start;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: 1.75rem;
+  background:
+    var(--gradient-dark);
+  color: var(--white);
+}
+.contact-page .contact-form-aside h2 { color: var(--white); letter-spacing: -.04em; }
+.contact-page .contact-form-aside p { color: rgb(var(--infectus-surface-rgb) / .86); }
+.contact-page .contact-form-aside__privacy { padding: .9rem 1rem; border-radius: 1rem; background: rgb(var(--white-rgb) / .08); }
+.contact-page .contact-form-aside__privacy strong { color: var(--white); }
+.contact-page .contact-form-aside__media img { border-radius: 1.2rem; }
+.contact-page .contact-form-wrap { border: 1px solid rgb(var(--infectus-primary-rgb) / .08); box-shadow: 0 34px 70px -44px rgb(var(--infectus-primary-rgb) / .6); }
+
+@media (max-width: 640px) {
+  .contact-page .contact-reasons__list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-page a.contact-tile:hover,
+  .contact-page .contact-reasons__list li:hover,
+  .contact-page .contact-flow__step:hover { transform: none; }
+}
+
+/* --- Envío: correo o WhatsApp ------------------------------------------------------ */
+.contact-page .form-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.contact-page .button--whatsapp { border-color: transparent; background: #128c4a; color: var(--white); }
+.contact-page .button--whatsapp:hover { background: #0e7a40; }
+.contact-page .form-input[aria-invalid="true"] { border-color: #c0392b; box-shadow: 0 0 0 3px rgb(192 57 43 / .15); }

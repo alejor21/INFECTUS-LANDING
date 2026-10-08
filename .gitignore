@@ -8,6 +8,7 @@ build/
 # IDE and tool specific directories
 .antigravity/
 .claude/
+.agents/
 .vscode/
 .idea/
 .DS_Store

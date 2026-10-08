@@ -12,33 +12,34 @@
 </head>
 <body class="inner-page services-page">
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
-  <header class="site-header"><div class="header-inner"><a href="index.html" class="logo-link logo-link--image" aria-label="Infectus, inicio"><img src="/brand/infectus-primary-transparent.png" alt="Infectus" class="brand-logo"></a><nav class="main-nav" id="main-nav" data-main-nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="acerca-de.html">Nosotros</a><a href="modelo-de-negocio.html">Nuestro modelo</a><a href="servicios.html" class="active" aria-current="page">Servicios</a><a href="equipo.html">Nuestro equipo</a><a href="blog.html">Actualidad</a><a class="mobile-nav-contact" href="contacto.html">Contacto</a></nav><a class="header-cta" href="contacto.html">Contacto</a><button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">Menú</button></div></header>
+  <header class="site-header"><div class="header-inner"><a href="/" class="logo-link logo-link--image" aria-label="Infectus, inicio"><img src="/brand/infectus-primary-transparent.png" alt="Infectus" class="brand-logo"></a><nav class="main-nav" id="main-nav" data-main-nav aria-label="Navegación principal"><a href="/">Inicio</a><a href="/acerca-de">Nosotros</a><a href="/modelo-de-negocio">Nuestro modelo</a><a href="/servicios" class="active" aria-current="page">Servicios</a><a href="/equipo">Nuestro equipo</a><a href="/blog">Actualidad</a><a class="mobile-nav-contact" href="/contacto">Contacto</a></nav><a class="header-cta" href="/contacto">Contacto</a><button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">Menú</button></div></header>
   <main id="main-content" tabindex="-1">
 
-    <section class="page-hero page-hero--services page-hero--anchored" aria-labelledby="services-title">
+    <section class="page-hero page-hero--services page-hero--anchored" aria-labelledby="services-title" data-hero-parallax>
       <div class="page-hero__bg" aria-hidden="true"></div>
       <div class="page-hero__veil" aria-hidden="true"></div>
       <div class="page-hero__fg" aria-hidden="true"></div>
       <div class="page-hero__stage">
         <div class="page-hero__copy reveal">
-          <p class="page-hero__eyebrow">Servicios especializados</p>
-          <h1 id="services-title">Decisiones clínicas con <em>respaldo científico</em>.</h1>
-          <p class="page-hero__lead">Acompañamos a las Instituciones Prestadoras de Servicios de Salud en el diseño, la optimización y la implementación de Programas de Control y Prevención de Infecciones.</p>
+
+          <h1 id="services-title">Asesoría integral para <em>instituciones de salud</em>.</h1>
+          <p class="page-hero__lead">Brindamos asesoría integral a Instituciones prestadoras de servicios de salud (IPS) de cualquier nivel de atención, adaptándonos a las necesidades y recursos de cada institución.</p>
           <div class="page-hero__actions">
-            <a class="button" href="contacto.html">Hablemos<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
-            <a class="button button--secondary" href="#catalogo">Ver los servicios</a>
+            <a class="button hero-cta" href="/contacto">Solicitar asesoría<span class="hero-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></a>
+            <a class="hero-link" href="#catalogo">Ver los servicios</a>
           </div>
           <div class="hero-meta">
-            <div class="hero-meta__item"><strong>Consultoría y asesoría</strong><span>Categoría A</span></div>
-            <div class="hero-meta__item"><strong>Investigación y educación</strong><span>Categoría B</span></div>
-            <div class="hero-meta__item"><strong>Gestión clínica asistencial</strong><span>Categoría C</span></div>
+            <a class="hero-meta__item" href="#consultoria-asesoria"><strong>Asesoría institucional</strong><span>6 servicios</span></a>
+            <a class="hero-meta__item" href="#investigacion-educacion"><strong>Investigación y educación</strong><span>2 servicios</span></a>
+            <a class="hero-meta__item" href="#gestion-clinica"><strong>Gestión clínica asistencial</strong><span>2 servicios</span></a>
           </div>
         </div>
         <div class="page-hero__visual">
           <figure class="services-figure reveal">
             <span class="services-figure__halo" aria-hidden="true"></span>
-            <img class="services-figure__subject" src="/images/services/services-hero-clinician.webp" width="1122" height="1402" alt="Profesional médico de INFECTUS" fetchpriority="high">
-            <figcaption class="services-figure__badge"><strong>9 servicios</strong><span>Tres categorías</span></figcaption>
+            <img class="services-figure__subject" src="/images/services/services-hero-clinician.webp" width="1122" height="1402" alt="Profesional médico de INFECTUS" fetchpriority="high" data-parallax-depth="5">
+            <ul class="services-figure__chips" aria-hidden="true"><li style="--i:0" data-parallax-depth="16">Programas PROA</li><li style="--i:1" data-parallax-depth="22">Vacunación</li></ul>
+            <figcaption class="services-figure__badge" data-parallax-depth="12"><strong>10 servicios</strong><span>Tres categorías</span></figcaption>
           </figure>
         </div>
       </div>
@@ -47,12 +48,10 @@
     <section class="services-lede" aria-labelledby="overview-title">
       <div class="services-lede__inner">
         <div class="reveal">
-          <p class="services-lede__index">Qué hacemos</p>
-          <h2 id="overview-title">Tres frentes de trabajo con las instituciones.</h2>
+          <h2 id="overview-title">Excelencia clínica, instituciones seguras.</h2>
         </div>
         <div class="reveal">
-          <p>Nuestro portafolio se organiza en consultoría y asesoría, investigación y educación continua, y gestión clínica asistencial. El punto de partida siempre es el contexto propio de cada institución: la población que atiende, sus procesos y su perfil epidemiológico local.</p>
-          <p>Cada programa se define con la institución. No existe un alcance único aplicable a todos los casos.</p>
+          <p>Nuestro trabajo se centra en garantizar la seguridad del paciente a través del acompañamiento de expertos, el liderazgo en Programas de Optimización Antimicrobiana (PROA) y el fortalecimiento continuo de los programas de prevención y control de infecciones.</p>
         </div>
       </div>
     </section>
@@ -60,25 +59,22 @@
     <section class="capabilities" aria-labelledby="capabilities-title">
       <div class="capabilities__inner">
         <div class="capabilities__head reveal">
-          <p class="services-lede__index">Índice de capacidades</p>
-          <h2 id="capabilities-title">Tres categorías, nueve servicios.</h2>
+
+          <h2 id="capabilities-title">Tres categorías, diez servicios.</h2>
         </div>
         <div class="capabilities__rail reveal" data-editorial-rail>
-          <div class="capabilities__strip" role="tablist" aria-label="Categorías de servicio"><button type="button" role="tab" id="cap-tab-a" aria-controls="cap-panel-a" aria-selected="true" tabindex="0" class="capabilities__tab"><span class="capabilities__tab-mark" aria-hidden="true">A</span><span class="capabilities__tab-label">Consultoría y asesoría</span><span class="capabilities__tab-count">Cinco servicios</span></button><button type="button" role="tab" id="cap-tab-b" aria-controls="cap-panel-b" aria-selected="false" tabindex="-1" class="capabilities__tab"><span class="capabilities__tab-mark" aria-hidden="true">B</span><span class="capabilities__tab-label">Investigación y educación continua</span><span class="capabilities__tab-count">Dos servicios</span></button><button type="button" role="tab" id="cap-tab-c" aria-controls="cap-panel-c" aria-selected="false" tabindex="-1" class="capabilities__tab"><span class="capabilities__tab-mark" aria-hidden="true">C</span><span class="capabilities__tab-label">Gestión clínica asistencial</span><span class="capabilities__tab-count">Dos servicios</span></button></div>
+          <div class="capabilities__strip" role="tablist" aria-label="Categorías de servicio"><button type="button" role="tab" id="cap-tab-a" aria-controls="cap-panel-a" aria-selected="true" tabindex="0" class="capabilities__tab"><span class="capabilities__tab-mark" aria-hidden="true">A</span><span class="capabilities__tab-label">Asesoría Institucional y Programas Hospitalarios</span><span class="capabilities__tab-count">Seis servicios</span></button><button type="button" role="tab" id="cap-tab-b" aria-controls="cap-panel-b" aria-selected="false" tabindex="-1" class="capabilities__tab"><span class="capabilities__tab-mark" aria-hidden="true">B</span><span class="capabilities__tab-label">Investigación y educación continua</span><span class="capabilities__tab-count">Dos servicios</span></button><button type="button" role="tab" id="cap-tab-c" aria-controls="cap-panel-c" aria-selected="false" tabindex="-1" class="capabilities__tab"><span class="capabilities__tab-mark" aria-hidden="true">C</span><span class="capabilities__tab-label">Gestión clínica asistencial</span><span class="capabilities__tab-count">Dos servicios</span></button></div>
           <div class="capabilities__stage">
           <div role="tabpanel" id="cap-panel-a" aria-labelledby="cap-tab-a" class="capabilities__panel is-active">
-            <p class="capabilities__lead">Diseñar, estandarizar y sostener los programas institucionales de prevención y control de infecciones.</p>
-            <ol class="capabilities__list"><li><a href="#servicio-01"><span aria-hidden="true">01</span>Implementación de Programas PROA</a></li><li><a href="#servicio-02"><span aria-hidden="true">02</span>Consultoría en Programas de Infecciones para IPS</a></li><li><a href="#servicio-03"><span aria-hidden="true">03</span>Control de Infecciones Asociadas a la Atención en Salud</a></li><li><a href="#servicio-04"><span aria-hidden="true">04</span>Comité de Infecciones</a></li><li><a href="#servicio-05"><span aria-hidden="true">05</span>Estrategia Multimodal de Higiene de Manos</a></li></ol>
+            <ol class="capabilities__list"><li><a href="#servicio-01"><span aria-hidden="true">01</span>Implementación de Programas de uso racional de antimicrobianos PROA</a></li><li><a href="#servicio-02"><span aria-hidden="true">02</span>Prevención y Control de Infecciones (PCI) e IAAS</a></li><li><a href="#servicio-03"><span aria-hidden="true">03</span>Comité de Infecciones</a></li><li><a href="#servicio-04"><span aria-hidden="true">04</span>Estrategia multimodal de higiene de manos</a></li><li><a href="#servicio-05"><span aria-hidden="true">05</span>Peritajes médicos y auditoría en Infectología</a></li><li><a href="#servicio-06"><span aria-hidden="true">06</span>Consultoría en Salud Pública y Epidemiología Territorial</a></li></ol>
             <a class="capabilities__jump" href="#consultoria-asesoria">Ver la categoría completa <span aria-hidden="true">↓</span></a>
           </div>
           <div role="tabpanel" id="cap-panel-b" aria-labelledby="cap-tab-b" class="capabilities__panel" hidden>
-            <p class="capabilities__lead">Formar a los equipos asistenciales y construir lineamientos fundamentados en evidencia científica.</p>
-            <ol class="capabilities__list"><li><a href="#servicio-06"><span aria-hidden="true">06</span>Fortalecimiento de capacidades del talento humano</a></li><li><a href="#servicio-07"><span aria-hidden="true">07</span>Diseño e implementación de Guías de Práctica Clínica</a></li></ol>
+            <ol class="capabilities__list"><li><a href="#servicio-07"><span aria-hidden="true">07</span>Fortalecimiento de capacidades del talento humano</a></li><li><a href="#servicio-08"><span aria-hidden="true">08</span>Diseño e implementación de Guías de Práctica Clínica</a></li></ol>
             <a class="capabilities__jump" href="#investigacion-educacion">Ver la categoría completa <span aria-hidden="true">↓</span></a>
           </div>
           <div role="tabpanel" id="cap-panel-c" aria-labelledby="cap-tab-c" class="capabilities__panel" hidden>
-            <p class="capabilities__lead">Atención especializada directa: valoración por infectología e inmunización para cada etapa de la vida.</p>
-            <ol class="capabilities__list"><li><a href="#servicio-08"><span aria-hidden="true">08</span>Consulta y valoración por Infectología</a></li><li><a href="#servicio-09"><span aria-hidden="true">09</span>Vacunación</a></li></ol>
+            <ol class="capabilities__list"><li><a href="#servicio-09"><span aria-hidden="true">09</span>Consulta y valoración por Infectología</a></li><li><a href="#servicio-10"><span aria-hidden="true">10</span>Vacunación</a></li></ol>
             <a class="capabilities__jump" href="#gestion-clinica">Ver la categoría completa <span aria-hidden="true">↓</span></a>
           </div>
           </div>
@@ -92,17 +88,17 @@
 
         <section class="services-category reveal" id="consultoria-asesoria" aria-labelledby="cat-a-title">
           <div class="services-category__head">
-            <p class="services-category__mark"><b aria-hidden="true">A</b>Cinco servicios</p>
+            <p class="services-category__mark"><b aria-hidden="true">A</b>Seis servicios</p>
             <div>
-              <h2 id="cat-a-title">Consultoría y asesoría</h2>
-              <p>Acompañamiento técnico para diseñar, estandarizar y sostener los programas institucionales de prevención y control de infecciones.</p>
+              <h2 id="cat-a-title">Asesoría Institucional y Programas Hospitalarios</h2>
             </div>
           </div>
-          <details class="service-row" id="servicio-01"><summary><span class="service-row__index" aria-hidden="true">01</span><span class="service-row__title">Implementación de Programas PROA</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Soporte para el diseño, la implementación y el monitoreo de estrategias institucionales orientadas a la prescripción adecuada de antibióticos.</p><ul class="service-row__points"><li>Protocolos de desescalamiento guiados por microbiología.</li><li>Algoritmos de tratamiento empírico.</li><li>Adaptación al perfil de resistencia local.</li><li>Contención de la presión selectiva bacteriana.</li></ul></div></div></details>
-          <details class="service-row" id="servicio-02"><summary><span class="service-row__index" aria-hidden="true">02</span><span class="service-row__title">Consultoría en Programas de Infecciones para IPS</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Evaluación diagnóstica y asesoría técnica para el diseño, la actualización y la estandarización del Programa de Prevención y Control de Infecciones en IPS de mediana y alta complejidad.</p><ul class="service-row__points"><li>Sistema Único de Habilitación.</li><li>Resolución 3100.</li><li>Acreditación en Salud.</li></ul></div></div></details>
-          <details class="service-row" id="servicio-03"><summary><span class="service-row__index" aria-hidden="true">03</span><span class="service-row__title">Control de Infecciones Asociadas a la Atención en Salud</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Acompañamiento en la vigilancia epidemiológica, la prevención y el control de eventos infecciosos intrahospitalarios, incluida la implementación y la auditoría de bundles.</p><ul class="service-row__points"><li>BACVC — bacteriemia asociada a catéter venoso central.</li><li>NAVM — neumonía asociada a ventilación mecánica.</li><li>ITU-AC — infección del tracto urinario asociada a catéter.</li><li>ISQ — infección del sitio quirúrgico.</li></ul></div></div></details>
-          <details class="service-row" id="servicio-04"><summary><span class="service-row__index" aria-hidden="true">04</span><span class="service-row__title">Comité de Infecciones</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Acompañamiento técnico, liderazgo y asesoría metodológica para el funcionamiento del comité institucional.</p><ul class="service-row__points"><li>Tableros de mando epidemiológicos.</li><li>Investigación de campo y alertas microbiológicas.</li><li>Planes de contingencia y manejo de brotes intrahospitalarios.</li><li>Articulación con entidades territoriales y SIVIGILA.</li></ul></div></div></details>
-          <details class="service-row" id="servicio-05"><summary><span class="service-row__index" aria-hidden="true">05</span><span class="service-row__title">Estrategia Multimodal de Higiene de Manos</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Acompañamiento técnico para la estructuración y la puesta en marcha de la estrategia bajo el modelo estándar de la OMS.</p><ul class="service-row__points"><li>Diagnóstico de infraestructura.</li><li>Capacitación del talento humano.</li><li>Talleres prácticos.</li></ul></div></div></details>
+          <details class="service-row" id="servicio-01"><summary><span class="service-row__index" aria-hidden="true">01</span><span class="service-row__title">Implementación de Programas de uso racional de antimicrobianos PROA</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Brindamos soporte para el diseño, ejecución y monitoreo de estrategias institucionales orientadas a garantizar la prescripción adecuada de antibióticos. Implementamos protocolos de desescalamiento guiados por microbiología y algoritmos de tratamiento empírico ajustados al perfil de resistencia local, lo que permite contener los costos asistenciales y mitigar la presión selectiva bacteriana.</p></div></div></details>
+          <details class="service-row" id="servicio-02"><summary><span class="service-row__index" aria-hidden="true">02</span><span class="service-row__title">Prevención y Control de Infecciones (PCI) e IAAS</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Ofrecemos evaluación diagnóstica y asesoría técnica para el diseño, estandarización y ejecución del Programa de Prevención y Control de Infecciones en IPS de cualquier nivel de complejidad. Acompañamos a su institución en la aplicación de estrategias de vigilancia epidemiológica y la implementación de paquetes de medidas (bundles) para controlar las Infecciones Asociadas a la Atención en Salud (IAAS), como neumonías (NAVM), infecciones del tracto urinario (ITU-AC) e infección de sitio quirúrgico (ISQ), garantizando el cumplimiento de los estándares de Habilitación (Resolución 3100) y Acreditación en Salud.</p><ul class="service-row__tags"><li>NAVM</li><li>ITU-AC</li><li>ISQ</li><li>Resolución 3100</li><li>Acreditación en Salud</li></ul></div></div></details>
+          <details class="service-row" id="servicio-03"><summary><span class="service-row__index" aria-hidden="true">03</span><span class="service-row__title">Comité de Infecciones</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Brindamos acompañamiento técnico, liderazgo y asesoría metodológica en el funcionamiento del Comité de Infecciones. Nuestro servicio incluye la estructuración y análisis de tableros de mando epidemiológicos, investigación de campo ante alertas microbiológicas, diseño de planes de contingencia frente a brotes intrahospitalarios y la articulación con las entidades territoriales y el SIVIGILA.</p><ul class="service-row__tags"><li>SIVIGILA</li></ul></div></div></details>
+          <details class="service-row" id="servicio-04"><summary><span class="service-row__index" aria-hidden="true">04</span><span class="service-row__title">Estrategia multimodal de higiene de manos</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Acompañamiento técnico para estructurar, poner en marcha y certificar el modelo estándar de la Organización Mundial de la Salud (OMS) en su institución. Incluye diagnóstico de infraestructura, capacitación del personal y talleres prácticos, asegurando el cumplimiento de las normativas de calidad en salud.</p><ul class="service-row__tags"><li>OMS</li></ul></div></div></details>
+          <details class="service-row" id="servicio-05"><summary><span class="service-row__index" aria-hidden="true">05</span><span class="service-row__title">Peritajes médicos y auditoría en Infectología</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Ofrecemos servicios de auditoría médica y peritajes especializados para evaluar la calidad de la atención en salud. Proporcionamos informes técnicos, objetivos y altamente especializados en el área de enfermedades infecciosas, respaldando procesos de evaluación clínica, seguridad del paciente y revisión institucional.</p></div></div></details>
+          <details class="service-row" id="servicio-06"><summary><span class="service-row__index" aria-hidden="true">06</span><span class="service-row__title">Consultoría en Salud Pública y Epidemiología Territorial</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Brindamos asesoría técnica y estratégica a municipios y entidades territoriales para el diseño, fortalecimiento y evaluación de sus programas de vigilancia en salud pública. Apoyamos la gestión integral de planes de vacunación y el abordaje epidemiológico para la prevención, control y respuesta ante brotes de enfermedades emergentes, reemergentes y zoonóticas, alineando las políticas locales con los máximos lineamientos nacionales.</p></div></div></details>
         </section>
 
         <section class="services-category reveal" id="investigacion-educacion" aria-labelledby="cat-b-title">
@@ -110,11 +106,10 @@
             <p class="services-category__mark"><b aria-hidden="true">B</b>Dos servicios</p>
             <div>
               <h2 id="cat-b-title">Investigación y educación continua</h2>
-              <p>Formación de los equipos asistenciales y construcción de lineamientos institucionales fundamentados en evidencia científica.</p>
             </div>
           </div>
-          <details class="service-row" id="servicio-06"><summary><span class="service-row__index" aria-hidden="true">06</span><span class="service-row__title">Fortalecimiento de capacidades del talento humano</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Formación dirigida a médicos generales y especialistas, enfermería, farmacia y laboratorio clínico.</p><ul class="service-row__points"><li>Prevención y control de infecciones.</li><li>Lectura interpretada del antibiograma.</li><li>Precauciones estándar y precauciones basadas en transmisión.</li><li>Técnica aséptica y profilaxis quirúrgica.</li><li>Gérmenes multirresistentes.</li></ul></div></div></details>
-          <details class="service-row" id="servicio-07"><summary><span class="service-row__index" aria-hidden="true">07</span><span class="service-row__title">Diseño e implementación de Guías de Práctica Clínica</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Asesoría y acompañamiento para estructurar, actualizar y adoptar guías institucionales fundamentadas en evidencia científica.</p><ul class="service-row__points"><li>Perfil epidemiológico local.</li><li>Características poblacionales.</li><li>Normatividad sanitaria vigente.</li></ul></div></div></details>
+          <details class="service-row" id="servicio-07"><summary><span class="service-row__index" aria-hidden="true">07</span><span class="service-row__title">Fortalecimiento de capacidades del talento humano</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Ofertamos planes de capacitación técnica y entrenamiento continúo dirigidos al talento humano en salud (médicos generales, especialistas, enfermería, farmacia, laboratorio clínico) para la implementación de actividades de prevención y control de infecciones. Desarrollo de talleres teórico - prácticos y módulos académicos sobre lectura interpretada del antibiograma, adherencia a precauciones estándar y basadas en la transmisión, técnica aséptica, profilaxis quirúrgica y contención de gérmenes multirresistentes, fortaleciendo una cultura institucional de seguridad del paciente.</p></div></div></details>
+          <details class="service-row" id="servicio-08"><summary><span class="service-row__index" aria-hidden="true">08</span><span class="service-row__title">Diseño e implementación de Guías de Práctica Clínica</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Brindamos asesoría y acompañamiento permanente para estructurar, actualizar y adoptar guías de práctica clínica institucionales fundamentadas en la mejor evidencia científica, articuladas con el perfil epidemiológico local, las características poblacionales de la institución y la normatividad sanitaria vigente. Esto permite reducir la variabilidad en la atención, mejorar los desenlaces clínicos y asegurar intervenciones basadas en la evidencia más reciente.</p></div></div></details>
         </section>
 
         <section class="services-category services-category--care reveal" id="gestion-clinica" aria-labelledby="cat-c-title">
@@ -122,12 +117,11 @@
             <p class="services-category__mark"><b aria-hidden="true">C</b>Dos servicios</p>
             <div>
               <h2 id="cat-c-title">Gestión clínica asistencial</h2>
-              <p>Atención especializada directa: valoración por infectología e inmunización para cada etapa de la vida.</p>
             </div>
             <figure class="services-category__portrait"><img src="/images/services/clinical-care-specialist.webp" width="1122" height="1402" loading="lazy" decoding="async" alt="Especialista clínica de INFECTUS"></figure>
           </div>
-          <details class="service-row" id="servicio-08"><summary><span class="service-row__index" aria-hidden="true">08</span><span class="service-row__title">Consulta y valoración por Infectología</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Valoración especializada con orientación de esquemas terapéuticos basados en guías de práctica clínica.</p><ul class="service-row__points"><li>Infecciones respiratorias.</li><li>Infecciones de piel y tejidos blandos.</li><li>VIH.</li><li>Enfermedades de transmisión sexual.</li></ul></div></div></details>
-          <details class="service-row" id="servicio-09"><summary><span class="service-row__index" aria-hidden="true">09</span><span class="service-row__title">Vacunación</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Asesoría e inmunización especializada en esquemas regulares, vacunas acelulares y vacunas recombinantes, con operación bajo cadena de frío y bioseguridad.</p><ul class="service-row__points"><li>Población infantil y adultos.</li><li>Grupos vulnerables e inmunosuprimidos.</li><li>Pacientes con patologías crónicas y personas que viven con VIH.</li><li>Profilaxis postexposición.</li><li>Viajeros internacionales.</li></ul></div></div></details>
+          <details class="service-row" id="servicio-09"><summary><span class="service-row__index" aria-hidden="true">09</span><span class="service-row__title">Consulta y valoración por Infectología</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Valoración clínica especializada para el diagnóstico de infecciones respiratorias, piel y tejidos blandos, VIH, enfermedades de transmisión sexual y orientación de esquemas terapéuticos oportunos basados en guías de práctica clínica.</p></div></div></details>
+          <details class="service-row" id="servicio-10"><summary><span class="service-row__index" aria-hidden="true">10</span><span class="service-row__title">Vacunación</span><span class="service-row__sign" aria-hidden="true"></span></summary><div class="service-row__body"><div><p>Asesoría e inmunización especializada en esquemas regulares, vacunas acelulares y recombinantes de última generación para población infantil, adultos y grupos con condiciones de vulnerabilidad o inmunosupresión. Incluye la formulación de esquemas para pacientes con patologías crónicas, personas que viven con VIH, profilaxis postexposición y orientación a viajeros internacionales, bajo estrictos protocolos de cadena de frío y bioseguridad.</p></div></div></details>
         </section>
 
       </div>
@@ -137,7 +131,7 @@
       <div class="portfolios__inner">
         <div class="portfolios__head reveal">
           <div>
-            <p class="services-lede__index">Consulta en línea</p>
+
             <h2 id="portfolios-title">Nuestros portafolios, página por página.</h2>
           </div>
           <p>Consulta los documentos sin salir de la página. Cada página se ve completa; usa las flechas, el teclado o desliza para avanzar.</p>
@@ -169,18 +163,18 @@
 
     <section class="services-cta" aria-labelledby="contact-title">
       <div class="services-cta__inner reveal">
-        <p class="home-eyebrow">Contacto</p>
+
         <h2 id="contact-title">Conversemos sobre las necesidades de tu institución.</h2>
-        <p>Estamos disponibles para ampliar la información sobre nuestros servicios.</p>
-        <a class="button" href="contacto.html">Contactar</a>
+        <p>Brindamos asesoría integral a Instituciones prestadoras de servicios de salud (IPS) de cualquier nivel de atención.</p>
+        <a class="button" href="/contacto">Contactar</a>
       </div>
     </section>
   </main>
   <footer class="footer footer--corporate"><div class="footer-bottom">
-<div class="footer-brand-block"><a href="index.html" class="footer-brand" aria-label="Infectus, inicio"><img src="/brand/infectus-mark-shield.png" width="112" height="128" alt="Escudo Infectus" class="footer-logo-image"></a><p class="footer-claim">Ciencia de precisión, vocación humana.</p></div>
-<nav class="footer-navigation" aria-label="Navegación del pie"><strong>Navegación</strong><a href="index.html">Inicio</a><a href="acerca-de.html">Nosotros</a><a href="modelo-de-negocio.html">Nuestro modelo</a><a href="servicios.html">Servicios</a><a href="equipo.html">Nuestro equipo</a><a href="blog.html">Actualidad</a><a href="contacto.html">Contacto</a></nav>
-<div class="footer-areas"><strong>Nuestro modelo</strong><a href="modelo-de-negocio.html#vaccine">INFECTUS Vaccine</a><a href="modelo-de-negocio.html#lab">INFECTUS Labs</a><a href="modelo-de-negocio.html#research">INFECTUS Research</a></div>
-<div class="footer-identity"><strong>Conocimiento que protege</strong><p>Prevención, precisión y evidencia.</p><a href="tel:+573216456132">+57 321 645 61 32</a><a href="mailto:infectuspasto@gmail.com">infectuspasto@gmail.com</a><span>Colombia</span></div>
+<div class="footer-brand-block"><a href="/" class="footer-brand" aria-label="Infectus, inicio"><img src="/brand/infectus-mark-shield.png" width="112" height="128" alt="Escudo Infectus" class="footer-logo-image"></a><p class="footer-claim">Ciencia de precisión, vocación humana.</p></div>
+<nav class="footer-navigation" aria-label="Navegación del pie"><strong>Navegación</strong><a href="/">Inicio</a><a href="/acerca-de">Nosotros</a><a href="/modelo-de-negocio">Nuestro modelo</a><a href="/servicios">Servicios</a><a href="/equipo">Nuestro equipo</a><a href="/blog">Actualidad</a><a href="/contacto">Contacto</a></nav>
+<div class="footer-areas"><strong>Nuestro modelo</strong><a href="/modelo-de-negocio#vaccine">INFECTUS Vaccine</a><a href="/modelo-de-negocio#lab">INFECTUS Labs</a><a href="/modelo-de-negocio#research">INFECTUS Research</a></div>
+<div class="footer-identity"><strong>Excelencia clínica, instituciones seguras</strong><p>Prevención, precisión y evidencia.</p><a href="tel:+573216456132">+57 321 645 61 32</a><a href="mailto:infectuspasto@gmail.com">infectuspasto@gmail.com</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Carrera%2041%20%23%2012A-11%2C%20Villa%20San%20Rafael%2C%20Pasto%2C%20Nari%C3%B1o%2C%20Colombia" target="_blank" rel="noopener">Carrera 41 # 12A-11, Villa San Rafael<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a><span>Pasto, Nariño · Colombia</span></div>
 </div><div class="footer-signature"><span>INFECTUS</span><span>Prevención · Precisión · Evidencia</span></div></footer>
   <script type="module" src="/src/scripts/main.js"></script>
 </body>

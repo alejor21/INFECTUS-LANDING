@@ -31,8 +31,6 @@ const MAP = {
   'VACCINE/e0b28417-ed84-4059-b2b6-0297eeee2cab.png': 'home/vaccine-vial-analysis.webp',
 
   // FASE 10 — remaining library, distributed across the redesigned pages
-  'FONDOS/2c130df4-581e-4ede-a1b5-0ba0475126f8.png': 'shared/molecular-field.webp',
-  'HERO/3f89d970-b64f-4b8c-b9f2-d13fb86d858f.png': 'shared/cell-structure.webp',
   'HERO/d2c6a238-cd5d-48b1-9307-396e779f74ac.png': 'shared/molecular-macro.webp',
   'HERO/edacd78b-66d3-4700-b299-ed25e3726079.png': 'services/vaccine-vials-lab.webp',
   'INDENTIDAD/156f48c6-7756-471e-95e6-84f45283b01a.png': 'contact/pediatric-consultation.webp',
@@ -55,9 +53,6 @@ const MAP = {
   'personas/doctora1.png': 'services/clinical-care-specialist.webp',
   'FONDOS/fondos2.png': 'team/team-hero-background.webp',
   'personas/colaboracion1.png': 'team/team-hero-group.webp',
-  'FONDOS/fondos3': 'editorial/editorial-hero-background.webp',
-  'varios/molecula2.png': 'editorial/editorial-object.webp',
-  'varios/capa foreground1.png': 'editorial/editorial-foreground.webp',
   // FASE D3 — fondo propio para Contacto (no se reutiliza en otra página).
   'FONDOS/fondo4': 'contact/contact-hero-field.webp',
 

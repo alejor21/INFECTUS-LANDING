@@ -46,11 +46,11 @@ if (accordionRoot) {
   });
 }
 
-const carouselRoot = document.querySelector('[data-hero-carousel]');
-if (carouselRoot) {
-  import('./components/hero-carousel.js').then(({ initHeroCarousel }) => {
-    const heroCarousel = initHeroCarousel(carouselRoot);
-    if (import.meta.hot) import.meta.hot.dispose(() => heroCarousel?.destroy());
+const serviceDeckRoot = document.querySelector('[data-service-deck]');
+if (serviceDeckRoot) {
+  import('./components/service-deck.js').then(({ initServiceDeck }) => {
+    const serviceDeck = initServiceDeck(serviceDeckRoot);
+    if (import.meta.hot) import.meta.hot.dispose(() => serviceDeck?.destroy());
   });
 }
 
@@ -88,11 +88,11 @@ if (homeHero) {
   });
 }
 
-const newsFilterRoot = document.querySelector('[data-news-filters]');
-if (newsFilterRoot) {
-  import('./components/news-filter.js').then(({ initNewsFilter }) => {
-    const filter = initNewsFilter(newsFilterRoot);
-    if (import.meta.hot) import.meta.hot.dispose(() => filter?.destroy());
+const parallaxRoots = [...document.querySelectorAll('[data-hero-parallax]')];
+if (parallaxRoots.length) {
+  import('./components/hero-parallax.js').then(({ initHeroParallax }) => {
+    const parallax = parallaxRoots.map(initHeroParallax);
+    if (import.meta.hot) import.meta.hot.dispose(() => parallax.forEach(item => item?.destroy()));
   });
 }
 
@@ -116,4 +116,21 @@ if (servicesProgressRoot) {
   import('./components/services-progress.js').then(({ initServicesProgress }) => {
     initServicesProgress(servicesProgressRoot);
   });
+}
+
+const storyRoots = document.querySelectorAll('[data-tabs], [data-timeline], [data-tilt]');
+if (storyRoots.length) {
+  import('./components/about-story.js').then(({ initTabs, initTimeline, initTilt }) => {
+    document.querySelectorAll('[data-tabs]').forEach(initTabs);
+    document.querySelectorAll('[data-timeline]').forEach(initTimeline);
+    document.querySelectorAll('[data-tilt]').forEach(initTilt);
+  });
+}
+
+// El acceso a WhatsApp aparece cuando el visitante deja atrás el hero.
+const floatContact = document.querySelector('[data-float-contact]');
+if (floatContact) {
+  const toggle = () => floatContact.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+  addEventListener('scroll', toggle, { passive: true });
+  toggle();
 }

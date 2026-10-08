@@ -1,0 +1,94 @@
+/* ============================================================
+   D5 — Nuestro modelo con más vida
+   El color de cada unidad se vuelve región: Vaccine en turquesa, el
+   ciclo de valor recorre turquesa → cian → azul, y la declaración se
+   abre en un campo hielo. Sin etiquetas sobre los títulos.
+   ============================================================ */
+
+/* --- Declaración: campo hielo, titular protagonista ----------------------- */
+.model-page .model-statement {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  background:
+    linear-gradient(180deg, var(--infectus-surface), var(--infectus-ice-soft));
+}
+.model-page .model-statement__inner { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.model-page .model-statement h2 { max-width: 20ch; font-size: clamp(2.4rem, 4.6vw, 4rem); line-height: 1.02; letter-spacing: -.045em; }
+.model-page .model-statement p { font-size: clamp(1.08rem, 1.35vw, 1.24rem); }
+
+/* --- Vaccine: región turquesa propia de la unidad ------------------------- */
+.model-page .model-unit--vaccine { background: var(--vaccine-surface); }
+.model-page .model-unit--vaccine .model-unit__media img { box-shadow: 0 34px 60px -34px rgb(13 74 107 / .55); }
+.model-page .model-unit--vaccine .hero-cta,
+.model-page .model-unit__actions .button { border-color: transparent; background: var(--vaccine-primary); color: var(--white); }
+
+/* --- Unidades en desarrollo: campo hielo con el titular amplio ------------ */
+.model-page .model-next { background: linear-gradient(180deg, var(--white), var(--infectus-surface)); }
+.model-page .model-next__head h2 { font-size: clamp(2.1rem, 3.6vw, 3.2rem); letter-spacing: -.045em; }
+.model-page .model-next__meta .model-unit__label::before { display: none; }
+
+/* --- Ciclo de valor: cada paso con el color de su unidad, unidos por un
+   hilo de degradado que recorre el ciclo. ------------------------------- */
+.model-page .model-cycle {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.5rem, 8vw, 6.5rem);
+  background:
+    var(--infectus-surface);
+}
+.model-page .model-cycle__head h2 { font-size: clamp(2.1rem, 3.6vw, 3.2rem); letter-spacing: -.045em; }
+.model-page .model-cycle__steps {
+  position: relative;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  overflow: visible;
+  border-radius: 0;
+  background: none;
+}
+.model-page .model-cycle__steps::before {
+  position: absolute;
+  top: 2.6rem;
+  right: 8%;
+  left: 8%;
+  z-index: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--vaccine-secondary), var(--lab-secondary), var(--research-secondary));
+  content: "";
+}
+.model-page .model-cycle__step {
+  padding-top: 4.25rem;
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .08);
+  border-radius: 1.4rem;
+  background: linear-gradient(180deg, var(--step-tint, var(--white)), var(--white) 60%);
+  box-shadow: 0 24px 48px -36px rgb(var(--infectus-primary-rgb) / .6);
+  transition: transform .45s var(--ease-out-expo), box-shadow .45s var(--ease-out-expo);
+}
+.model-page .model-cycle__step::after {
+  top: 2.6rem;
+  left: clamp(1.5rem, 2.6vw, 2.2rem);
+  right: auto;
+  width: .9rem;
+  height: .9rem;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 5px var(--white), 0 0 0 6px var(--step-color);
+  transform: translateY(-50%);
+}
+.model-page .model-cycle__step:nth-child(1) { --step-tint: var(--vaccine-surface); }
+.model-page .model-cycle__step:nth-child(2) { --step-tint: var(--lab-surface); }
+.model-page .model-cycle__step:nth-child(3) { --step-tint: var(--research-surface); }
+.model-page .model-cycle__step:hover { transform: translateY(-4px); box-shadow: 0 30px 56px -34px rgb(var(--infectus-primary-rgb) / .65); }
+.model-page .model-cycle__closing {
+  max-width: none;
+  padding: clamp(1.25rem, 2.4vw, 1.75rem) clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 1.25rem;
+  background: var(--gradient-dark);
+  color: rgb(var(--infectus-surface-rgb) / .9);
+}
+
+/* En una columna el hilo cruzaría el texto: los puntos de color bastan. */
+@media (max-width: 1024px) {
+  .model-page .model-cycle__steps::before { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .model-page .model-cycle__step:hover { transform: none; }
+}

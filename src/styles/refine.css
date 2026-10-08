@@ -1,0 +1,111 @@
+/* ============================================================
+   Refinamiento final contra patrones genéricos (auditoría con
+   impeccable detect + redesign-skill + taste-skill):
+   - Sin halos de luz difusos: las superficies se sostienen solas.
+   - Sin etiquetas diminutas en mayúsculas con tracking amplio: texto
+     en tipo oración y tamaño legible (mínimo ~11.5 px).
+   - Titulares equilibrados y párrafos sin viudas.
+   - Contraste AA en las etiquetas de color.
+   Los carnés del equipo conservan su diseño; solo crece su letra mínima.
+   ============================================================ */
+
+/* --- Tipografía: titulares equilibrados, párrafos sin palabras huérfanas -- */
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* --- Halos decorativos fuera ------------------------------------------- */
+.hero-editorial__anchor::after,
+.team-figure__glow { display: none; }
+
+/* --- Etiquetas: tipo oración, sin tracking de «eyebrow» ----------------- */
+.accordion-gallery__rail-label,
+.triadic__core-label,
+.triadic__node span,
+.model-unit__label,
+.model-unit__status,
+.model-unit__media figcaption,
+.model-cycle__step span,
+.news-source__topic,
+.news-doc__meta,
+.services-figure__badge span,
+.services-category__mark,
+.capabilities__tab-count,
+.contact-tile__label,
+.hero-meta__item span,
+.footer-identity strong,
+.footer-areas strong,
+.footer-navigation strong {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: .8rem;
+}
+.contact-tile__label,
+.news-source__topic,
+.news-doc__meta,
+.capabilities__tab-count,
+.services-category__mark,
+.model-unit__status,
+.hero-meta__item span { font-size: .82rem; font-weight: 600; }
+.footer-identity strong,
+.footer-areas strong,
+.footer-navigation strong { font-size: .95rem; }
+.allies__panel * { letter-spacing: normal; }
+
+/* Carnés: mismo diseño, letra mínima legible. */
+.badge-card__org span,
+.badge-card__back-kicker { font-size: .7rem; }
+.badge-card__role { font-size: .7rem; color: var(--infectus-primary); }
+
+/* --- Contraste AA en las etiquetas de categoría del hero ----------------- */
+.service-deck__panel[data-tone="a"] { --tone: #2a68b8; }
+.service-deck__panel[data-tone="b"] { --tone: #0a7275; }
+
+/* --- Lectura: líneas de longitud cómoda ---------------------------------- */
+.service-row__body p,
+.policy-panel p,
+.compass-card p { max-width: 70ch; }
+
+/* --- Pie de página: sin franja superior, anillos ni puntos decorativos --- */
+.footer--corporate::before,
+.footer--corporate::after,
+.footer-areas span::before { display: none; }
+.footer-areas span { padding-left: 0; }
+.footer-signature span { letter-spacing: 0; text-transform: none; }
+
+/* --- Titulares: tracking firme sin aplastar las letras ------------------- */
+.page-hero h1,
+.contact-page .page-hero h1,
+.model-page .page-hero h1 { letter-spacing: -.035em; }
+
+/* --- Sin numeración de sección decorativa en el acordeón ----------------- */
+.accordion-gallery__number { display: none; }
+
+/* --- Movimiento solo con transform/opacity ------------------------------- */
+.capabilities__list a { transition: color .2s ease, transform .3s cubic-bezier(.23, 1, .32, 1); }
+.capabilities__list a:hover { padding-left: 0; transform: translateX(.35rem); }
+.service-deck__indicator { transition: transform .5s cubic-bezier(.23, 1, .32, 1); }
+
+/* --- Hero de Inicio: campo claro limpio, sin textura enterrada ni bruma -- */
+.home-hero .hero-editorial__field { background: linear-gradient(160deg, var(--white) 0%, var(--white) 45%, var(--infectus-surface) 100%); }
+.home-hero .hero-editorial__texture { display: none; }
+
+/* --- Fuera los anillos, cuadrículas y bordes laterales decorativos ------- */
+.home-areas--gallery::before,
+.home-media--identity::after,
+.about-team::after,
+.services-hero::before,
+.news-hero::before { display: none; }
+.contact-form-aside__privacy { border-left: 0; }
+
+/* --- Etiquetas pequeñas restantes ---------------------------------------- */
+.allies__meta { font-size: .78rem; letter-spacing: 0; text-transform: none; }
+.triadic__node span,
+.model-cycle__step span { font-size: .78rem; }
+/* Los motivos de contacto no son una secuencia: sin numeración. */
+.contact-reasons__list li > span[aria-hidden="true"] { display: none; }
+
+/* --- Longitud de línea cómoda en bloques anchos -------------------------- */
+.model-cycle__closing,
+.pdf-help,
+.services-lede p,
+.model-statement p { max-width: 72ch; }

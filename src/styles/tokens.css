@@ -42,25 +42,19 @@
   --infectus-ice: color-mix(in srgb, var(--infectus-light) 38%, var(--infectus-surface));
   --infectus-ice-soft: color-mix(in srgb, var(--infectus-light) 16%, var(--infectus-surface));
 
-  /* Oscuro: el navy manda; el azul medio aparece tarde y acotado, y la luz
-     hielo solo como reflejo. Sustituye a los navys sueltos de cada página. */
+  /* Oscuro: navy con un degradado direccional (material, sin halos
+     de luz). Sustituye a los navys sueltos de cada página. */
   --gradient-dark:
-    radial-gradient(ellipse 96% 70% at 88% 2%, rgb(var(--infectus-light-rgb) / .42), transparent 58%),
-    radial-gradient(ellipse 80% 62% at 62% 34%, rgb(var(--infectus-secondary-rgb) / .26), transparent 64%),
-    linear-gradient(116deg,
+    linear-gradient(152deg,
       var(--infectus-navy-deep) 0%,
-      var(--infectus-primary) 40%,
-      var(--infectus-blue-dim) 72%,
-      var(--infectus-blue-muted) 100%);
+      var(--infectus-primary) 52%,
+      var(--infectus-blue-dim) 100%);
 
   /* Claro: blanco y hielo con bruma azul mínima. Nunca celeste plano. */
   --gradient-light:
-    radial-gradient(ellipse 84% 62% at 82% 6%, rgb(var(--infectus-light-rgb) / .24), transparent 60%),
     linear-gradient(168deg, var(--white) 0%, var(--white) 42%, var(--infectus-surface) 100%);
   --gradient-mist:
-    radial-gradient(ellipse 76% 58% at 78% 10%, rgb(var(--infectus-light-rgb) / .18), transparent 62%),
-    radial-gradient(ellipse 66% 52% at 4% 92%, rgb(var(--infectus-surface-rgb) / .85), transparent 66%),
-    var(--white);
+    linear-gradient(180deg, var(--white), var(--infectus-surface));
   --gradient-surface: linear-gradient(180deg, var(--infectus-surface) 0%, var(--white) 70%);
   --gradient-surface-invert: linear-gradient(180deg, var(--white) 0%, var(--infectus-surface) 100%);
 

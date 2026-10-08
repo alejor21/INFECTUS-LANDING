@@ -92,7 +92,6 @@
 .hero-carousel__controls .hero-carousel__pause { gap:.4rem; padding-inline:.7rem; border-radius:.7rem; font-size:.74rem; }
 .hero-carousel__controls .hero-carousel__next { border:1px solid rgb(var(--infectus-secondary-rgb) /.2); border-radius:50%; }
 .hero-carousel__controls button:hover { background:rgb(var(--infectus-secondary-rgb) /.12); }
-.hero-carousel__status { color:var(--infectus-secondary); }
 
 /* Full-width hand-off avoids the old solid box-shadow gutters around identity. */
 .home-page .home-intro {

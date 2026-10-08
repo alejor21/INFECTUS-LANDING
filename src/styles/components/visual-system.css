@@ -15,9 +15,7 @@
    1. Bloques oscuros — un único navy en todo el sitio
    ------------------------------------------------------------------ */
 .page-hero--model,
-.page-hero--editorial,
-.about-drift,
-.editorial-empty {
+.about-drift {
   background: var(--gradient-dark);
 }
 
@@ -32,8 +30,6 @@
    ------------------------------------------------------------------ */
 .home-hero.hero-editorial {
   background:
-    radial-gradient(ellipse 70% 58% at 12% 18%, rgb(var(--white-rgb) / .95), transparent 64%),
-    radial-gradient(ellipse 86% 70% at 88% 92%, rgb(var(--infectus-light-rgb) / .34), transparent 66%),
     linear-gradient(152deg, var(--white) 0%, var(--infectus-surface) 46%, var(--infectus-ice) 100%);
 }
 
@@ -112,8 +108,7 @@
 .about-cta,
 .unit-contact,
 .services-cta,
-.team-cta,
-.blog-cta {
+.team-cta {
   background: var(--gradient-dark);
 }
 
@@ -131,51 +126,38 @@
 .home-page .home-intro,
 .services-lede,
 .team-approach,
-.model-statement,
-.editorial-statement {
+.model-statement {
   background: var(--gradient-mist);
 }
 
-.about-introduction,
-.editorial-library,
-.team-areas,
-.model-unit--lab {
+.about-introduction {
   background: var(--gradient-mist);
 }
 
 .institutional-pillars,
 .services-catalog,
-.editorial-formats,
 .model-cycle,
 .team-roster-section {
   background: var(--gradient-surface);
 }
 
 .about-areas,
-.about-team,
-.about-science {
+.about-team {
   background: var(--gradient-surface-invert);
 }
 
 /* ------------------------------------------------------------------
    3. Filetes y sombras derivados de marca
    ------------------------------------------------------------------ */
-.roster-slot,
-.service-item,
-.editorial-library__links a,
+
 .services-figure__badge {
   border-color: var(--hairline);
   box-shadow: var(--shadow-soft);
 }
-.roster-slot:hover,
-.roster-slot:focus-within,
-.editorial-library__links a:hover { box-shadow: var(--shadow-lift); }
 
 .services-category + .services-category,
 .service-row,
-.service-row:last-child,
-.editorial-formats__list,
-.editorial-format { border-color: var(--hairline); }
+.service-row:last-child { border-color: var(--hairline); }
 
 /* ------------------------------------------------------------------
    4. Sujetos recortados — menos halo, más ocultación de contacto
@@ -192,16 +174,13 @@
    ------------------------------------------------------------------ */
 .contact-page .contact-hero {
   background:
-    radial-gradient(ellipse 70% 58% at 84% 8%, rgb(var(--infectus-light-rgb) / .3), transparent 62%),
     linear-gradient(170deg, var(--white) 0%, var(--white) 46%, var(--infectus-surface) 100%);
 }
 .contact-page .contact-channels { background: var(--gradient-surface); }
 .contact-page .contact-reasons { background: var(--gradient-mist); }
 .contact-page .contact-form-section { background: var(--gradient-surface-invert); }
 .contact-page .contact-institutional { background: var(--gradient-dark); }
-.contact-page .contact-form-wrap,
-.contact-page .info-card { border-color: var(--hairline); box-shadow: var(--shadow-soft); }
-.contact-page .standard-content { background: var(--gradient-mist); }
+.contact-page .contact-form-wrap { border-color: var(--hairline); box-shadow: var(--shadow-soft); }
 
 /* En móvil el hero se apila, así que una cuña vertical partía el titular en
    dos mitades (navy sobre navy). El ancla pasa a banda horizontal: luz para
@@ -230,80 +209,5 @@
   .home-hero .hero-science-orbit { right: 0; width: min(26rem, 86%); height: auto; }
 }
 
-/* ------------------------------------------------------------------
-   D4 — Hero de Home: ecosistema de marca y acceso al portafolio
-   ------------------------------------------------------------------ */
-.hero-units {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .75rem 1.1rem;
-  margin-top: clamp(1.75rem, 3vw, 2.5rem);
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--hairline);
-  max-width: 30rem;
-}
-.hero-units__label {
-  margin: 0;
-  color: var(--research-secondary);
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.hero-units__list { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 0; padding: 0; list-style: none; }
-.hero-units__list a {
-  display: grid;
-  place-items: center;
-  padding: .5rem .8rem;
-  border: 1px solid var(--hairline);
-  border-radius: .75rem;
-  background: rgb(var(--white-rgb) / .78);
-  box-shadow: 0 8px 20px -16px rgb(var(--infectus-primary-rgb) / .6);
-  transition: transform var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
-}
-.hero-units__list a:hover { transform: translateY(-2px); border-color: rgb(var(--infectus-secondary-rgb) / .5); }
-.hero-units__list img { display: block; width: auto; height: 1.55rem; }
-
-/* Tarjeta de cristal sobre el carrusel: lleva al portafolio en línea. */
-.hero-feature {
-  position: absolute;
-  bottom: 4.25rem;
-  left: -2.25rem;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-  max-width: 17.5rem;
-  padding: .7rem 1rem .7rem .7rem;
-  border: 1px solid rgb(var(--white-rgb) / .55);
-  border-radius: 1rem;
-  background: rgb(var(--white-rgb) / .82);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 22px 44px -24px rgb(var(--infectus-primary-rgb) / .7);
-  color: var(--infectus-primary);
-  text-decoration: none;
-  transition: transform var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard);
-}
-.hero-feature:hover { transform: translateY(-3px); box-shadow: 0 26px 50px -24px rgb(var(--infectus-primary-rgb) / .8); }
-.hero-feature__cover { flex: none; width: 3.1rem; height: auto; border-radius: .3rem; box-shadow: 0 4px 12px -4px rgb(var(--infectus-primary-rgb) / .45); }
-.hero-feature__body { display: grid; gap: .12rem; }
-.hero-feature__kicker { color: var(--research-secondary); font-size: .62rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.hero-feature strong { font-family: var(--font-display); font-size: .98rem; line-height: 1.2; letter-spacing: -.01em; }
-.hero-feature__go { color: var(--infectus-secondary); font-size: .78rem; font-weight: 700; }
-@media (max-width: 1024px) {
-  .hero-feature { left: 0; }
-}
-@media (max-width: 768px) {
-  .hero-units { max-width: none; }
-  .hero-feature { position: relative; bottom: auto; left: auto; max-width: none; margin-top: 1rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-feature:hover,
-  .hero-units__list a:hover { transform: none; }
-}
-
-/* Aliados bajo Servicios: filete superior para separar ambos bloques. */
-.home-page .allies { padding-top: 0; }
-.home-page .allies__inner { padding-top: clamp(1.75rem, 3.4vw, 2.75rem); border-top: 1px solid var(--hairline); }
+/* Servicios y aliados comparten superficie: se leen como un solo bloque. */
+.home-page .home-services { background: var(--infectus-surface); }

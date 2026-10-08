@@ -65,7 +65,6 @@
   padding: 1rem .5rem;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 40%, rgb(var(--white-rgb) / .9), transparent 72%),
     var(--infectus-surface);
   outline: none;
   touch-action: pan-y;

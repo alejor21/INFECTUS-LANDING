@@ -1,0 +1,110 @@
+/* ============================================================
+   D5 — Piezas compartidas de la ronda «más vida»
+   Curva de salida exponencial (Emil Kowalski), selección de texto con la
+   marca y los CTA del hero: píldora con flecha + enlace sobrio.
+   ============================================================ */
+:root {
+  --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+}
+::selection { background: rgb(var(--infectus-secondary-rgb) / .22); color: var(--infectus-primary); }
+
+.hero-cta.button {
+  gap: .95rem;
+  min-height: 3.35rem;
+  padding: .45rem .45rem .45rem 1.45rem;
+  border-radius: var(--radius-pill);
+  font-size: .98rem;
+}
+.hero-cta__icon {
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--infectus-primary);
+  transition: transform .35s var(--ease-out-expo);
+}
+.hero-cta__icon svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hero-cta:hover .hero-cta__icon { transform: translateX(3px); }
+.hero-cta:active { transform: scale(.98); }
+.hero-link {
+  padding-block: .35rem;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 34% 1.5px no-repeat;
+  color: var(--infectus-primary);
+  font-size: .98rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-size .45s var(--ease-out-expo), color .2s ease;
+}
+.hero-link:hover { background-size: 100% 1.5px; color: var(--infectus-secondary); }
+.hero-link:focus-visible,
+.hero-cta:focus-visible { outline: 2px solid var(--infectus-secondary); outline-offset: 4px; }
+
+
+/* Sobre fondos navy (Modelo) el CTA se invierte y el enlace pasa a blanco. */
+.page-hero--model .hero-cta.button { border-color: var(--white); background: var(--white); color: var(--infectus-primary); }
+.page-hero--model .hero-cta__icon { background: var(--infectus-primary); color: var(--white); }
+.page-hero--model .hero-link { color: var(--white); }
+.page-hero--model .hero-link:hover { color: var(--infectus-light); }
+.page-hero__actions:has(.hero-link) { align-items: center; gap: .9rem 1.9rem; }
+
+/* --- Enlaces de sección --------------------------------------------------- */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1.5rem;
+  color: var(--infectus-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.home-link span { transition: transform .35s var(--ease-out-expo); }
+.home-link:hover span { transform: translateX(4px); }
+.home-link:hover { color: var(--infectus-secondary); }
+
+
+/* Sin puntos de color decorativos en etiquetas y estados. */
+.about-hero__chips li::before,
+.model-unit__status::before { content: none; }
+
+/* --- Acceso directo a WhatsApp: aparece tras el hero, sin ocultar contenido -- */
+.float-contact {
+  position: fixed;
+  right: clamp(1rem, 2.4vw, 1.75rem);
+  bottom: clamp(1rem, 2.4vw, 1.75rem);
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .8rem 1.15rem .8rem .9rem;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-dark);
+  box-shadow: 0 18px 40px -16px rgb(var(--infectus-primary-rgb) / .75), 0 0 0 1px rgb(var(--white-rgb) / .14) inset;
+  color: var(--white);
+  font-size: .92rem;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px) scale(.96);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .4s cubic-bezier(.23, 1, .32, 1);
+}
+.float-contact.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.float-contact:active { transform: scale(.97); }
+.float-contact svg { width: 1.35rem; height: 1.35rem; fill: currentColor; }
+.float-contact:focus-visible { outline: 2px solid var(--infectus-secondary); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .float-contact:hover { box-shadow: 0 22px 46px -16px rgb(var(--infectus-primary-rgb) / .85), 0 0 0 1px rgb(var(--white-rgb) / .2) inset; }
+}
+@media (max-width: 480px) {
+  .float-contact { padding: .85rem; }
+  .float-contact > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+/* --- Página 404 ------------------------------------------------------------- */
+.not-found { display: grid; min-height: 80svh; place-items: center; padding-block: 9rem 5rem; background: linear-gradient(180deg, var(--infectus-surface), var(--white)); }
+.not-found__inner { text-align: center; }
+.not-found h1 { margin: 0 0 1rem; color: var(--infectus-primary); font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -.045em; }
+.not-found p { max-width: 42ch; margin: 0 auto 2rem; color: var(--research-primary); }
+.not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 1.8rem; }

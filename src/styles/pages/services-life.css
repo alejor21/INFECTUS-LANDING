@@ -1,0 +1,125 @@
+/* ============================================================
+   D5 — Servicios con más vida
+   Ritmo de regiones: hero claro → declaración navy → índice en campo
+   hielo → catálogo con un panel de color por categoría → portafolios →
+   cierre navy. Sin etiquetas sobre los títulos.
+   ============================================================ */
+
+/* Hero: el CTA principal toma el navy del sistema, como en Inicio. */
+.page-hero--services .hero-cta.button { border-color: transparent; background: var(--gradient-dark); color: var(--white); box-shadow: 0 14px 30px -18px rgb(var(--infectus-primary-rgb) / .75); }
+
+/* --- Declaración sobre navy ------------------------------------------------ */
+.services-page .services-lede {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 7vw, 6rem);
+  background:
+    var(--gradient-dark);
+}
+.services-page .services-lede h2 { max-width: 16ch; margin: 0; color: var(--white); font-size: clamp(2.1rem, 3.8vw, 3.4rem); line-height: 1.06; letter-spacing: -.045em; }
+.services-page .services-lede p { color: rgb(var(--infectus-surface-rgb) / .86); }
+
+/* --- Índice de capacidades en campo hielo --------------------------------- */
+.services-page .capabilities {
+  background:
+    linear-gradient(180deg, var(--infectus-surface), var(--infectus-ice));
+}
+.services-page .capabilities h2 { letter-spacing: -.04em; }
+.services-page .capabilities__rail { box-shadow: 0 30px 60px -40px rgb(var(--infectus-primary-rgb) / .55); }
+.services-page .capabilities__tab { transition: background .35s var(--ease-out-expo), color .35s var(--ease-out-expo); }
+.services-page .capabilities__tab[aria-selected="true"] { border-color: transparent; background: var(--gradient-dark); color: var(--white); box-shadow: 0 16px 30px -20px rgb(var(--infectus-primary-rgb) / .8); }
+.services-page .capabilities__tab[aria-selected="true"] .capabilities__tab-mark { color: var(--infectus-light); }
+.services-page .capabilities__tab[aria-selected="true"] .capabilities__tab-label { color: var(--white); }
+.services-page .capabilities__tab[aria-selected="true"] .capabilities__tab-count { color: rgb(var(--infectus-surface-rgb) / .78); }
+
+/* --- Catálogo: un panel por categoría, cada uno con su tono ---------------- */
+.services-page .services-catalog { background: var(--white); }
+.services-page .services-category {
+  margin-block: 1.25rem;
+  padding: clamp(1.75rem, 3.4vw, 3rem);
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .08);
+  border-radius: 1.75rem;
+  background: linear-gradient(160deg, var(--infectus-surface), var(--white) 70%);
+  box-shadow: 0 30px 60px -48px rgb(var(--infectus-primary-rgb) / .6);
+}
+.services-page .services-category + .services-category { border-top: 1px solid rgb(var(--infectus-primary-rgb) / .08); }
+.services-page .services-category:nth-of-type(2) { background: linear-gradient(160deg, var(--vaccine-surface), var(--white) 70%); }
+.services-page .services-category__mark b { color: var(--infectus-secondary); }
+
+/* Gestión clínica: el panel navy, con la especialista como protagonista. */
+.services-page .services-category--care {
+  border-color: transparent;
+  background:
+    var(--gradient-dark);
+  color: var(--white);
+}
+.services-page .services-category--care .services-category__head h2 { color: var(--white); }
+.services-page .services-category--care .services-category__head p { color: rgb(var(--infectus-surface-rgb) / .86); }
+.services-page .services-category--care .services-category__mark { color: var(--infectus-light); }
+.services-page .services-category--care .services-category__mark b { color: var(--white); }
+.services-page .services-category--care .service-row { border-color: rgb(var(--white-rgb) / .16); }
+.services-page .services-category--care .service-row summary,
+.services-page .services-category--care .service-row__title { color: var(--white); }
+.services-page .services-category--care .service-row__index { color: var(--infectus-light); }
+.services-page .services-category--care .service-row__body,
+.services-page .services-category--care .service-row__body p,
+.services-page .services-category--care .service-row__points li { color: rgb(var(--infectus-surface-rgb) / .88); }
+.services-page .services-category--care .service-row__sign::before,
+.services-page .services-category--care .service-row__sign::after { background: var(--white); }
+.services-page .services-category--care .services-category__portrait img { box-shadow: 0 24px 48px -26px rgb(0 0 0 / .6); }
+
+/* Filas: el título responde al cursor sin esperar. */
+.services-page .service-row summary { transition: color .25s ease; }
+.services-page .services-category:not(.services-category--care) .service-row summary:hover .service-row__title { color: var(--infectus-secondary); }
+
+/* --- Hero: esfera navy, etiquetas flotantes y categorías enlazadas -------- */
+.services-page .services-figure { isolation: isolate; }
+.services-page .services-figure__halo {
+  bottom: -14%;
+  width: min(112%, 36rem);
+  background: var(--infectus-primary);
+}
+.services-page .services-figure__subject { transition: translate .6s var(--ease-out-expo); }
+.services-page .services-figure__badge { transition: translate .6s var(--ease-out-expo); }
+.services-figure__chips { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.services-figure__chips li {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .95rem;
+  border: 1px solid rgb(var(--infectus-primary-rgb) / .08);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  box-shadow: 0 12px 28px -18px rgb(var(--infectus-primary-rgb) / .55);
+  color: var(--infectus-primary);
+  font-size: .84rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: translate .6s var(--ease-out-expo);
+}
+.services-figure__chips li:nth-child(1) { top: 30%; left: -4%; }
+.services-figure__chips li:nth-child(2) { top: 52%; left: 4%; }
+@media (prefers-reduced-motion: no-preference) {
+  .services-figure__chips li { animation: about-chip-float 7s ease-in-out infinite alternate; animation-delay: calc(var(--i, 1) * -2.4s); }
+}
+
+.services-page a.hero-meta__item { color: inherit; text-decoration: none; transition: transform .35s var(--ease-out-expo); }
+.services-page a.hero-meta__item strong { transition: color .2s ease; }
+.services-page a.hero-meta__item:hover { transform: translateY(-2px); }
+.services-page a.hero-meta__item:hover strong { color: var(--infectus-secondary); }
+.services-page a.hero-meta__item:focus-visible { outline: 2px solid var(--infectus-secondary); outline-offset: 4px; border-radius: .4rem; }
+
+@media (max-width: 768px) {
+  .services-figure__chips li { padding: .4rem .75rem; font-size: .74rem; }
+  .services-figure__chips li:nth-child(1) { top: 20%; left: 0; }
+  .services-figure__chips li:nth-child(2) { top: 44%; left: 0; }
+}
+/* La esfera y el médico van por delante del agua de primer plano, que lavaba el navy. */
+.services-page .page-hero--services .page-hero__stage { z-index: 4; }
+.services-page .services-figure__halo { opacity: 1; }
+
+/* Siglas y normas que el documento nombra dentro de cada servicio. */
+.service-row__tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.service-row__tags li { padding: .3rem .7rem; border: 1px solid rgb(var(--infectus-secondary-rgb) / .25); border-radius: var(--radius-pill); background: rgb(var(--infectus-secondary-rgb) / .08); color: var(--infectus-primary); font-size: .8rem; font-weight: 700; letter-spacing: .02em; }
+.services-page .services-category--care .service-row__tags li { border-color: rgb(var(--white-rgb) / .25); background: rgb(var(--white-rgb) / .1); color: var(--white); }
