@@ -9,6 +9,7 @@ build/
 .antigravity/
 .claude/
 .agents/
+.wrangler/
 .vscode/
 .idea/
 .DS_Store
