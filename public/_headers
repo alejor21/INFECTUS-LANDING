@@ -1,12 +1,17 @@
-# Cabeceras de seguridad para el hosting estático (Cloudflare Pages / Netlify).
+# Cabeceras de seguridad (Cloudflare Workers / Pages).
+# CSP estricta: el sitio no ejecuta JavaScript en línea ni carga scripts de
+# terceros; solo la tipografía viene de Fontshare. Los atributos style="" se
+# permiten para variables CSS de animación, pero no los bloques <style>.
 /*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' https://api.fontshare.com; style-src-attr 'unsafe-inline'; font-src 'self' https://cdn.fontshare.com; img-src 'self' data: blob:; connect-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com https://api.fontshare.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'self'; upgrade-insecure-requests
+  Cross-Origin-Resource-Policy: same-site
+  X-Permitted-Cross-Domain-Policies: none
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -16,3 +21,8 @@
 
 /brand/*
   Cache-Control: public, max-age=2592000
+
+/pdfs/*
+  # El visor de PDF del navegador necesita abrir el documento sin la CSP de páginas.
+  ! Content-Security-Policy
+  Cache-Control: public, max-age=86400

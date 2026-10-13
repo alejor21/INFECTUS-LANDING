@@ -1,0 +1,5 @@
+# Reporte de vulnerabilidades de seguridad de infectus.com.co
+Contact: mailto:infectuspasto@gmail.com
+Expires: 2027-10-12T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://infectus.com.co/.well-known/security.txt

@@ -60,7 +60,7 @@ const MAP = {
   // FASE D4 — retratos oficiales del equipo (el nombre del archivo es la persona).
   'grupo infectus individual/david forero.png': ['team/profiles/david-forero.webp', 800],
   'grupo infectus individual/july paola.png': ['team/profiles/paola-tulcan.webp', 800],
-  'grupo infectus individual/nathalia.png': ['team/profiles/natalia-gallego.webp', 800],
+  'grupo infectus individual/nathalia.png': ['team/profiles/natalia-gallego-v2.webp', 800],
   'grupo infectus individual/magda julieth.png': ['team/profiles/magda-forero.webp', 800],
   'grupo infectus individual/angelica ojeda.png': ['team/profiles/angelica-ojeda.webp', 800],
   'grupo infectus individual/daniel.png': ['team/profiles/daniel-lopez.webp', 800],
