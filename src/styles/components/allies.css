@@ -53,6 +53,8 @@
 .allies__logo[data-ally="proinsalud"] { --ally-w: 3.8rem; --ally-h: 4.5rem; }
 .allies__logo[data-ally="corposalud"] { --ally-w: 13.5rem; --ally-h: 3.8rem; }
 .allies__logo[data-ally="hispanoamerica"] { --ally-w: 16rem; --ally-h: 2.7rem; }
+.allies__logo[data-ally="medicron"] { --ally-w: 13rem; --ally-h: 3.4rem; }
+.allies__logo[data-ally="san-jose"] { --ally-w: 11rem; --ally-h: 4.1rem; }
 .allies__meta {
   padding: .22rem .65rem;
   border-radius: var(--radius-pill);
@@ -84,4 +86,13 @@
   .allies__logo[data-ally="proinsalud"] { --ally-h: 3rem; }
   .allies__logo[data-ally="corposalud"] { --ally-w: 9.5rem; --ally-h: 2.6rem; }
   .allies__logo[data-ally="hispanoamerica"] { --ally-w: 11.5rem; --ally-h: 1.9rem; }
+  .allies__logo[data-ally="medicron"] { --ally-w: 9.5rem; --ally-h: 2.5rem; }
+  .allies__logo[data-ally="san-jose"] { --ally-w: 8rem; --ally-h: 3rem; }
+}
+
+/* Cinco aliados: tres arriba y dos centrados abajo, sin huecos. */
+@media (min-width: 769px) {
+  .allies__list { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .allies__item { grid-column: span 2; }
+  .allies__item:nth-child(4) { grid-column: 2 / span 2; }
 }
