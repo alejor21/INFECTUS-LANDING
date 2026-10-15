@@ -1,92 +1,158 @@
 /* ============================================================
-   Organigrama institucional (Nuestro equipo). Árbol en HTML real:
-   Gerente → tres subgerencias en columnas → áreas y cargos con
-   conectores finos. En pantallas angostas las columnas se apilan y
-   el árbol se lee de arriba abajo.
+   Organigrama institucional (Nuestro equipo).
+   Misma jerarquía del PDF oficial: Gerente → tres subgerencias →
+   áreas y cadenas de cargos. Cada subgerencia es una columna con su
+   color (administrativa en navy, servicios de salud en azul, gestión
+   integral en turquesa); los conectores salen de la gerencia y bajan
+   por cada columna. Al pasar el cursor por una subgerencia, las demás
+   se atenúan para seguir su rama. En celular las columnas se apilan.
    ============================================================ */
 .org {
-  padding-block: clamp(4.5rem, 8vw, 7rem);
-  background: linear-gradient(180deg, var(--infectus-surface), var(--white));
+  position: relative;
+  padding-block: clamp(4.5rem, 8vw, 7rem) clamp(5rem, 9vw, 8rem);
+  background: linear-gradient(180deg, var(--infectus-surface), var(--white) 70%);
 }
-.org__head h2 { margin: 0 0 clamp(2rem, 4vw, 3rem); color: var(--infectus-primary); font-size: clamp(2.1rem, 3.6vw, 3.2rem); line-height: 1.05; letter-spacing: -.045em; }
+.org__head h2 { margin: 0 0 clamp(2.5rem, 5vw, 3.5rem); color: var(--infectus-primary); font-size: clamp(2.1rem, 3.6vw, 3.2rem); line-height: 1.05; letter-spacing: -.045em; }
+.org__chart ul, .org__chart ol { margin: 0; padding: 0; list-style: none; }
+.org__chart { --line: rgb(var(--infectus-primary-rgb) / .2); --ease: cubic-bezier(.23, 1, .32, 1); }
 
-.org__chart { --line: rgb(var(--infectus-primary-rgb) / .22); }
-.org__chart ul { margin: 0; padding: 0; list-style: none; }
-
-/* --- Nodos ---------------------------------------------------------------- */
-.org-node {
+/* --- Gerencia ----------------------------------------------------------------- */
+.org__top { position: relative; display: flex; justify-content: center; padding-bottom: 2.75rem; }
+.org__top::after { position: absolute; bottom: 0; left: 50%; width: 2px; height: 2.75rem; background: var(--line); transform: translateX(-50%); content: ""; }
+.org-root {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
-  min-height: 2.6rem;
-  padding: .6rem 1rem;
-  border-radius: .8rem;
-  font-size: .92rem;
+  gap: .9rem;
+  margin: 0;
+  padding: .85rem 2rem .85rem 1rem;
+  border-radius: 1.25rem;
+  background: var(--gradient-dark);
+  box-shadow: 0 26px 46px -26px rgb(var(--infectus-primary-rgb) / .85), 0 0 0 6px rgb(var(--white-rgb) / .9);
+  color: var(--white);
+  font-size: 1.15rem;
   font-weight: 700;
-  line-height: 1.25;
-  text-wrap: balance;
+  letter-spacing: -.01em;
 }
-.org-node--root {
-  padding: .85rem 2.4rem;
-  border-radius: 1rem;
-  background: var(--gradient-dark);
-  box-shadow: 0 22px 40px -24px rgb(var(--infectus-primary-rgb) / .8);
-  color: var(--white);
-  font-size: 1.05rem;
-}
-.org-node--lead {
-  width: 100%;
-  justify-content: center;
-  padding: .85rem 1.1rem;
-  background: var(--gradient-dark);
-  box-shadow: 0 18px 34px -24px rgb(var(--infectus-primary-rgb) / .75);
-  color: var(--white);
-  text-align: center;
-}
-.org-node--area { background: var(--infectus-primary); color: var(--white); }
-.org-node--unit { background: var(--white); box-shadow: 0 0 0 1px rgb(var(--infectus-primary-rgb) / .1), 0 12px 24px -20px rgb(var(--infectus-primary-rgb) / .6); color: var(--infectus-primary); }
+.org-root img { width: 2.4rem; height: auto; padding: .35rem; border-radius: .8rem; background: var(--white); }
 
-/* --- Raíz y ramas ----------------------------------------------------------- */
-.org__root { position: relative; display: flex; justify-content: center; margin: 0 0 2.4rem; }
-.org__root::after { position: absolute; top: 100%; left: 50%; width: 1.5px; height: 1.2rem; background: var(--line); content: ""; }
-.org__branches {
+/* --- Columnas por subgerencia ---------------------------------------------- */
+.org__cols {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.7fr) minmax(0, 1fr);
-  gap: clamp(1rem, 2.4vw, 2rem);
-  padding-top: 1.2rem;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.75fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2.2vw, 1.75rem);
+  align-items: start;
+  padding-top: 1.75rem;
 }
-/* Barra horizontal que une las tres subgerencias con la gerencia. */
-.org__branches::before { position: absolute; top: 0; right: 15%; left: 15%; height: 1.5px; background: var(--line); content: ""; }
-.org__branch { position: relative; display: grid; align-content: start; gap: 1rem; }
-.org__branch::before { position: absolute; top: -1.2rem; left: 50%; width: 1.5px; height: 1.2rem; background: var(--line); content: ""; }
+/* Barra que reparte la gerencia hacia las tres columnas. */
+.org__cols::before { position: absolute; top: 0; right: 13.9%; left: 11.8%; height: 2px; border-radius: 2px; background: var(--line); content: ""; }
+.org-col {
+  --tone: var(--infectus-primary);
+  --tone-soft: var(--infectus-surface);
+  position: relative;
+  border-radius: 1.5rem;
+  background: var(--white);
+  box-shadow: 0 30px 60px -44px rgb(var(--infectus-primary-rgb) / .7), 0 0 0 1px rgb(var(--infectus-primary-rgb) / .06);
+  transition: transform .45s var(--ease), opacity .35s ease, box-shadow .45s var(--ease);
+}
+.org-col::before { position: absolute; bottom: 100%; left: 50%; width: 2px; height: 1.75rem; background: var(--line); transform: translateX(-50%); content: ""; }
+.org-col[data-tone="health"] { --tone: #2a68b8; --tone-soft: #e8f1fc; }
+.org-col[data-tone="integral"] { --tone: #0a7275; --tone-soft: #e6f6f6; }
 
-/* --- Listas bajo cada subgerencia: línea vertical a la izquierda ----------- */
-.org__list { position: relative; display: grid; gap: .75rem; padding-left: 1.4rem !important; }
-.org__list::before { position: absolute; top: -.5rem; bottom: 1.3rem; left: .45rem; width: 1.5px; background: var(--line); content: ""; }
-.org-unit { position: relative; display: grid; justify-items: start; gap: .45rem; }
-.org__list > .org-unit::before { position: absolute; top: 1.3rem; left: -.95rem; width: .95rem; height: 1.5px; background: var(--line); content: ""; }
+.org-col__head {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: var(--tone);
+  color: var(--white);
+}
+.org-col[data-tone="admin"] .org-col__head { background: var(--gradient-dark); }
+.org-col__head h3 { margin: 0; color: var(--white); font-size: 1rem; line-height: 1.25; letter-spacing: -.01em; text-wrap: balance; }
+.org-col__icon { display: grid; flex: none; place-items: center; width: 2.3rem; height: 2.3rem; border-radius: .75rem; background: rgb(var(--white-rgb) / .16); }
+.org-col__icon svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.org-col__body { display: grid; gap: 1rem; padding: 1.25rem; }
 
-.org__group { margin: 0; color: rgb(var(--infectus-primary-rgb) / .7); font-size: .85rem; font-weight: 700; text-align: center; }
+@media (hover: hover) and (pointer: fine) {
+  .org__cols:has(.org-col:hover) .org-col:not(:hover) { opacity: .55; }
+  .org-col:hover { transform: translateY(-4px); box-shadow: 0 36px 70px -42px rgb(var(--infectus-primary-rgb) / .75), 0 0 0 1px rgb(var(--infectus-primary-rgb) / .08); }
+}
 
-/* Cargos o subáreas de cada unidad. */
-.org-roles { display: grid; gap: .3rem; padding-left: 1rem !important; }
-.org-role { position: relative; color: var(--research-primary); font-size: .86rem; line-height: 1.35; }
-.org-role::before { position: absolute; top: .65em; left: -.85rem; width: .55rem; height: 1.5px; background: var(--infectus-secondary); content: ""; }
+/* --- Unidades y cadenas de cargos ------------------------------------------- */
+.org-units { display: grid; gap: .7rem; }
+.org-unit {
+  padding: .85rem 1rem;
+  border-radius: 1rem;
+  background: var(--tone-soft);
+}
+.org-unit__name { display: block; color: var(--infectus-primary); font-size: .95rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
 
-/* Infectología: sus cinco unidades en cuadrícula. */
-.org-unit--area { gap: .8rem; }
-.org__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1rem; width: 100%; }
-.org__grid .org-unit { padding: .9rem; border-radius: 1rem; background: rgb(var(--white-rgb) / .7); box-shadow: inset 0 0 0 1px rgb(var(--infectus-primary-rgb) / .06); }
-.org__grid .org-node--unit { box-shadow: none; padding: 0; min-height: 0; background: none; }
+/* Cada cargo cuelga del anterior con un codo redondeado del color de la rama. */
+.org-chain { margin-top: .55rem !important; padding-left: .55rem !important; }
+.org-chain .org-chain { margin-top: .4rem !important; padding-left: 1rem !important; }
+.org-chain > li { position: relative; padding-left: 1.05rem; }
+.org-chain > li::before {
+  position: absolute;
+  top: -.35rem;
+  left: 0;
+  width: .7rem;
+  height: 1.05rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--tone) 55%, transparent);
+  border-left: 2px solid color-mix(in srgb, var(--tone) 55%, transparent);
+  border-bottom-left-radius: .5rem;
+  content: "";
+}
+.org-chain__item { display: inline-block; color: var(--research-primary); font-size: .87rem; font-weight: 500; line-height: 1.35; }
 
+/* Servicios de salud: grupo, área de Infectología y Pediatría. */
+.org-col__group {
+  justify-self: start;
+  margin: 0;
+  padding: .4rem .85rem;
+  border-radius: var(--radius-pill);
+  background: var(--tone-soft);
+  color: var(--tone);
+  font-size: .84rem;
+  font-weight: 700;
+}
+.org-area { display: grid; gap: .8rem; padding: 1rem; border: 1.5px dashed color-mix(in srgb, var(--tone) 35%, transparent); border-radius: 1.2rem; }
+.org-area__name { justify-self: start; padding: .45rem 1rem; border-radius: .7rem; background: var(--tone); color: var(--white); font-size: .95rem; font-weight: 700; }
+.org-area--solo { border-style: solid; border-color: transparent; padding: 0; }
+.org-units--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.org-units--grid .org-unit { background: var(--white); box-shadow: 0 0 0 1px rgb(var(--infectus-primary-rgb) / .07), 0 14px 28px -24px rgb(var(--infectus-primary-rgb) / .6); }
+
+/* --- Entrada escalonada cuando aparece la sección ---------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .org__chart:not(.is-revealed) .org-col { opacity: 0; transform: translateY(18px); }
+  .org__chart.is-revealed .org-col { transition-delay: calc(var(--d, 0) * 90ms); }
+  .org-col:nth-child(2) { --d: 1; }
+  .org-col:nth-child(3) { --d: 2; }
+}
+
+/* --- Tablet: servicios de salud arriba a todo el ancho, las otras dos abajo -- */
 @media (max-width: 1100px) {
-  .org__branches { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .org__branch--wide { grid-column: 1 / -1; grid-row: 1; }
-  .org__branches::before, .org__branch::before { display: none; }
-  .org__root::after { display: none; }
+  .org__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding-top: 0; }
+  .org__cols::before, .org-col::before { display: none; }
+  .org__top { padding-bottom: 1.5rem; }
+  .org__top::after { display: none; }
+  .org-col--wide { grid-column: 1 / -1; grid-row: 1; }
 }
+/* --- Celular: una columna, cuadrícula de Infectología en una sola fila ------- */
 @media (max-width: 640px) {
-  .org__branches { grid-template-columns: minmax(0, 1fr); }
-  .org__branch--wide { grid-row: auto; }
-  .org__grid { grid-template-columns: minmax(0, 1fr); }
+  .org__cols { grid-template-columns: minmax(0, 1fr); }
+  .org-col--wide { grid-row: auto; }
+  .org-units--grid { grid-template-columns: minmax(0, 1fr); }
+  .org-col__body { padding: 1rem; }
+  .org-area { padding: .8rem; }
+  .org-root { font-size: 1.05rem; }
+}
+
+/* La línea de la gerencia baja directo hasta Servicios de Salud (columna
+   central): sin un segundo conector paralelo. */
+@media (min-width: 1101px) {
+  .org-col--wide::before { display: none; }
+  .org__top::after { height: calc(2.75rem + 1.75rem); bottom: -1.75rem; }
 }

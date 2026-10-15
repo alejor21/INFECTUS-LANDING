@@ -4,14 +4,20 @@ import { initReveal } from './reveal.js';
 import { initHeaderComponents } from './components/header.js';
 import './quality.js';
 
-initHeaderComponents();
-initNavigation();
+// Primero el reveal: el contenido nunca debe depender de que el resto cargue.
+initReveal();
+
+// Cada componente se inicia aislado: un fallo en uno no apaga los demás.
+const safely = (name, start) => {
+  try { start(); } catch (error) { console.error(`[infectus] ${name}`, error); }
+};
+safely('header', initHeaderComponents);
+safely('navigation', initNavigation);
 // The persistent contact action is never the current page: only the matching
 // entry inside the primary navigation carries aria-current. This also
 // normalizes any legacy markup that still ships the attribute on the CTA.
 document.querySelectorAll('.header-cta[aria-current]').forEach(link => link.removeAttribute('aria-current'));
-initContactForm();
-initReveal();
+safely('contact-form', initContactForm);
 
 const pdfReaderRoots = [...document.querySelectorAll('[data-pdf-reader]')];
 let pdfReaders = [];
